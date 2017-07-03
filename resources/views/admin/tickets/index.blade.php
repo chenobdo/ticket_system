@@ -6,12 +6,12 @@
 
     <section class="content-header">
       <h1>
-        Admin
-        <small>Tickets</small>
+        后台
+        <small>工单</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
-        <li class="active">Tickets</li>
+        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> 后台</a></li>
+        <li class="active">工单</li>
       </ol>
     </section>
 
@@ -24,7 +24,7 @@
 
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Tickets</h3>
+              <h3 class="box-title">工单</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -35,20 +35,19 @@
             <div class="box-body table-responsive">
   <div class="col-md-12">              
                   @if ($tickets->isEmpty())
-                        <p>There is no tickets here.</p>
+                        <p>这里没有工单..</p>
                     @else
                         <table class="table table-hover" id="tickettable">
                             <thead>
                                 <tr>
-                                    <th>Ticket ID</th>
-                                    <th>Title</th>
-                                    <th>User</th>
-                                    <th>Comments</th>
-                                    <th>Category</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Created</th>
-                                    <th>Last Updated</th>
+                                    <th>工单ID</th>
+                                    <th>标题</th>
+                                    <th>评论</th>
+                                    <th>类型</th>
+                                    <th>状态</th>
+                                    <th>优先级</th>
+                                    <th>创建时间</th>
+                                    <th>最近更新</th>
                                 </tr>
                             </thead>
                             <tbody>
