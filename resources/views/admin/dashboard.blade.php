@@ -5,12 +5,12 @@
    <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Admin
-                <small>Dashboard</small>
+                后台
+                <small>面板</small>
             </h1>
       
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> 后台</a></li>
             </ol>
         </section>
 
