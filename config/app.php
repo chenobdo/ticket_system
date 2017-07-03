@@ -166,6 +166,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Laravelista\Ekko\EkkoServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -233,6 +234,7 @@ return [
         'Html'                  => Collective\Html\HtmlFacade::class,
         'Entrust'               => Zizaco\Entrust\EntrustFacade::class,
         'Ekko'                  => Laravelista\Ekko\Facades\Ekko::class,
+        'Debugbar'              => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
