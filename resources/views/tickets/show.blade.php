@@ -49,8 +49,8 @@
                                             @endif                                        
                                         @endif                        
                         </p>
-                        <p>创建时间: {{ $ticket->created_at->diffForHumans() }}</p>
-                        <p>最近更新: {{ $ticket->updated_at->diffForHumans() }}</p>
+                        <p>创建时间: {{ $ticket->created_at->format('Y-m-d H:i:s') }}</p>
+                        <p>最近更新: {{ $ticket->updated_at->format('Y-m-d H:i:s') }}</p>
                         <p>内容: <i><h4>{!! $ticket->message !!}</h4></i></p>
 
                     <hr>
@@ -71,7 +71,11 @@
 
                 <div class="message">
                   <a href="#" class="name">
-                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }}</small>
+                    <small class="text-muted pull-right">
+                        <i class="fa fa-clock-o"></i>
+                        {{--{{ $comment->created_at->diffForHumans() }}--}}
+                        {{ $comment->created_at->format('Y-m-d H:i:s') }}
+                    </small>
                     {{ $comment->user->fullname }}
                   </a>
                 {!! $comment->comment !!}    
