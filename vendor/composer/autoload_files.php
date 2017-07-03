@@ -24,5 +24,6 @@ return array(
     'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     '4e99a91d5061101f71c3c488c41e2866' => $vendorDir . '/vluzrmos/slack-api/src/Vluzrmos/SlackApi/helpers.php',
     '4a1f389d6ce373bda9e57857d3b61c84' => $vendorDir . '/barryvdh/laravel-debugbar/src/helpers.php',
+    'f960e77410032f236cef8c56617b313e' => $vendorDir . '/overtrue/laravel-lang/src/helpers.php',
     '18a07b24a1acab04f90db983d26744ab' => $baseDir . '/app/Http/helpers.php',
 );
