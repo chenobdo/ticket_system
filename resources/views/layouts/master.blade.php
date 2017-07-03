@@ -7,9 +7,9 @@
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{ load_asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ load_asset('plugins/bootstrap-social/bootstrap-social.min.css') }}">
+    <link rel="stylesheet" href="{{ load_asset('plugins/font-awesome/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ load_asset('plugins/ionicons/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ load_asset('dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ load_asset('dist/css/skins/skin-purple.min.css') }}">
     <link rel="stylesheet" href="{{ load_asset('summernote/summernote.css') }}">

@@ -12,13 +12,13 @@
           <ul class="nav navbar-nav">
             <li class="{{ Ekko::isActiveRoute('home') }}"><a href="{{ route('home') }}">Home</a></li>
                 @if (Auth::user())
-            <li class="{{ Ekko::areActiveRoutes(['tickets.index', 'tickets.show']) }}"><a href="{{ route('tickets.index') }}">My tickets</a></li>
-            <li class="{{ Ekko::isActiveRoute('tickets.create') }}"><a href="{{ route('tickets.create') }}">Open new ticket</a></li>
+            <li class="{{ Ekko::areActiveRoutes(['tickets.index', 'tickets.show']) }}"><a href="{{ route('tickets.index') }}">我的工单</a></li>
+            <li class="{{ Ekko::isActiveRoute('tickets.create') }}"><a href="{{ route('tickets.create') }}">创建工单</a></li>
                 @endif
-            <li class="{{ request()->path() == "contact" ? 'active' : 'n' }}"><a href="{{ route('contact') }}">Contact</a></li>
+            <li class="{{ request()->path() == "contact" ? 'active' : 'n' }}"><a href="{{ route('contact') }}">联系我们</a></li>
                 @permission('view-backend')
-            <li><a href="{{ route('admin.dashboard') }}"> Admin</a></li>
-                @endpermission              
+            <li><a href="{{ route('admin.dashboard') }}"> 后台</a></li>
+                @endpermission
           </ul>
 
         </div>
@@ -27,10 +27,10 @@
           <ul class="nav navbar-nav">
              @if (Auth::guest())
             <ul class="nav navbar-nav navbar-right">
-                <li class="{{ request()->path() == "login" ? 'active' : 'n' }}"><a href="{{ route('auth.login') }}">Login</a></li>
-                <li class="{{ request()->path() == "signup" ? 'active' : 'n' }}"><a href="{{ route('auth.register') }}">Create Account</a></li>
+                <li class="{{ request()->path() == "login" ? 'active' : 'n' }}"><a href="{{ route('auth.login') }}">登录</a></li>
+                <li class="{{ request()->path() == "signup" ? 'active' : 'n' }}"><a href="{{ route('auth.register') }}">注册</a></li>
             </ul>
-            @else  
+            @else
 
             <li class="dropdown user user-menu {{ Ekko::isActiveRoute('account.dashboard') }}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -43,17 +43,18 @@
 
                   <p>
                     {{ Auth::user()->fullname }}
-                    <small>Member since {{ Auth::user()->created_at->format('l jS \\of F Y') }}</small>
+                    {{--<small>Member since {{ Auth::user()->created_at->format('l jS \\of F Y') }}</small>--}}
+                    <small>创建于{{ Auth::user()->created_at->format('Y-m-d H:i:s') }}</small>
                   </p>
-                  
+
                 </li>
 
                 <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ route('account.dashboard') }}" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('account.dashboard') }}" class="btn btn-default btn-flat">个人资料</a>
                 </div>
                 <div class="pull-right">
-                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-default btn-flat">登出</a>
                 </div>
                 </li>
               </ul>
