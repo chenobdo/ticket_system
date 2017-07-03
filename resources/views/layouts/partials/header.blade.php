@@ -51,7 +51,7 @@
 
                 <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{ route('account.dashboard') }}" class="btn btn-default btn-flat">个人资料</a>
+                  <a href="{{ route('account.dashboard') }}" class="btn btn-default btn-flat">我的账户</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat">登出</a>
