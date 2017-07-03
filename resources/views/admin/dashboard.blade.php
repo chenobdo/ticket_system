@@ -28,7 +28,7 @@
             <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Open Tickets</span>
+              <span class="info-box-text">创建的工单</span>
               <span class="info-box-number">{{ $count_open_ticket }}</span>
             </div>
           </div>
@@ -39,7 +39,7 @@
             <span class="info-box-icon bg-green"><i class="fa fa-check-square"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Closed Tickets</span>
+              <span class="info-box-text">关闭的工单</span>
               <span class="info-box-number">{{ $count_closed_ticket }}</span>
             </div>
           </div>
@@ -50,7 +50,7 @@
             <span class="info-box-icon bg-yellow"><i class="fa fa-folder"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">In Progress</span>
+              <span class="info-box-text">进行中的工单</span>
               <span class="info-box-number">{{ $count_inprogress_ticket }}</span>
             </div>
           </div>
@@ -61,7 +61,7 @@
             <span class="info-box-icon bg-red"><i class="fa fa-history"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Reopened</span>
+              <span class="info-box-text">重开的工单</span>
               <span class="info-box-number">{{ $count_reopened_ticket }}</span>
             </div>
           </div>
@@ -77,13 +77,13 @@
           <div class="small-box bg-teal">
             <div class="inner">
               <h3>{{ $count_permissions }}</h3>
-              <p>Permissions</p>
+              <p>权限</p>
             </div>
             <div class="icon">
               <i class="fa fa-key"></i>
             </div>
             <a href="{{ route('permissions.index') }}" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              更多信息 <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -94,13 +94,13 @@
           <div class="small-box bg-maroon">
             <div class="inner">
               <h3>{{ $count_users }}</h3>
-              <p>Users</p>
+              <p>用户</p>
             </div>
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
             <a href="{{ route('users.index') }}" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              更多信息 <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -111,13 +111,13 @@
           <div class="small-box bg-primary">
             <div class="inner">
               <h3>{{ $count_roles }}</h3>
-              <p>Roles</p>
+              <p>角色</p>
             </div>
             <div class="icon">
               <i class="fa fa-archive"></i>
             </div>
             <a href="{{ route('roles.index') }}" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              更多信息 <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
