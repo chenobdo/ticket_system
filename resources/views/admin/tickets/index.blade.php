@@ -42,6 +42,7 @@
                                 <tr>
                                     <th>工单ID</th>
                                     <th>标题</th>
+                                    <th>用户</th>
                                     <th>评论</th>
                                     <th>类型</th>
                                     <th>状态</th>
@@ -96,8 +97,8 @@
                                         @endif
                                     @endforeach
                                     </td>   
-                                    <td>{{ $ticket->created_at->diffForHumans() }}</td>
-                                    <td>{{ $ticket->updated_at->diffForHumans() }}</td>
+                                    <td>{{ $ticket->created_at->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ $ticket->updated_at->format('Y-m-d H:i:s') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
