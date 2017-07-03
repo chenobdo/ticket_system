@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="{{ load_asset('bootstrap/css/bootstrap.min.css') }}">
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ load_asset('plugins/font-awesome/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{ load_asset('plugins/ionicons/ionicons.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ load_asset('dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -37,7 +37,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">登录开始你的会话</p>
 
          <form role="form" method="POST" action="{{ route('auth.login') }}" _lpchecked="1">
             {!! csrf_field() !!}
@@ -61,31 +61,31 @@
                     <div class="col-xs-8">
                       <div class="checkbox icheck">
                         <label>
-                          <input type="checkbox"> Remember Me
+                          <input type="checkbox"> 记住我
                         </label>
                       </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                      <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                      <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                     </div>
                     <!-- /.col -->
                   </div>
                   
-                    <div class="social-auth-links text-center">
-                      <p>- OR -</p>
-                        <a href="{{ url('/auth/facebook') }}" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Sign in with Facebook</a>
-                        <a href="{{ url('/auth/twitter') }}" class="btn btn-block btn-social btn-twitter"><i class="fa fa-twitter"></i>Sign in with Twitter</a>
-                        <a href="{{ url('/auth/google') }}" class="btn btn-block btn-social btn-google"><i class="fa fa-google-plus"></i>Sign in with Google</a>
-                        <a href="{{ url('/auth/github') }}" class="btn btn-block btn-social btn-github"><i class="fa fa-github"></i>Sign in with GitHub</a>                        
-                    </div>
+                    {{--<div class="social-auth-links text-center">--}}
+                      {{--<p>- OR -</p>--}}
+                        {{--<a href="{{ url('/auth/facebook') }}" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i>Sign in with Facebook</a>--}}
+                        {{--<a href="{{ url('/auth/twitter') }}" class="btn btn-block btn-social btn-twitter"><i class="fa fa-twitter"></i>Sign in with Twitter</a>--}}
+                        {{--<a href="{{ url('/auth/google') }}" class="btn btn-block btn-social btn-google"><i class="fa fa-google-plus"></i>Sign in with Google</a>--}}
+                        {{--<a href="{{ url('/auth/github') }}" class="btn btn-block btn-social btn-github"><i class="fa fa-github"></i>Sign in with GitHub</a>                        --}}
+                    {{--</div>--}}
                     <!-- /.social-auth-links -->
 
                     </form>                
                 
-                    <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-                    <a href="{{ url('/signup') }}">Sign up for a new account</a><br>
-                    <a href="{{ url('/') }}">Return home</a><br>
+                    <a href="{{ url('/password/reset') }}">忘记密码</a><br>
+                    <a href="{{ url('/signup') }}">创建新账号</a><br>
+                    <a href="{{ url('/') }}">回主页</a><br>
                   
                    </div>
                   <!-- /.login-box-body -->

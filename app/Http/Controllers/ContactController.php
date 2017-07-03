@@ -32,6 +32,6 @@ class ContactController extends Controller
             $message->to(email_to())->subject('Message from Contact Form');
         });
 
-        return redirect()->route('contact')->with('info', 'Your Message has been dispatched successfully');
+        return redirect()->route('contact')->with('info', '你的邮件已成功发送');
     }
 }
