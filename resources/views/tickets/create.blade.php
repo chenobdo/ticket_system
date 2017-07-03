@@ -30,7 +30,7 @@
                             <label for="title" class="col-md-4 control-label">标题</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" placeholder="Type in a title" value="{{ old('title') }}">
+                                <input id="title" type="text" class="form-control" name="title" placeholder="输入标题" value="{{ old('title') }}">
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
