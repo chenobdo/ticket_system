@@ -30,7 +30,7 @@
                                 <tr>
                                     <th>工单ID</th>
                                     <th>标题</th>
-                                    <th>回复</th>
+                                    <th>评论</th>
                                     <th>类型</th>
                                     <th>状态</th>
                                     <th>优先级</th>

@@ -59,7 +59,7 @@
            <div class="box-body chat" id="chat-box">
 
                    @if ($comments->isEmpty())
-                        <p>没有任何回复</p>
+                        <p>没有任何评论</p>
                     @else
 
             @foreach ($comments as $comment)   

@@ -10,7 +10,7 @@
 
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="{{ Ekko::isActiveRoute('home') }}"><a href="{{ route('home') }}">Home</a></li>
+            <li class="{{ Ekko::isActiveRoute('home') }}"><a href="{{ route('home') }}">主页</a></li>
                 @if (Auth::user())
             <li class="{{ Ekko::areActiveRoutes(['tickets.index', 'tickets.show']) }}"><a href="{{ route('tickets.index') }}">我的工单</a></li>
             <li class="{{ Ekko::isActiveRoute('tickets.create') }}"><a href="{{ route('tickets.create') }}">创建工单</a></li>
