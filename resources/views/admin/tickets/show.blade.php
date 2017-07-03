@@ -37,8 +37,8 @@
                                     <p>类型: {{ Form::select('category',$categories,$ticket->category_id,['class'=>'form-control'])}}</p>
                                     <p>状态: {{ Form::select('status',$statuses,$ticket->status_id,['class'=>'form-control'])}}</p>
                                     <p>优先级:{{ Form::select('priority',$prioritys,$ticket->priority_id,['class'=>'form-control'])}}</p>
-                                    <p>创建时间: {{ $ticket->created_at->diffForHumans() }}</p>
-                                    <p>最进更新: {{ $ticket->updated_at->diffForHumans() }}</p>
+                                    <p>创建时间: {{ $ticket->created_at->format('Y-m-d H:i:s') }}</p>
+                                    <p>最进更新: {{ $ticket->updated_at->format('Y-m-d H:i:s') }}</p>
                                     
                         <div class="row">
                             <div class="col-md-6">
