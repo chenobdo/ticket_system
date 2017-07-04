@@ -114,6 +114,7 @@
  <script>
    $(function () {
      $("#tickettable").DataTable({
+         "language": "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}",
          "order": [[ 0, "asc" ]]
      });
    });

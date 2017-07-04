@@ -76,7 +76,7 @@
 
                 <div class="message">
                   <a href="#" class="name">
-                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }}</small>
+                    <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ $comment->created_at->format('Y-m-d H:i:s') }}</small>
                     {{ $comment->user->fullname }}
                   </a>
                 {!! $comment->comment !!}    
