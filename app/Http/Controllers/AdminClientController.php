@@ -6,6 +6,7 @@ use App\User;
 use DB;
 use Illuminate\Http\Request;
 use Excel;
+use Storage;
 
 class AdminClientController extends Controller
 {
