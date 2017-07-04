@@ -46,8 +46,8 @@ class AccountController extends Controller
         $file = $request->file('file_name');
         $filename = $file->getRealPath();
         $entension = $file->getClientOriginalExtension();
-        $filepath = "public/avatars/{$this->id}.".$entension;
-        Storage::put($filepath, file_get_contents($filename));
+        $filepath = "avatars/{$this->id}.".$entension;
+        Storage::put('public/'.$filepath, file_get_contents($filename));
 
 //        Cloudder::upload($filename, null);
 //        list($width, $height) = getimagesize($filename);
