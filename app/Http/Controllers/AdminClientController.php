@@ -31,8 +31,6 @@ class AdminClientController extends Controller
         $file = $request->file('file_name');
         $filename = $file->getRealPath();
 
-        $filename = $this->doSomethingLikeUpload($file);
-
         $rt = Excel::selectSheets('总表')->load($filename, function($reader) {
 
             // reader methods
