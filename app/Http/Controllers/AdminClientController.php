@@ -30,8 +30,14 @@ class AdminClientController extends Controller
     {
         $file = $request->file('file_name');
         $filename = $file->getRealPath();
+        $entension = $file->getClientOriginalExtension();
+        $filepath = 'excel/'.date('Y-m-d').'_'.rand(1,999).'.'.$entension;
+        Storage::put($filepath, file_get_contents($filename));
 
-        $rt = Excel::selectSheets('总表')->load($filename, function($reader) {
+        $realpath = storage_path('app/'.$filepath);
+        dd($realpath);
+
+        $rt = Excel::selectSheets('总表')->load($realpath, function($reader) {
 
             // reader methods
 
