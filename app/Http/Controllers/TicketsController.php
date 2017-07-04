@@ -72,7 +72,8 @@ class TicketsController extends Controller
 
     public function userTickets()
     {
-        $tickets = Ticket::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->paginate(10);
+        $tickets = Ticket::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)
+                                                        ->paginate(10);
         $categories = Category::all();
         $prioritys = Priority::all();
         $statuses = Status::all();

@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'zh',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -144,7 +144,8 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+//        Illuminate\Translation\TranslationServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         //Laravel\Socialite\SocialiteServiceProvider::class,
@@ -166,6 +167,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Laravelista\Ekko\EkkoServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -233,6 +235,7 @@ return [
         'Html'                  => Collective\Html\HtmlFacade::class,
         'Entrust'               => Zizaco\Entrust\EntrustFacade::class,
         'Ekko'                  => Laravelista\Ekko\Facades\Ekko::class,
+        'Debugbar'              => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

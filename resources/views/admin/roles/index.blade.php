@@ -6,12 +6,12 @@
 
     <section class="content-header">
       <h1>
-        Admin
-        <small>Roles</small>
+        后台
+        <small>角色</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
-        <li class="active">Roles</li>
+        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> 后台</a></li>
+        <li class="active">角色</li>
       </ol>
     </section>
 
@@ -21,7 +21,7 @@
 
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Roles</h3>
+              <h3 class="box-title">角色</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -34,10 +34,10 @@
 	<table class="table table-hover" id="rolestable">
 	  <thead>
 		<tr>
-			<th>No</th>
-			<th>Name</th>
-			<th>Display Name</th>
-			<th>Description</th>
+			<th>序号</th>
+			<th>名称</th>
+			<th>昵称</th>
+			<th>描述</th>
 		</tr>
 	  </thead>
 	  <tbody>
@@ -54,14 +54,18 @@
 </div>
         </div>
           </div>
-          <a class="btn bg-purple" href="{{ route('roles.create') }}"> Create New Role</a>
+          <a class="btn bg-purple" href="{{ route('roles.create') }}"> 创建新角色</a>
     </section>
   </div>
 
 @push('scripts') 
 <script>
   $(function () {
-    $("#rolestable").DataTable();
+    $("#rolestable").DataTable({
+        "language": {
+            url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"
+        }
+    });
   });
 </script>  
 @endpush

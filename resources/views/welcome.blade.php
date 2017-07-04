@@ -10,19 +10,19 @@
       <section class="content-header">
         <h1>
           {{ site_name() }}
-          <small>Welcome </small>
+          <small>欢迎 </small>
         </h1>
       </section>
 
       <section class="content">
 
         <header class="jumbotron hero-spacer">
-            <h1>A Warm Welcome to {{ site_name() }}!</h1>
-            <p>{{ site_name() }} is a Open Source Support Ticket system. It is built with the awesome Laravel Framwork. It includes Socialite logins, roles & permissions, ticket system, responsive email templates and much more.</p>
+            <h1>欢迎进入 {{ site_name() }}!</h1>
+            <p>{{ site_name() }} 是一个24小时工单跟踪系统. 它基于 the awesome Laravel Framwork. 包括 社交账号登陆, 角色 & 权限, 工单系统, email模板 等等.</p>
             @if (Auth::guest())
-            <p><a href="/signup" class="btn bg-purple">Create Account</a></p>
+            <p><a href="/signup" class="btn bg-purple">注册</a></p>
             @else
-            <p><a href="/account" class="btn bg-purple">My profile</a></p>
+            <p><a href="/account" class="btn bg-purple">我的账户</a></p>
             @endif
         </header>
 
