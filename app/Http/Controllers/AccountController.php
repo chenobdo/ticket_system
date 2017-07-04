@@ -6,6 +6,7 @@ use Auth;
 use Cloudder;
 use Hash;
 use Illuminate\Http\Request;
+use Storage;
 
 class AccountController extends Controller
 {
@@ -44,14 +45,19 @@ class AccountController extends Controller
 
         $filename = $request->file('file_name')->getRealPath();
 
-        Cloudder::upload($filename, null);
-        list($width, $height) = getimagesize($filename);
+//        Cloudder::upload($filename, null);
+//        list($width, $height) = getimagesize($filename);
+//
+//        $fileUrl = Cloudder::show(Cloudder::getPublicId(), ['width' => $width, 'height' => $height]);
 
-        $fileUrl = Cloudder::show(Cloudder::getPublicId(), ['width' => $width, 'height' => $height]);
+        Storage::put(
+            'avatars/'.$user->id,
+            file_get_contents($request->file('avatar')->getRealPath())
+        );
 
         $this->user->update(['avatar' => $fileUrl]);
 
-        return redirect()->back()->with('info', 'Your Avatar has been updated Successfully');
+        return redirect()->back()->with('info', '你的头像更新成功.');
     }
 
     public function changePassword(Request $request)
@@ -63,7 +69,7 @@ class AccountController extends Controller
         $this->user->password = Hash::make($request->password);
         $this->user->save();
 
-        return redirect()->back()->with('info', 'Password successfully updated');
+        return redirect()->back()->with('info', '密码修改成功');
     }
 
     public function redirectToConfirmDeletePage()
