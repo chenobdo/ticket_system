@@ -45,7 +45,7 @@
                 <strong>描述:</strong>
                 {{ $permission->description }}
             </div>
-			<a class="btn bg-purple" href="{{ route('permissions.edit',$permission->id) }}"><i class="fa fa-edit"> 标记</i></a>
+			<a class="btn bg-purple" href="{{ route('permissions.edit',$permission->id) }}"><i class="fa fa-edit"> 编辑</i></a>
 			{!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline','class'=>'delete']) !!}
             {{ Form::button('<i class="fa fa-remove"> 删除</i>', array('class'=>'btn btn-danger', 'type'=>'submit')) }}
         	{!! Form::close() !!}
