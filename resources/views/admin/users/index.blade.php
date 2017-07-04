@@ -70,7 +70,11 @@
 @push('scripts') 
  <script>
    $(function () {
-     $("#usertable").DataTable();
+     $("#usertable").DataTable({
+         "language": {
+             url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"
+         }
+     });
    });
  </script>  
  @endpush

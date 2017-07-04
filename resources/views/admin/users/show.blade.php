@@ -49,7 +49,7 @@
 
                 			<a class="btn bg-purple" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-edit"> 编辑</i></a>
                 			{!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline','class'=>'deleteuser']) !!}
-                            {{ Form::button('<i class="fa fa-remove"> Delete</i>', array('class'=>'btn btn-danger', 'type'=>'submit')) }}
+                            {{ Form::button('<i class="fa fa-remove"> 删除</i>', array('class'=>'btn btn-danger', 'type'=>'submit')) }}
                         	{!! Form::close() !!}            
             
           </div>	
