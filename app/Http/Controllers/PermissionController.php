@@ -37,7 +37,7 @@ class PermissionController extends Controller
         $permission->save();
 
         return redirect()->route('permissions.index')
-                        ->with('success', 'Permission created successfully');
+                        ->with('success', '权限添加成功');
     }
 
     public function show($id)
@@ -69,7 +69,7 @@ class PermissionController extends Controller
         $permission->save();
 
         return redirect()->route('permissions.index')
-                        ->with('success', 'Permission updated successfully');
+                        ->with('success', '权限更新成功');
     }
 
     public function destroy($id)
@@ -77,6 +77,6 @@ class PermissionController extends Controller
         DB::table('permissions')->where('id', $id)->delete();
 
         return redirect()->route('permissions.index')
-                        ->with('success', 'Permission deleted successfully');
+                        ->with('success', '权限删除成功');
     }
 }
