@@ -44,18 +44,18 @@
 	{!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
 
             <div class="form-group">
-                <strong>姓名:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                <strong>名字:</strong>
+                {!! Form::text('name', null, array('placeholder' => '名字','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
                 <strong>昵称:</strong>
-                {!! Form::text('display_name', null, array('placeholder' => 'Display Name','class' => 'form-control')) !!}
+                {!! Form::text('display_name', null, array('placeholder' => '昵称','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
                 <strong>描述:</strong>
-                {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
+                {!! Form::textarea('description', null, array('placeholder' => '描述','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
 
             <div class="form-group">
