@@ -128,8 +128,11 @@ class PHPExcel_Shared_Date
 			$my_excelBaseDate = 24107;
 		}
 
+        if (is_string($dateValue)) {
+            $dateValue = strtotime($dateValue);
+        } 
 		// Perform conversion
-		if ($dateValue >= 1) {
+        if ($dateValue >= 1) {
 			$utcDays = $dateValue - $my_excelBaseDate;
 			$returnValue = round($utcDays * 86400);
 			if (($returnValue <= PHP_INT_MAX) && ($returnValue >= -PHP_INT_MAX)) {
