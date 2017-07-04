@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
+use Excel;
 
 class AdminClientController extends Controller
 {
@@ -25,8 +26,19 @@ class AdminClientController extends Controller
         return view('admin.clients.upload');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        dd(['123']);
+        $file = $request->file('file_name');
+        $filename = $file->getRealPath();
+
+        $filename = $this->doSomethingLikeUpload($file);
+
+        $rt = Excel::selectSheets('总表')->load($filename, function($reader) {
+
+            // reader methods
+
+        });
+
+        dd($rt);
     }
 }
