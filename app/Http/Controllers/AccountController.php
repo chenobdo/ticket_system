@@ -43,11 +43,10 @@ class AccountController extends Controller
             'file_name'     => 'required|mimes:jpeg,bmp,png|between:1,7000',
         ]);
 
-        $user = Auth::user();
         $file = $request->file('file_name');
         $filename = $file->getRealPath();
         $entension = $file->getClientOriginalExtension();
-        $filepath = "avatars/{$user->id}.".$entension;
+        $filepath = "avatars/{$this->id}.".$entension;
         Storage::put($filepath, file_get_contents($filename));
 
 //        Cloudder::upload($filename, null);
