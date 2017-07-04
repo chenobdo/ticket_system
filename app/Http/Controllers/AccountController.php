@@ -43,16 +43,19 @@ class AccountController extends Controller
             'file_name'     => 'required|mimes:jpeg,bmp,png|between:1,7000',
         ]);
 
-        $filename = $request->file('file_name')->getRealPath();
         $user = Auth::user();
-        Storage::put('avatars/'.$user->id, $filename);
+        $file = $request->file('file_name');
+        $filename = $file->getRealPath();
+        $entension = $file->getClientOriginalExtension();
+        $filepath = "avatars/{$user->id}.".$entension;
+        Storage::put($filepath, $filename);
 
 //        Cloudder::upload($filename, null);
 //        list($width, $height) = getimagesize($filename);
 //        $fileUrl = Cloudder::show(Cloudder::getPublicId(), ['width' => $width, 'height' => $height]);
 //        $this->user->update(['avatar' => $fileUrl]);
 
-        $this->user->update(['avatar' => 'avatars/'.$user->id]);
+        $this->user->update(['avatar' => $filepath]);
         return redirect()->back()->with('info', '你的头像更新成功.');
     }
 
