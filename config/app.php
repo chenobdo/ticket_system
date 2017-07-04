@@ -168,6 +168,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Laravelista\Ekko\EkkoServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -236,6 +237,7 @@ return [
         'Entrust'               => Zizaco\Entrust\EntrustFacade::class,
         'Ekko'                  => Laravelista\Ekko\Facades\Ekko::class,
         'Debugbar'              => Barryvdh\Debugbar\Facade::class,
+        'Excel'                 => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
