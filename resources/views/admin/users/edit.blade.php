@@ -45,22 +45,22 @@
 
             <div class="form-group">
                 <strong>姓名:</strong>
-                {!! Form::text('fullname', null, array('placeholder' => 'Fullname','class' => 'form-control')) !!}
+                {!! Form::text('fullname', null, array('placeholder' => '姓名','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
                 <strong>邮箱:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                {!! Form::text('email', null, array('placeholder' => '邮箱','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
                 <strong>密码:</strong>
-                {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                {!! Form::password('password', array('placeholder' => '密码','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
                 <strong>确认密码:</strong>
-                {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+                {!! Form::password('confirm-password', array('placeholder' => '确认密码','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
