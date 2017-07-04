@@ -155,7 +155,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete('permissions/{id}', ['as' => 'permissions.destroy', 'uses' => 'PermissionController@destroy', 'middleware' => ['permission:manage-permissions']]);
 
             Route::post('tickets/comment', ['as' => 'managetickets.comment', 'uses' => 'AdminCommentController@postComment', 'middleware' => ['permission:manage-tickets']]);
-            Route::get('tickets', ['as' => 'managetickets.index', 'uses' => 'AdminTicketController@index', 'middleware' => ['permission:manage-tickets']]);
+            Route::get('tickets', ['as' => 'managetickets.index', 'uses' => 'AdminTicketController@index', 'middleware' => ['permission:manage-tickets', 'permission:manage-permissions']]);
             Route::get('tickets/open', ['as' => 'managetickets.open', 'uses' => 'AdminTicketController@opentickets', 'middleware' => ['permission:manage-tickets']]);
             Route::get('tickets/closed', ['as' => 'managetickets.closed', 'uses' => 'AdminTicketController@closedtickets', 'middleware' => ['permission:manage-tickets']]);
             Route::get('tickets/inprogress', ['as' => 'managetickets.inprogress', 'uses' => 'AdminTicketController@inprogresstickets', 'middleware' => ['permission:manage-tickets']]);
@@ -164,6 +164,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('tickets/{ticket_id}/edit', ['as' => 'managetickets.edit', 'uses' => 'AdminTicketController@edit', 'middleware' => ['permission:manage-tickets']]);
             Route::patch('tickets/{ticket_id}', ['as' => 'managetickets.update', 'uses' => 'AdminTicketController@update', 'middleware' => ['permission:manage-tickets']]);
             Route::delete('tickets/{ticket_id}', ['as' => 'managetickets.destroy', 'uses' => 'AdminTicketController@destroy', 'middleware' => ['permission:manage-tickets']]);
+
+            Route::get('clients', ['as' => 'clients.index', 'uses' => 'AdminClientController@index', 'middleware' => ['permission:manage-clients']]);
         });
     });
 });

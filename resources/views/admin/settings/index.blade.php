@@ -75,7 +75,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-8">
-                                <button type="submit" class="btn bg-purple"><i class="fa fa-envelope"></i> Update</button>
+                                <button type="submit" class="btn bg-purple"><i class="fa fa-envelope"></i> 更新</button>
                             </div>
                         </div>
                         
