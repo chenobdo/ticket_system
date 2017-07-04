@@ -1,4 +1,115 @@
 
+1.8.0 / 2017-05-03
+==================
+
+New functionality and features
+------------------------------
+
+  * Advanced search API
+  * Add `async` parameter to upload parameters.
+
+Other Changes
+-------------
+
+  * Update tests to use `TestHelper`
+  * Add compatibility for newer PHPUnit versions
+
+1.7.2 / 2017-04-03
+==================
+
+  * Add update ocr parameters test
+  * Merge pull request #71 from jtabet/fix-floats-issue
+    * Added a number_format on float values in the transformation string
+  * Add ocr parameters tests
+  * Fix variables order. Add variables order tests.
+
+1.7.1 / 2017-03-13
+==================
+
+  * Update phpunit to 5.7.*
+  * Update travis.yml to test 5.6 and 7.0 (matching phpunit)
+  * Don't normalize negative numbers. Fixed #68.
+
+1.7.0 / 2017-03-09
+==================
+
+New functionality and features
+------------------------------
+
+  * User defined variables
+  * Add `async` parameter to upload params (#65)
+  * Add `fetch` prefix to overlay path
+  * Support fetch overlay underlay
+
+Other Changes
+-------------
+
+  * Rename items and add missing variables.
+
+1.6.2 / 2017-02-23
+==================
+
+  * Add URL authentication.
+  * Rename `auth_token`. 
+  * Support nested values in `CLOUDINARY_URL`
+  * Fix archive test.
+  * Add a test for `build_eager`.
+
+1.6.1 / 2017-02-16
+==================
+
+  * Allow 'invalidate' param in 'delete_transformation'
+  * Upgrade Travis test from 7.0 to 7.1
+  * Merge pull request #61 from dragosprotung/patch-1
+  * Merge pull request #63 from cloudinary/support-invalidate-in-delete-transformation
+  * Deleted stub file
+
+1.6.0 / 2017-01-30
+==================
+
+New functionality and features
+------------------------------
+
+  * Add Akamai token generator
+
+Other Changes
+-------------
+
+  * Revert using VERSION to set USER_AGENT. Fixes #58.
+  * Fix USER_AGENT version.
+
+1.5.0 / 2017-01-19
+==================
+
+New functionality and features
+------------------------------
+
+  * New `add_context` & `remove_all_context` API
+  * support suffix url for private images
+  * Escape ‘|' and ‘=‘ characters in context values
+  * Support ‘iw’ and ‘ih’ transformation parameters for indicating initial width or height
+  * Support `to_type` parameter in `rename`
+
+Other Changes
+-------------
+
+  * Fix folder listing test
+  * Add test for {effect: art:incognito}
+  * expending retrieved list of transformation to allow test to pass properly
+  * Add test case for 'to_type' + fix face_coordintes exceeding image boundaries
+  * Fix typo in the archive `expires_at` parameter
+  * Remove `$name` from call to `list_streaming_profiles`
+
+1.4.2 / 2016-10-28
+==================
+
+New functionality and features
+------------------------------
+
+  * Add streaming profiles API
+  * Merge pull request #40 from sergey-safonov/feature/config-connection-timeout
+    * Allow specify connection timeout in config
+
 1.4.1 / 2016-08-14
 ==================
 

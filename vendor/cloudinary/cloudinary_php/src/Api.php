@@ -161,9 +161,13 @@ class Api {
   
   function delete_transformation($transformation, $options=array()) {
     $uri = array("transformations", $this->transformation_string($transformation));
-    return $this->call_api("delete", $uri, array(), $options);    
+    $params = array();
+    if (isset($options["invalidate"])) {
+      $params["invalidate"] = $options["invalidate"];
+    }
+    return $this->call_api("delete", $uri, $params, $options);
   }
-    
+
   # updates - currently only supported update is the "allowed_for_strict" boolean flag
   function update_transformation($transformation, $updates=array(), $options=array()) {
     $uri = array("transformations", $this->transformation_string($transformation));
@@ -239,6 +243,62 @@ class Api {
     $params = array("folder"=>$name);
     return $this->call_api("post", $uri, array_merge($params, $this->only($options, array("template"))), $options);    
   }
+
+  /**
+   * List all streaming profiles associated with the current customer
+   * @param array $options options
+   * @return Api\Response An array with a "data" key for results
+   */
+  function list_streaming_profiles($options=array()) {
+    return $this->call_api("get", array("streaming_profiles"), array(), $options);
+  }
+
+  /**
+   * Get the information of a single streaming profile
+   * @param $name the name of the profile
+   * @param array $options other options
+   * @return Api\Response An array with a "data" key for results
+   */
+  function get_streaming_profile($name, $options=array()) {
+    $uri = array("streaming_profiles/" . $name);
+    return $this->call_api("get", $uri, array(), $options);
+  }
+
+  /**
+   * Delete a streaming profile information. Predefined profiles are restored to the default setting.
+   * @param $name the name of the streaming profile to delete
+   * @param array $options additional options
+   * @return Api\Response
+   */
+  function delete_streaming_profile($name, $options=array()) {
+    $uri = array("streaming_profiles/" . $name);
+    return $this->call_api("delete", $uri, array(), $options);
+  }
+
+  /**
+   * Update an existing streaming profile
+   * @param $name the name of the prodile
+   * @param array $options additional options
+   * @return Api\Response
+   */
+  function update_streaming_profile($name, $options=array()) {
+    $uri = array("streaming_profiles/" . $name);
+    $params = $this->prepare_streaming_profile_params($options);
+    return $this->call_api("put", $uri, $params, $options);
+  }
+
+  /**
+   * Create a new streaming profile
+   * @param $name the name of the new profile. if the name is of a predefined profile, the profile will be modified.
+   * @param array $options additional options
+   * @return Api\Response
+   */
+  function create_streaming_profile($name, $options = array()) {
+    $uri = array("streaming_profiles");
+    $params = $this->prepare_streaming_profile_params($options);
+    $params["name"] = $name;
+    return $this->call_api("post", $uri, $params, $options);
+  }
     
   function call_api($method, $uri, $params, &$options) {
     $prefix = \Cloudinary::option_get($options, "upload_prefix", \Cloudinary::config_get("upload_prefix", "https://api.cloudinary.com"));
@@ -260,7 +320,16 @@ class Api {
 
     if ($method != "get")
     {
-        $post_params = array();
+      $post_params = array();
+      if (array_key_exists("content_type", $options) && $options["content_type"] == 'application/json')
+      {
+        $headers = array( 
+          "Content-type: application/json", 
+          "Accept: application/json", 
+        ); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); 
+        $post_params = json_encode($params);
+      } else {
         foreach ($params as $key => $value) {
             if (is_array($value)) {
                 $i = 0;
@@ -272,8 +341,8 @@ class Api {
                 $post_params[$key] = $value;
             }
         }
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_params);
-
+      }
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $post_params);
     }
     curl_setopt($ch, CURLOPT_HEADER, 1);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($method));
@@ -357,6 +426,23 @@ class Api {
   
   protected function transformation_string($transformation) {
     return is_string($transformation) ? $transformation : \Cloudinary::generate_transformation_string($transformation);
+  }
+
+  /**
+   * Prepare streaming profile parameters for API calls
+   * @param $options the options passed to the API
+   * @return array A single profile parameters
+   */
+  protected function prepare_streaming_profile_params($options) {
+    $params = $this->only($options, array("display_name"));
+    if (isset($options['representations'])) {
+      $array_map = array_map(
+        function ($representation) {
+          return array("transformation" => \Cloudinary::generate_transformation_string($representation));
+        }, $options['representations']);
+      $params["representations"] = json_encode($array_map);
+    }
+    return $params;
   }
 }
 
