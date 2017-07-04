@@ -32,7 +32,7 @@ class AdminClientController extends Controller
         $file = $request->file('file_name');
         $filename = $file->getRealPath();
         $entension = $file->getClientOriginalExtension();
-        $filepath = 'excel/'.date('Y-m-d').'_'.rand(1,999).'.'.$entension;
+        $filepath = 'excel/'.date('Y_m_d').'_'.rand(1,999).'.'.$entension;
         Storage::put($filepath, file_get_contents($filename));
 
         $realpath = storage_path('app/'.$filepath);
