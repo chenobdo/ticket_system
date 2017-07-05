@@ -70,6 +70,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route('permissions.data') !!}',
+                order: [[0, 'desc']],
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },

@@ -6,21 +6,19 @@ use App\Permission;
 
 use DB;
 use Illuminate\Http\Request;
-use Datatables;
+use Yajra\Datatables\Datatables;
+
 
 class PermissionController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-//        return view('admin.permissions.index', compact('permissions'));
         return view('admin.permissions.index');
     }
 
     public function data()
     {
-        $permissions = Permission::orderBy('id', 'DESC')->paginate(5);
-
-        return Datatables::of($permissions)->make(true);
+        return Datatables::of(Permission::query())->make(true);
     }
 
     public function create()
