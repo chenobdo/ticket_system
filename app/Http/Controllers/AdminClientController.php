@@ -36,7 +36,7 @@ class AdminClientController extends Controller
         Storage::put($filepath, file_get_contents($filename));
 
         $realpath = storage_path('app/'.$filepath);
-        $rt = Excel::load($realpath, function($reader) use($realpath)  {
+        $rt = Excel::load($realpath, function($reader) use ($realpath)  {
 //            $reader = $reader->getSheet(0);
 //            $results = $reader->toArray();
 //            $data = $reader->all();
