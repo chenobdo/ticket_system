@@ -37,15 +37,13 @@ class AdminClientController extends Controller
 
         $realpath = storage_path('app/'.$filepath);
         $rt = Excel::load($realpath, function($reader) use($realpath)  {
-##                $reader = $reader->getSheet(0);
-##                $results = $reader->toArray();
-##     //       $data = $reader->all();
-##            dd($results);
-               $excel_data = Excel::load($realpath)->get()->toArray();
-
-                   // 直接打印内容即可看到效果
-                    echo 'job.xlsx 表格内容为:';
-                        dd($excel_data);
+//            $reader = $reader->getSheet(0);
+//            $results = $reader->toArray();
+//            $data = $reader->all();
+//            dd($results);
+//            $excel_data = Excel::load($realpath)->get()->toArray();
+            $data = $reader->all();
+            dd($data);
         });
         dd("43");
     }
