@@ -70,14 +70,28 @@
             </li>
             @endpermission
 
-            @permission('manage-check')
-            <li class="{{ Ekko::isActiveRoute('check.*') }}">
-                <a href="{{ url('admin/check') }}">
+            @role('admin')
+            <li class="treeview {{ Ekko::isActiveRoute('clients.*') }} {{ Ekko::isActiveRoute('check.*') }}">
+                <a href="#">
                     <i class="fa fa-money"></i>
                     <span>对账</span>
                 </a>
+                <ul class="treeview-menu">
+                    <li class="{{ Ekko::isActiveRoute('clients.*') }}">
+                        <a href="{{ url('admin/clients') }}">
+                            <i class="fa fa-user-circle"></i>
+                            客户管理
+                        </a>
+                    </li>
+                    <li class="{{ Ekko::isActiveRoute('check.*') }}">
+                        <a href="{{ url('admin/check') }}">
+                            <i class="fa fa-check"></i>
+                            账户管理
+                        </a>
+                    </li>
+                </ul>
             </li>
-            @endpermission
+            @endrole
 
         </ul>
     </section>

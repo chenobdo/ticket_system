@@ -75,7 +75,7 @@
                     url: '{!! route('permissions.data') !!}',
                     dataSrc: function(json) {
                         $.each(json.data, function(k, v) {
-                            v.display_name = '<a href="'+ PermissionsShowUrl + v.id +'">'+v.display_name+'</a>'
+                            v.name = '<a href="'+ PermissionsShowUrl + v.id +'">'+v.name+'</a>'
                         });
                         return json.data;
                     }

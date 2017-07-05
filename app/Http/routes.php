@@ -166,9 +166,11 @@ Route::group(['middleware' => ['web']], function () {
             Route::patch('tickets/{ticket_id}', ['as' => 'managetickets.update', 'uses' => 'AdminTicketController@update', 'middleware' => ['permission:manage-tickets']]);
             Route::delete('tickets/{ticket_id}', ['as' => 'managetickets.destroy', 'uses' => 'AdminTicketController@destroy', 'middleware' => ['permission:manage-tickets']]);
 
-//            Route::get('clients', ['as' => 'clients.index', 'uses' => 'AdminClientController@index', 'middleware' => ['permission:manage-clients']]);
-            Route::get('clients/upload', ['as' => 'clients.upload', 'uses' => 'AdminClientController@upload']);
-            Route::post('clients/store', ['as' => 'clients.store', 'uses' => 'AdminClientController@store']);
+            Route::get('clients', ['as' => 'clients.index', 'uses' => 'AdminClientController@index', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/upload', ['as' => 'clients.upload', 'uses' => 'AdminClientController@upload', 'middleware' => ['permission:manage-clients']]);
+            Route::post('clients/store', ['as' => 'clients.store', 'uses' => 'AdminClientController@store', 'middleware' => ['permission:manage-clients']]);
+
+            Route::get('check', ['as' => 'check.index', 'uses' => 'AdminCheckController@index', 'middleware' => ['permission:manage-clients']]);
         });
     });
 });
