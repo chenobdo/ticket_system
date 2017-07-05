@@ -65,7 +65,7 @@
     @push('scripts')
     <script>
         $(function () {
-            var PermissionsShowUrl = '{{ url("permissions/") }}';
+            var PermissionsShowUrl = '{{ url("admin/permissions/") }}';
 
             $('#permissiontable').DataTable({
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
@@ -75,7 +75,7 @@
                     url: '{!! route('permissions.data') !!}',
                     dataSrc: function(json) {
                         $.each(json.data, function(k, v) {
-                            v.name = '<a href="'+ PermissionsShowUrl + v.id +'">'+v.name+'</a>'
+                            v.name = '<a href="'+ PermissionsShowUrl + '/' +v.id +'">'+v.name+'</a>'
                         });
                         return json.data;
                     }

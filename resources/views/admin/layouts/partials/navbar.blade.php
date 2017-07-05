@@ -70,7 +70,7 @@
             </li>
             @endpermission
 
-            @role('admin')
+            @permission('manage-clients', 'manage-check')
             <li class="treeview {{ Ekko::isActiveRoute('clients.*') }} {{ Ekko::isActiveRoute('check.*') }}">
                 <a href="#">
                     <i class="fa fa-money"></i>
@@ -91,7 +91,7 @@
                     </li>
                 </ul>
             </li>
-            @endrole
+            @endpermission
 
         </ul>
     </section>
