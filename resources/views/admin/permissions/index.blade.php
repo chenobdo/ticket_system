@@ -69,7 +69,15 @@
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('permissions.data') !!}',
+                ajax: {
+                    url: '{!! route('permissions.data') !!}',
+                    dataSrc: function(json) {
+                        $.each(json.data, function(k, v) {
+                            console.log(v);
+                        });
+                        return json.data;
+                    }
+                },
                 order: [[0, 'desc']],
                 columns: [
                     { data: 'id', name: 'id' },
