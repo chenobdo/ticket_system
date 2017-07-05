@@ -169,6 +169,7 @@ return [
         Laravelista\Ekko\EkkoServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class
     ],
 
     /*
