@@ -6,14 +6,21 @@ use App\Permission;
 
 use DB;
 use Illuminate\Http\Request;
+use Datatables;
 
 class PermissionController extends Controller
 {
     public function index(Request $request)
     {
+//        return view('admin.permissions.index', compact('permissions'));
+        return view('admin.permissions.index');
+    }
+
+    public function data()
+    {
         $permissions = Permission::orderBy('id', 'DESC')->paginate(5);
 
-        return view('admin.permissions.index', compact('permissions'));
+        return Datatables::of($permissions)->make(true);
     }
 
     public function create()

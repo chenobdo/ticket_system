@@ -147,6 +147,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete('roles/{id}', ['as' => 'roles.destroy', 'uses' => 'RoleController@destroy', 'middleware' => ['permission:manage-roles']]);
 
             Route::get('permissions', ['as' => 'permissions.index', 'uses' => 'PermissionController@index', 'middleware' => ['permission:manage-permissions']]);
+            Route::get('permissions/data', ['as' => 'permissions.data', 'uses' => 'PermissionController@data', 'middleware' => ['permission:manage-permissions']]);
             Route::get('permissions/create', ['as' => 'permissions.create', 'uses' => 'PermissionController@create', 'middleware' => ['permission:manage-permissions']]);
             Route::post('permissions/create', ['as' => 'permissions.store', 'uses' => 'PermissionController@store', 'middleware' => ['permission:manage-permissions']]);
             Route::get('permissions/{id}', ['as' => 'permissions.show', 'uses' => 'PermissionController@show', 'middleware' => ['permission:manage-permissions']]);

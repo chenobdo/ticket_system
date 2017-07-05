@@ -42,16 +42,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($permissions as $key => $permission)
-                                <tr>
-                                    <td>{{ $permission->id }}</td>
-                                    <td>
-                                        <a href="{{ route('permissions.show',$permission->id) }}">{{ $permission->name }}</a>
-                                    </td>
-                                    <td>{{ $permission->display_name }}</td>
-                                    <td>{{ $permission->description }}</td>
-                                </tr>
-                            @endforeach
+                            {{--@foreach ($permissions as $key => $permission)--}}
+                                {{--<tr>--}}
+                                    {{--<td>{{ $permission->id }}</td>--}}
+                                    {{--<td>--}}
+                                        {{--<a href="{{ route('permissions.show',$permission->id) }}">{{ $permission->name }}</a>--}}
+                                    {{--</td>--}}
+                                    {{--<td>{{ $permission->display_name }}</td>--}}
+                                    {{--<td>{{ $permission->description }}</td>--}}
+                                {{--</tr>--}}
+                            {{--@endforeach--}}
                             </tbody>
                         </table>
                     </div>
@@ -65,10 +65,17 @@
     @push('scripts')
     <script>
         $(function () {
-            $("#permissiontable").DataTable({
-                "language": {
-                    url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"
-                }
+            $('#permissiontable').DataTable({
+                language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('permissions.data') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'display_name', name: 'display_name' },
+                    { data: 'description', name: 'description' }
+                ]
             });
         });
     </script>
