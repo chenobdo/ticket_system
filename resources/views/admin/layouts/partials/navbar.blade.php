@@ -70,25 +70,56 @@
             </li>
             @endpermission
 
-            @permission('manage-clients', 'manage-check')
+            @role('Admin')
             <li class="treeview {{ Ekko::isActiveRoute('clients.*') }} {{ Ekko::isActiveRoute('check.*') }}">
                 <a href="#">
                     <i class="fa fa-money"></i>
                     <span>对账</span>
                 </a>
                 <ul class="treeview-menu">
+                    @permission('manage-clients')
                     <li class="{{ Ekko::isActiveRoute('clients.*') }}">
                         <a href="{{ url('admin/clients') }}">
-                            <i class="fa fa-user-circle"></i>
+                            <i class="fa fa-user"></i>
                             客户管理
                         </a>
                     </li>
+                    @endpermission
+                    @permission('manage-check')
                     <li class="{{ Ekko::isActiveRoute('check.*') }}">
                         <a href="{{ url('admin/check') }}">
                             <i class="fa fa-check"></i>
                             账户管理
                         </a>
                     </li>
+                    @endpermission
+                </ul>
+            </li>
+            @endpermission
+
+            @role('Check')
+            <li class="treeview {{ Ekko::isActiveRoute('clients.*') }} {{ Ekko::isActiveRoute('check.*') }}">
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    <span>对账</span>
+                </a>
+                <ul class="treeview-menu">
+                    @permission('manage-clients')
+                    <li class="{{ Ekko::isActiveRoute('clients.*') }}">
+                        <a href="{{ url('admin/clients') }}">
+                            <i class="fa fa-user"></i>
+                            客户管理
+                        </a>
+                    </li>
+                    @endpermission
+                    @permission('manage-check')
+                    <li class="{{ Ekko::isActiveRoute('check.*') }}">
+                        <a href="{{ url('admin/check') }}">
+                            <i class="fa fa-check"></i>
+                            账户管理
+                        </a>
+                    </li>
+                    @endpermission
                 </ul>
             </li>
             @endpermission
