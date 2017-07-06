@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
-use Excel;
-use Storage;
 
-class AdminClientController extends Controller
+class AdminCheckController extends Controller
 {
     public function index()
     {
-        return view('admin.clients.index');
+        return view('admin.check.index');
     }
 
     public function upload()
