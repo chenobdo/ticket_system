@@ -55,7 +55,7 @@
         $(function () {
             var ClientsShowUrl = '{{ url("admin/clients/") }}';
 
-            $('#client').DataTable({
+            $('#clienttable').DataTable({
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,

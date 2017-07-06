@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Excel;
 use Storage;
 use App\Model\Client;
+use Yajra\Datatables\Datatables;
 
 class AdminClientController extends Controller
 {
