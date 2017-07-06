@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\Model\Client::class, function (Faker\Generator $faker) {
+$factory->define(App\Model\ClientInfo::class, function (Faker\Generator $faker) {
     $start = 1420041600; //2015-01-01 00:00:00
     $end = 1499356800; //2017-07-07 00:00:00
     return [
