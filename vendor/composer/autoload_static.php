@@ -541,7 +541,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
 
     public static $classMap = array (
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
-        'ClientInfosTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientInfosTableSeeder.php',
+        'ClientTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientTableSeeder.php',
         'Cloudinary' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Cloudinary.php',
         'CloudinaryField' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/CloudinaryField.php',
         'Cloudinary\\Api' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Api.php',
