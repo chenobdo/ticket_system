@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlertClientInfosAddClientIdTable' => $baseDir . '/database/migrations/2017_07_06_092836_alert_client_infos_add_client_id_table.php',
     'AlertClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
     'AlertClientsRmClientInfoIdTable' => $baseDir . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
     'AlertClientsTable' => $baseDir . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
