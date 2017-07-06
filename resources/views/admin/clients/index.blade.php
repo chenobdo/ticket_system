@@ -63,8 +63,7 @@
                     url: '{!! route('clients.data') !!}',
                     dataSrc: function(json) {
                         $.each(json.data, function(k, v) {
-                            v.name = '<a href="'+ ClientsShowUrl + '/' +v.id +'">'+v.client+'</a>';
-                            v.op = '';
+                            v.client = '<a href="'+ ClientsShowUrl + '/' +v.id +'">'+v.client+'</a>';
                         });
                         return json.data;
                     }
