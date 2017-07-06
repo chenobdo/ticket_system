@@ -24,7 +24,10 @@ return array(
     'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
     'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
     'FoursquareApi' => array($vendorDir . '/hownowstephen/php-foursquare/src'),
+    'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
+    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
+    'Doctrine\\Common\\Collections\\' => array($vendorDir . '/doctrine/collections/lib'),
     'Dandelionmood' => array($vendorDir . '/dandelionmood/lastfm/lib'),
     'Buzz' => array($vendorDir . '/kriswallsmith/buzz/lib'),
 );
