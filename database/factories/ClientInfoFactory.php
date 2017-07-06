@@ -16,7 +16,7 @@ $factory->define(App\Model\ClientInfo::class, function (Faker\Generator $faker) 
     $end = 1499356800; //2017-07-07 00:00:00
 
     $int = mt_rand(0, 9999);
-    $float = mt_rand(0, 9999);
+    $float = mt_rand(0, 99);
     $fee = strval($int) . '.' . strval($float);
 
     return [
