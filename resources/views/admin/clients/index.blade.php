@@ -72,8 +72,7 @@
                 columns: [
                     { data: 'contractno', name: 'contractno' },
                     { data: 'client', name: 'client' },
-                    { data: 'loan_amount', name: 'loan_amount' },
-                    { data: 'op', name: 'op' }
+                    { data: 'loan_amount', name: 'loan_amount' }
                 ]
             });
         });

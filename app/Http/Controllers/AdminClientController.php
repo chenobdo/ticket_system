@@ -21,6 +21,13 @@ class AdminClientController extends Controller
         return Datatables::of(Client::query())->make(true);
     }
 
+    public function show($id)
+    {
+        $client = Client::findOrFail($id);
+
+        return view('admin.clients.show', compact('client'));
+    }
+
     public function upload()
     {
         return view('admin.clients.upload');

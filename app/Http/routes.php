@@ -168,6 +168,7 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::get('clients', ['as' => 'clients.index', 'uses' => 'AdminClientController@index', 'middleware' => ['permission:manage-clients']]);
             Route::get('clients/data', ['as' => 'clients.data', 'uses' => 'AdminClientController@data', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/{client_id}', ['as' => 'clients.show', 'uses' => 'AdminClientController@show', 'middleware' => ['permission:manage-clients']]);
             Route::get('clients/upload', ['as' => 'clients.upload', 'uses' => 'AdminClientController@upload', 'middleware' => ['permission:manage-clients']]);
             Route::post('clients/store', ['as' => 'clients.store', 'uses' => 'AdminClientController@store', 'middleware' => ['permission:manage-clients']]);
 

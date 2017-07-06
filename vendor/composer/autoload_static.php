@@ -541,6 +541,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
 
     public static $classMap = array (
         'AlertClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
+        'AlertClientsRmClientInfoIdTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
         'AlertClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'ClientTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientTableSeeder.php',
