@@ -13,6 +13,6 @@ class ClientTableSeeder extends Seeder
     {
         $clients = factory(App\Model\ClientInfo::class)->times(10)->make();
 
-        \App\Model\Client::insert($clients->toArray());
+        \App\Model\ClientInfo::insert($clients->toArray());
     }
 }
