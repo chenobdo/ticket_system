@@ -27,7 +27,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'f960e77410032f236cef8c56617b313e' => __DIR__ . '/..' . '/overtrue/laravel-lang/src/helpers.php',
         '4e99a91d5061101f71c3c488c41e2866' => __DIR__ . '/..' . '/vluzrmos/slack-api/src/Vluzrmos/SlackApi/helpers.php',
         '270f70f51ae43c09211e3bc9af77115a' => __DIR__ . '/..' . '/laravelista/ekko/src/Laravelista/Ekko/helpers.php',
-        '18a07b24a1acab04f90db983d26744ab' => __DIR__ . '/../..' . '/app/Http/helpers.php',
+        'ed3696a32e2a4a7c16d5995b6c6c2e81' => __DIR__ . '/../..' . '/app/Http/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -532,6 +532,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'Cloudinary\\Search' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Search.php',
         'Cloudinary\\Uploader' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Uploader.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_194643_create_categories_table.php',
+        'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_013634_create_clients_table.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_212830_create_comments_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePrioritiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_194754_create_priorities_table.php',
