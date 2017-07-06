@@ -12,7 +12,7 @@ class AlertClientInfosAddClientIdTable extends Migration
      */
     public function up()
     {
-        Schema::table('clients', function (Blueprint $table) {
+        Schema::table('client_infos', function (Blueprint $table) {
             $table->integer('client_id')->unsigned()->comment('客户ID');
             $table->foreign('client_id')->references('id')->on('clients');
         });
