@@ -540,6 +540,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
     );
 
     public static $classMap = array (
+        'AlertClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'ClientTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientTableSeeder.php',
         'Cloudinary' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Cloudinary.php',

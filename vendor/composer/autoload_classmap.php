@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlertClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
     'ClientTableSeeder' => $baseDir . '/database/seeds/ClientTableSeeder.php',
     'Cloudinary' => $vendorDir . '/cloudinary/cloudinary_php/src/Cloudinary.php',
