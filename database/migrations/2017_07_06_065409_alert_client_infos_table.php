@@ -13,7 +13,7 @@ class AlertClientInfosTable extends Migration
     public function up()
     {
         Schema::table('client_infos', function (Blueprint $table) {
-            //
+            $table->decimal('fee', 8, 2)->default(0)->comment('手续费')->change();
         });
     }
 
