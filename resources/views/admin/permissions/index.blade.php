@@ -41,18 +41,7 @@
                                 <th>描述</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            {{--@foreach ($permissions as $key => $permission)--}}
-                                {{--<tr>--}}
-                                    {{--<td>{{ $permission->id }}</td>--}}
-                                    {{--<td>--}}
-                                        {{--<a href="{{ route('permissions.show',$permission->id) }}">{{ $permission->name }}</a>--}}
-                                    {{--</td>--}}
-                                    {{--<td>{{ $permission->display_name }}</td>--}}
-                                    {{--<td>{{ $permission->description }}</td>--}}
-                                {{--</tr>--}}
-                            {{--@endforeach--}}
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>

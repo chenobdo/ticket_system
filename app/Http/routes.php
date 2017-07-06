@@ -167,6 +167,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete('tickets/{ticket_id}', ['as' => 'managetickets.destroy', 'uses' => 'AdminTicketController@destroy', 'middleware' => ['permission:manage-tickets']]);
 
             Route::get('clients', ['as' => 'clients.index', 'uses' => 'AdminClientController@index', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/data', ['as' => 'clients.data', 'uses' => 'AdminClientController@data', 'middleware' => ['permission:manage-clients']]);
             Route::get('clients/upload', ['as' => 'clients.upload', 'uses' => 'AdminClientController@upload', 'middleware' => ['permission:manage-clients']]);
             Route::post('clients/store', ['as' => 'clients.store', 'uses' => 'AdminClientController@store', 'middleware' => ['permission:manage-clients']]);
 

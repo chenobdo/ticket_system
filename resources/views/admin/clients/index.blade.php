@@ -5,16 +5,16 @@
     <div class="content-wrapper">
 
         <section class="content-header">
-            <h1>
-                后台222
-                <small>角色</small>
-            </h1>
+            <h1>后台<small>客户</small></h1>
             <ol class="breadcrumb">
-                <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> 后台</a></li>
-                <li class="active">创建新角色</li>
+                <li>
+                    <a href="{{ route('admin.dashboard') }}">
+                        <iclass="fa fa-dashboard"></i> 后台
+                    </a>
+                </li>
+                <li class="active">客户</li>
             </ol>
         </section>
-
 
         <section class="content">
 
@@ -22,46 +22,63 @@
 
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">创建新角色</h3>
-
+                    <h3 class="box-title">客户</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
                         </button>
                     </div>
                 </div>
 
-                <div class="box-body">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>注意!</strong> 你的输入有些问题.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                        <form role="form" method="POST" action="{{ route('clients.store') }}"  enctype="multipart/form-data" class="form-horizontal">
-                            <div class="form-group{{ $errors->has('file_name') ? ' has-error' : '' }}">
-                                <label for="gravatar" class="col-sm-2 control-label"></label>
-                                <div class="col-sm-4">
-                                    <input type="file" name="file_name" id="file_name">
-                                    @if ($errors->has('file_name'))
-                                        <span class="help-block">{{ $errors->first('file_name') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-8">
-                                    <button type="submit" class="btn bg-purple"><i class="fa fa-pencil"></i> 上传</button>
-                                </div>
-                            </div>
-                            {!! csrf_field() !!}
-
+                <div class="box-body table-responsive">
+                    <div class="col-md-12">
+                        <table class="table table-hover" id="clienttable">
+                            <thead>
+                            <tr>
+                                <th>合同编号</th>
+                                <th>出借人姓名</th>
+                                <th>出借金额</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
-                        </form>
+            </div>
+            {{--<a class="btn bg-purple" href="{{ route('permissions.create') }}">创建新权限</a>--}}
         </section>
     </div>
+
+    @push('scripts')
+    <script>
+        $(function () {
+            var ClientsShowUrl = '{{ url("admin/clients/") }}';
+
+            $('#client').DataTable({
+                language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{!! route('clients.data') !!}',
+                    dataSrc: function(json) {
+                        $.each(json.data, function(k, v) {
+                            v.name = '<a href="'+ ClientsShowUrl + '/' +v.id +'">'+v.client+'</a>';
+                            v.op = '';
+                        });
+                        return json.data;
+                    }
+                },
+                order: [[0, 'desc']],
+                columns: [
+                    { data: 'contractno', name: 'contractno' },
+                    { data: 'client', name: 'client' },
+                    { data: 'loan_amount', name: 'loan_amount' },
+                    { data: 'op', name: 'op' }
+                ]
+            });
+        });
+    </script>
+    @endpush
 
 @endsection

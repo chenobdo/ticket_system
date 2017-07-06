@@ -6,12 +6,18 @@ use DB;
 use Illuminate\Http\Request;
 use Excel;
 use Storage;
+use App\Model\Client;
 
 class AdminClientController extends Controller
 {
     public function index()
     {
         return view('admin.clients.index');
+    }
+
+    public function data()
+    {
+        return Datatables::of(Client::query())->make(true);
     }
 
     public function upload()
