@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
+    'ClientInfosTableSeeder' => $baseDir . '/database/seeds/ClientInfosTableSeeder.php',
     'Cloudinary' => $vendorDir . '/cloudinary/cloudinary_php/src/Cloudinary.php',
     'CloudinaryField' => $vendorDir . '/cloudinary/cloudinary_php/src/CloudinaryField.php',
     'Cloudinary\\Api' => $vendorDir . '/cloudinary/cloudinary_php/src/Api.php',
@@ -25,8 +26,8 @@ return array(
     'Cloudinary\\Search' => $vendorDir . '/cloudinary/cloudinary_php/src/Search.php',
     'Cloudinary\\Uploader' => $vendorDir . '/cloudinary/cloudinary_php/src/Uploader.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_08_25_194643_create_categories_table.php',
-    'CreateClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_024747_create_client_infos_table.php',
-    'CreateClientsTable' => $baseDir . '/database/migrations/2017_07_06_013634_create_clients_table.php',
+    'CreateClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_013634_create_client_infos_table.php',
+    'CreateClientsTable' => $baseDir . '/database/migrations/2017_07_06_024747_create_clients_table.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_08_25_212830_create_comments_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePrioritiesTable' => $baseDir . '/database/migrations/2016_08_25_194754_create_priorities_table.php',
