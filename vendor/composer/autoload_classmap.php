@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
-    'ClientInfosTableSeeder' => $baseDir . '/database/seeds/ClientInfosTableSeeder.php',
+    'ClientTableSeeder' => $baseDir . '/database/seeds/ClientTableSeeder.php',
     'Cloudinary' => $vendorDir . '/cloudinary/cloudinary_php/src/Cloudinary.php',
     'CloudinaryField' => $vendorDir . '/cloudinary/cloudinary_php/src/CloudinaryField.php',
     'Cloudinary\\Api' => $vendorDir . '/cloudinary/cloudinary_php/src/Api.php',
