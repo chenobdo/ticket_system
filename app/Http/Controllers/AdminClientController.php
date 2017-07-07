@@ -28,6 +28,21 @@ class AdminClientController extends Controller
         return view('admin.clients.show', compact('client'));
     }
 
+    public function edit($id)
+    {
+        $client = Client::find($id);
+
+        return view('admin.clients.edit', compact('client'));
+    }
+
+    public function destroy($id)
+    {
+        DB::table('clients')->where('id', $id)->delete();
+
+        return redirect()->route('clients.index')
+            ->with('success', '客户删除成功');
+    }
+
     public function upload()
     {
         return view('admin.clients.upload');
