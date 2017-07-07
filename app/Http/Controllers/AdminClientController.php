@@ -125,8 +125,6 @@ class AdminClientController extends Controller
                     $clientInfo->client_id = $client->id;
                     $clientInfo->save();
                 });
-
-                dd(136);
             }
         });
 
