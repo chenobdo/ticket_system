@@ -5,9 +5,9 @@ namespace Cloudinary {
   require_once(join(DIRECTORY_SEPARATOR, array($base, 'src', 'Uploader.php')));
   require_once(join(DIRECTORY_SEPARATOR, array($base, 'src', 'Api.php')));
   require_once( 'TestHelper.php');
-  use PHPUnit_Framework_TestCase;
+  use PHPUnit\Framework\TestCase;
 
-  class ArchiveTest extends PHPUnit_Framework_TestCase {
+  class ArchiveTest extends TestCase {
     public static function setUpBeforeClass() {
       Curl::$instance = new Curl();
     }
@@ -34,13 +34,13 @@ namespace Cloudinary {
           $this->assertEquals(2, $result["file_count"]);
       }
 
-      public function test_expire_at() {
-        Curl::mockUpload($this);
-        Uploader::create_zip(array("tags"=>$this->tag, "expire_at"=> date('Y-m-d H:i:s', time() + 3600)));
+      public function test_expires_at() {
+//        Curl::mockUpload($this);
+        Uploader::create_zip(array("tags"=>$this->tag, "expires_at"=> time() + 3600));
         assertUrl($this, '/image/generate_archive');
         assertParam($this, "target_format", "zip");
         assertParam($this, "tags[0]", $this->tag);
-        assertParam($this, "expire_at", NULL, "should support the 'expire_at' parameter");
+        assertParam($this, "expires_at", NULL, "should support the 'expires_at' parameter");
       }
 
       public function test_skip_transformation_name() {
@@ -61,7 +61,7 @@ namespace Cloudinary {
 
       public function test_download_zip_url() {
           $result = \Cloudinary::download_zip_url(array("tags"=>$this->tag));
-          $file = tempnam("tmp", "zip");
+          $file = tempnam(".", "zip");
           file_put_contents($file, file_get_contents($result));
           $zip = new \ZipArchive();
           $zip->open($file);

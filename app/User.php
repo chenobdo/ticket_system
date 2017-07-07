@@ -34,7 +34,7 @@ class User extends Authenticatable
             return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mm&s=40';
         }
 
-        return $this->avatar;
+        return asset('storage/'.$this->avatar);
     }
 
     public function getAccessToken()

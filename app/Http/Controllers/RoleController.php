@@ -44,7 +44,7 @@ class RoleController extends Controller
         }
 
         return redirect()->route('roles.index')
-                        ->with('success', 'Role created successfully');
+                        ->with('success', '角色创建成功');
     }
 
     public function show($id)
@@ -90,7 +90,7 @@ class RoleController extends Controller
         }
 
         return redirect()->route('roles.index')
-                        ->with('success', 'Role updated successfully');
+                        ->with('success', '角色更新成功');
     }
 
     public function destroy($id)
@@ -98,6 +98,6 @@ class RoleController extends Controller
         DB::table('roles')->where('id', $id)->delete();
 
         return redirect()->route('roles.index')
-                        ->with('success', 'Role deleted successfully');
+                        ->with('success', '角色删除成功');
     }
 }

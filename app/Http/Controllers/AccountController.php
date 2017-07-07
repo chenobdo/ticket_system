@@ -6,6 +6,7 @@ use Auth;
 use Cloudder;
 use Hash;
 use Illuminate\Http\Request;
+use Storage;
 
 class AccountController extends Controller
 {
@@ -42,16 +43,19 @@ class AccountController extends Controller
             'file_name'     => 'required|mimes:jpeg,bmp,png|between:1,7000',
         ]);
 
-        $filename = $request->file('file_name')->getRealPath();
+        $file = $request->file('file_name');
+        $filename = $file->getRealPath();
+        $entension = $file->getClientOriginalExtension();
+        $filepath = "avatars/{$this->id}.".$entension;
+        Storage::put('public/'.$filepath, file_get_contents($filename));
 
-        Cloudder::upload($filename, null);
-        list($width, $height) = getimagesize($filename);
+//        Cloudder::upload($filename, null);
+//        list($width, $height) = getimagesize($filename);
+//        $fileUrl = Cloudder::show(Cloudder::getPublicId(), ['width' => $width, 'height' => $height]);
+//        $this->user->update(['avatar' => $fileUrl]);
 
-        $fileUrl = Cloudder::show(Cloudder::getPublicId(), ['width' => $width, 'height' => $height]);
-
-        $this->user->update(['avatar' => $fileUrl]);
-
-        return redirect()->back()->with('info', 'Your Avatar has been updated Successfully');
+        $this->user->update(['avatar' => $filepath]);
+        return redirect()->back()->with('info', '你的头像更新成功.');
     }
 
     public function changePassword(Request $request)
@@ -63,7 +67,7 @@ class AccountController extends Controller
         $this->user->password = Hash::make($request->password);
         $this->user->save();
 
-        return redirect()->back()->with('info', 'Password successfully updated');
+        return redirect()->back()->with('info', '密码修改成功');
     }
 
     public function redirectToConfirmDeletePage()
