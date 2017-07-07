@@ -32,22 +32,22 @@
             <div class="box-body">
                 
             <div class="form-group">
-                <strong>名字:</strong>
-                {{ $permission->name }}
+                <strong>合同编号:</strong>
+                {{ $client->contractno }}
             </div>
 
             <div class="form-group">
-                <strong>昵称:</strong>
-                {{ $permission->display_name }}
+                <strong>首次投资:</strong>
+                {{ $client->is_continue }}
             </div>
 
             <div class="form-group">
-                <strong>描述:</strong>
-                {{ $permission->description }}
+                <strong>出借人:</strong>
+                {{ $client->client }}
             </div>
-			<a class="btn bg-purple" href="{{ route('permissions.edit',$permission->id) }}"><i class="fa fa-edit"> 编辑</i></a>
-			{!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline','class'=>'delete']) !!}
-            {{ Form::button('<i class="fa fa-remove"> 删除</i>', array('class'=>'btn btn-danger', 'type'=>'submit')) }}
+			<a class="btn bg-purple" href="{{ route('clients.edit',$client->id) }}"><i class="fa fa-edit"> 编辑</i></a>
+			{!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'style'=>'display:inline','class'=>'delete']) !!}
+            {!! Form::button('<i class="fa fa-remove"> 删除</i>', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
         	{!! Form::close() !!}
         </div>
           </div>	

@@ -38,7 +38,6 @@
                                 <th>合同编号</th>
                                 <th>出借人姓名</th>
                                 <th>出借金额</th>
-                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
