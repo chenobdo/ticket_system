@@ -16,7 +16,7 @@ class CreateClientsTable extends Migration
 
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('contractno', 10)->default('')->comment('合同编号');
+            $table->varchar('contractno', 16)->default('')->comment('合同编号');
             $table->tinyInteger('is_continue')->unsigned()->default(1)->comment('1-首次投资；2-非首次；3-续投；4-无需填写');
             $table->char('client', 10)->default('')->comment('出借人姓名');
             $table->string('cardid', 18)->default('')->comment('出借人身份证ID');
