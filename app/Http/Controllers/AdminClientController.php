@@ -113,7 +113,7 @@ class AdminClientController extends Controller
                     $clientInfo->area_name = $data[36];
                     $clientInfo->city_name = $data[37];
                     $clientInfo->section = $data[38];
-                    $clientInfo->director = $data[39];
+                    $clientInfo->director = empty($data[39]) ? '' : $data[39];
                     $clientInfo->area_manager = $data[40];
                     $clientInfo->city_manager = $data[41];
                     $clientInfo->store_manager = $data[42];
