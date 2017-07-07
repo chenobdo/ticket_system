@@ -47,10 +47,7 @@ $factory->define(App\Model\Client::class, function (Faker\Generator $faker) {
         'billing_days'      => mt_rand(1, 30),
         'expire_days'       => mt_rand(1, 30),
         'status'            => mt_rand(1, 10),
-        'client_info_id'    => function () {
-            return factory(App\Model\ClientInfo::class)->create()->id;
-        },
-        'deleted_at'        => date('Y-m-d H:i:s', mt_rand($start, $end)),
+        'deleted_at'        => null,
         'created_at'        => mt_rand($start, $end),
         'updated_at'        => mt_rand($start, $end)
     ];

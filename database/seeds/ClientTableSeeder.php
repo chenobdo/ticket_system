@@ -11,8 +11,8 @@ class ClientTableSeeder extends Seeder
      */
     public function run()
     {
-        $clients = factory(App\Model\Client::class)->times(10)->make();
+        $clientInfos = factory(App\Model\ClientInfo::class)->times(10)->make();
 
-        \App\Model\Client::insert($clients->toArray());
+        \App\Model\ClientInfo::insert($clientInfos->toArray());
     }
 }

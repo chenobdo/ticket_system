@@ -44,7 +44,10 @@ $factory->define(App\Model\ClientInfo::class, function (Faker\Generator $faker) 
         'account_manager'        => str_random('16'),
         'account_manager_cardid' => str_random('18'),
         'status'                 => mt_rand(1, 9),
-        'deleted_at'             => date('Y-m-d H:i:s', mt_rand($start, $end)),
+        'client_id'              => function () {
+            return factory(App\Model\Client::class)->create()->id;
+        },
+        'deleted_at'             => null,
         'created_at'             => mt_rand($start, $end),
         'updated_at'             => mt_rand($start, $end)
     ];
