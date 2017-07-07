@@ -35,7 +35,6 @@
                         <table class="table table-hover" id="clienttable">
                             <thead>
                             <tr>
-                                <th>checkbox</th>
                                 <th>合同编号</th>
                                 <th>出借人姓名</th>
                                 <th>出借金额</th>
@@ -85,46 +84,21 @@
 
             var ct = $("#clienttable").DataTable({
                 columns: [
-                    { data: null, orderable: false},
                     { data: "contractno", name: "contractno" },
                     { data: "client", name: "client" },
                     { data: "loan_amount", name: "loan_amount" },
                     { data: "created_at", name: "created_at" },
-                    { data: null}
                 ],
                 columnDefs: [
                     {
                         targets: 0,
-                        render: function(data, type, row, meta) {
-                            return '<input type="checkbox" name="checklist" value="' + row.id + '" />'
-                        }
-                    },
-                    {
-                        targets: 2,
                         searchable: false,
                         orderable: false,
                         render: function(data, type, row, meta) {
-                            return '<a href="'+ ClientsShowUrl + '/' +row.id +'">'+row.client+'</a>'
-                        }
-                    },
-                    {
-                        targets: 3,
-                        render: function(data, type, row, meta) {
-                            return (row.loan_amount || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
-                        }
-                    },
-                    {
-                        targets: -1,
-                        searchable: false,
-                        orderable: false,
-                        render: function(data, type, row, meta) {
-                            return '<a type="button" href="#" onclick="del("'+row.id+'","'+row.contractno+'")">删除</a>';
+                            return '<a href="'+ ClientsShowUrl + '/' +row.id +'">'+row.contractno+'</a>'
                         }
                     }
                 ],
-                formatNumber: function ( toFormat ) {
-                    return toFormat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
-                },
                 order: [[4, "desc"]],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
@@ -132,10 +106,16 @@
                 ajax: '{!! route("clients.data") !!}',
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]]
             });
-
-            function del(id, contractno) {
-                alert(id + ' ' + contractno);
-            }
+            var lastIdx = null;
+            $('#clienttable tbody').on('mouseover', 'td', function () {
+                var colIdx = ct.cell(this).index().column;
+                if (colIdx !== lastIdx) {
+                    $(ct.cells().nodes()).removeClass('highlight');
+                    $(ct.column(colIdx).nodes()).addClass('highlight');
+                }
+            }).on( 'mouseleave', function () {
+                $(ct.cells().nodes()).removeClass('highlight');
+            });
         });
     </script>
     @endpush
