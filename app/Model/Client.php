@@ -89,4 +89,9 @@ class Client extends Model
                 return 1;
         }
     }
+
+    public function generateTimestamp($excelTime)
+    {
+        return (intval($excelTime) - 70 * 365 - 19) * 86400 - 8 * 3600;
+    }
 }
