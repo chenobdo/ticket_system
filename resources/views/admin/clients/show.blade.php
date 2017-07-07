@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
- 
+
 @section('content')
+  <link rel="stylesheet" href="{{ load_asset('css/client.css') }}">
 
   <div class="content-wrapper">
 
@@ -30,21 +31,22 @@
             </div>
 
             <div class="box-body">
-                
-            <div class="form-group">
+
+            <div class="client-info">
+              <div class="form-group">
                 <strong>合同编号:</strong>
                 {{ $client->contractno }}
-            </div>
-
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <strong>首次投资:</strong>
                 {{ $client->is_continue }}
-            </div>
-
-            <div class="form-group">
+              </div>
+              <div class="form-group">
                 <strong>出借人:</strong>
                 {{ $client->client }}
+              </div>
             </div>
+
 			<a class="btn bg-purple" href="{{ route('clients.edit',$client->id) }}"><i class="fa fa-edit"> 编辑</i></a>
 			{!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'style'=>'display:inline','class'=>'delete']) !!}
             {!! Form::button('<i class="fa fa-remove"> 删除</i>', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
