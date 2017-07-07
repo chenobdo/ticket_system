@@ -52,6 +52,7 @@
                 </div>
             </div>
             {{--<a class="btn bg-purple" href="{{ route('permissions.create') }}">创建新权限</a>--}}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
         </section>
     </div>
 
