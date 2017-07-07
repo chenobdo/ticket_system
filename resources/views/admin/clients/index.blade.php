@@ -43,7 +43,7 @@
                                 <th>操作</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody class="table-striped"></tbody>
                         </table>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
 
             var ct = $("#clienttable").DataTable({
                 columns: [
-                    { data: null},
+                    { data: null, orderable: false},
                     { data: "contractno", name: "contractno" },
                     { data: "client", name: "client" },
                     { data: "loan_amount", name: "loan_amount" },
@@ -105,6 +105,12 @@
                         orderable: false,
                         render: function(data, type, row, meta) {
                             return '<a href="'+ ClientsShowUrl + '/' +row.id +'">'+row.client+'</a>'
+                        }
+                    },
+                    {
+                        targets: 3,
+                        render: function(data, type, row, meta) {
+                            return (row.loan_amount || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
                         }
                     },
                     {
