@@ -32,7 +32,7 @@
 
             <div class="box-body">
 
-            <div class="client-show client-info">
+            <div class="client-info">
               <div class="form-group">
                 <strong>合同编号:</strong>
                 {{ $client->contractno }}
