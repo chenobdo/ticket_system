@@ -38,7 +38,6 @@
                                 <th>合同编号</th>
                                 <th>出借人姓名</th>
                                 <th>出借金额</th>
-                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
@@ -59,14 +58,14 @@
                 columns: [
                     { data: 'contractno', name: 'contractno' },
                     { data: 'client', name: 'client' },
-                    { data: 'loan_amount', name: 'loan_amount' },
-                    { data: null }
+                    { data: 'loan_amount', name: 'loan_amount' }
+//                    { data: null }
                 ],
-                columnDefs: [{
-                    searchable: false,
-                    orderable: false,
-                    targets: 3
-                }],
+//                columnDefs: [{
+//                    searchable: false,
+//                    orderable: false,
+//                    targets: 3
+//                }],
                 order: [[0, 'desc']],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
@@ -79,17 +78,18 @@
                         });
                         return json.data;
                     }
-                }
+                },
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]]
             });
 
-            ct.on('order.dt search.dt',function() {
-                t.column(3, {
-                    search: 'applied',
-                    order: 'applied'
-                }).nodes().each(function(cell, i) {
-                    cell.innerHTML = '<button type="button" class="btn btn-box-tool">操作</button>';
-                });
-            }).draw();
+//            ct.on('order.dt search.dt',function() {
+//                ct.column(3, {
+//                    search: 'applied',
+//                    order: 'applied'
+//                }).nodes().each(function(cell, i) {
+//                    cell.innerHTML = '<button type="button" class="btn btn-box-tool">操作</button>';
+//                });
+//            }).draw();
         });
     </script>
     @endpush
