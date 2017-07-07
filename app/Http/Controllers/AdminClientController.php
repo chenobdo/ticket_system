@@ -65,7 +65,7 @@ class AdminClientController extends Controller
                 if (in_array($key, [0, 1])) {
                     continue;
                 }
-
+                
                 $rt = DB::transaction(function () {
                     $client = new Client();
                     $client->contractno = $data[1];
