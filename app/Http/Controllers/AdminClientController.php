@@ -58,13 +58,9 @@ class AdminClientController extends Controller
 
         $realpath = storage_path('app/'.$filepath);
         $rt = Excel::load($realpath, function($reader) use ($realpath)  {
-//            $reader = $reader->getSheet(0);
-//            $results = $reader->toArray();
-//            $data = $reader->all();
-//            dd($results);
-//            $excel_data = Excel::load($realpath)->get()->toArray();
-            $data = $reader->all();
-            dd($data);
+            $reader = $reader->getSheet(0);
+            $results = $reader->toArray();
+            dd($results);
         });
         dd("43");
     }

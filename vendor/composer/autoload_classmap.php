@@ -10,6 +10,7 @@ return array(
     'AlertClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
     'AlertClientsRmClientInfoIdTable' => $baseDir . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
     'AlertClientsTable' => $baseDir . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
+    'AlertClientsTableAnnualizedReturn' => $baseDir . '/database/migrations/2017_07_07_035418_alert_clients_table_annualized_return.php',
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
     'ClientTableSeeder' => $baseDir . '/database/seeds/ClientTableSeeder.php',
     'Cloudinary' => $vendorDir . '/cloudinary/cloudinary_php/src/Cloudinary.php',
