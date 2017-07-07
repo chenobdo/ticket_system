@@ -55,7 +55,7 @@
         $(function () {
             var ClientsShowUrl = '{{ url("admin/clients/") }}';
 
-            var clientTabel = $('#clienttable').DataTable({
+            var ct = $('#clienttable').DataTable({
                 columns: [
                     { data: 'contractno', name: 'contractno' },
                     { data: 'client', name: 'client' },
@@ -81,6 +81,15 @@
                     }
                 }
             });
+
+            ct.on('order.dt search.dt',function() {
+                t.column(3, {
+                    search: 'applied',
+                    order: 'applied'
+                }).nodes().each(function(cell, i) {
+                    cell.innerHTML = '<button type="button" class="btn btn-box-tool">操作</button>';
+                });
+            }).draw();
         });
     </script>
     @endpush
