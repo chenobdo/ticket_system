@@ -65,8 +65,8 @@ class AdminClientController extends Controller
                 if (in_array($key, [0, 1])) {
                     continue;
                 }
-                
-                $rt = DB::transaction(function () {
+
+                $rt = DB::transaction(function () use ($data) {
                     $client = new Client();
                     $client->contractno = $data[1];
                     $client->is_continue = Client::IsContinueNo($data[2]);
@@ -74,16 +74,17 @@ class AdminClientController extends Controller
                     $client->cardid = $data[4];
                     $client->gender = Client::GenderNo($data[5]);
                     $client->loan_amount = sprintf("%.2f", $data[6]);
-                    $client->product_name = sprintf("%.2f", $data[7]);
+                    $client->product_name = $data[7];
                     $client->nper = $data[8];
-                    $client->annualized_return = sprintf("%.4f", $data[9]);;
-                    $client->gross_interest = sprintf("%.2f", $data[10]);;
-                    $client->interest_monthly = sprintf("%.2f", $data[11]);
+                    $client->annualized_return = sprintf("%.4f", $data[9]);
+                    $client->gross_interest = sprintf("%.2f", $data[10]);
+                    $client->interest_monthly = is_numeric($data[11]) ? sprintf("%.2f", $data[11]) : 0;
                     $client->deduct_date = date('Y-m-d', $client->generateTimestamp($data[12]));
                     $client->loan_date = date('Y-m-d', $client->generateTimestamp($data[13]));
-                    $client->due_date = date('Y-m-d', $client->generateTimestamp($data[14]));;
+                    $client->due_date = date('Y-m-d', $client->generateTimestamp($data[14]));
                     $client->billing_days = $data[15];
-                    $client->expire_days = $data[16];
+                    $cnt = preg_match("/(?<=还有)\d+/", $data[16], $expireDays);
+                    $client->expire_days = empty($cnt)? 0 : $expireDays[0];
                     $client->status = Client::StatusNo($data[17]);
                     $client->FTC = sprintf("%.2f", $data[23]);
                     $client->FTA = sprintf("%.2f", $data[24]);
@@ -97,7 +98,7 @@ class AdminClientController extends Controller
                     $client->save();
 
                     $clientInfo = new ClientInfo();
-                    $clientInfo->fuyou_account = $data[18];
+                    $clientInfo->fuyou_account = empty($data[18]) ? '' : $data[18];
                     $clientInfo->pay_type = ClientInfo::PayTypeNo($data[19]);
                     $clientInfo->deduct_time = date('H:i:s', $client->generateTimestamp($data[20]));
                     $clientInfo->posno = $data[21];
