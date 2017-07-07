@@ -29,7 +29,7 @@ $factory->define(App\Model\Client::class, function (Faker\Generator $faker) {
         'gender'            => $gender[mt_rand(0, 1)],
         'bond_type'         => mt_rand(1, 4),
         'address'           => str_random(20),
-        'bond_type'         => mt_rand(100000, 999999),
+        'postcode'         => mt_rand(100000, 999999),
         'FTC'               => floatval($if),
         'FTA'               => floatval($if),
         'receipt_date'      => date('Y-m-d', mt_rand($start, $end)),
