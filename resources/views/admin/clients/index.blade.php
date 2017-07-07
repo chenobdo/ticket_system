@@ -24,9 +24,6 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">客户</h3>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool">
-                            <i class="fa fa-file"></i>导入
-                        </button>
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
                             <i class="fa fa-minus"></i>
                         </button>
@@ -65,7 +62,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">导入</h4>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="min-height: 60px;">
                         <label for="gravatar" class="col-sm-2 control-label"></label>
                         <div class="col-sm-4">
                             <input type="file" name="file_name" id="file_name">
