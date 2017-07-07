@@ -38,6 +38,7 @@
                                 <th>合同编号</th>
                                 <th>出借人姓名</th>
                                 <th>出借金额</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
@@ -54,7 +55,19 @@
         $(function () {
             var ClientsShowUrl = '{{ url("admin/clients/") }}';
 
-            $('#clienttable').DataTable({
+            var clientTabel = $('#clienttable').DataTable({
+                columns: [
+                    { data: 'contractno', name: 'contractno' },
+                    { data: 'client', name: 'client' },
+                    { data: 'loan_amount', name: 'loan_amount' },
+                    { data: null }
+                ],
+                columnDefs: [{
+                    searchable: false,
+                    orderable: false,
+                    targets: 3
+                }],
+                order: [[0, 'desc']],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,
@@ -66,13 +79,7 @@
                         });
                         return json.data;
                     }
-                },
-                order: [[0, 'desc']],
-                columns: [
-                    { data: 'contractno', name: 'contractno' },
-                    { data: 'client', name: 'client' },
-                    { data: 'loan_amount', name: 'loan_amount' }
-                ]
+                }
             });
         });
     </script>
