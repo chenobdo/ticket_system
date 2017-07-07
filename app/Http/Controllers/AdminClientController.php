@@ -101,7 +101,7 @@ class AdminClientController extends Controller
                     $clientInfo->fuyou_account = empty($data[18]) ? '' : $data[18];
                     $clientInfo->pay_type = ClientInfo::PayTypeNo($data[19]);
                     $clientInfo->deduct_time = date('H:i:s', $client->generateTimestamp($data[20]));
-                    $clientInfo->posno = $data[21];
+                    $clientInfo->posno = empty($data[21]) ? '' : $data[21];
                     $clientInfo->fee = is_numeric($data[22]) ? sprintf("%.2f", $data[22]) : 0;
                     $clientInfo->import_bank = $data[25];
                     $clientInfo->import_account = $data[26];
