@@ -78,9 +78,9 @@ class AdminClientController extends Controller
                 $client->annualized_return = $data[9];
                 $client->gross_interest = $data[10];
                 $client->interest_monthly = $data[11];
-                $client->deduct_date = ($data[12]-70*365-19)*86400-8*3600;
-                $client->loan_date = ($data[13]-70*365-19)*86400-8*3600;
-                $client->due_date = ($data[14]-70*365-19)*86400-8*3600;
+                $client->deduct_date = (intval($data[12])-70*365-19)*86400-8*3600;
+                $client->loan_date = (intval($data[13])-70*365-19)*86400-8*3600;
+                $client->due_date = (intval($data[14])-70*365-19)*86400-8*3600;
                 $client->billing_days = $data[15];
                 $client->expire_days = $data[16];
                 $client->status = Client::StatusNo($data[17]);
@@ -89,13 +89,13 @@ class AdminClientController extends Controller
                 $client->bond_type = Client::BondTypeNo($data[31]);
                 $client->address = $data[32];
                 $client->postcode = $data[33];
-                $client->receipt_date = ($data[47]-70*365-19)*86400-8*3600;
+                $client->receipt_date = (intval($data[47])-70*365-19)*86400-8*3600;
                 $client->is_confirm = Client::IsConfirmNo($data[48]);
                 $client->created_at = time();
                 $client->updated_at = time();
-                $clientId = $client->save();
+                $client->save();
 
-                dd($clientId);
+                dd($client->id);
             }
         });
     }
