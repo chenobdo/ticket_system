@@ -66,8 +66,11 @@ class AdminClientController extends Controller
                     continue;
                 }
 
-                $rt = DB::transaction(function () use ($data) {
-                    $client = new Client();
+                DB::transaction(function () use ($data) {
+                    $client = Client::where('contractno', $data[1])->first();
+                    if (empty($client)) {
+                        $client = new Client();
+                    }
                     $client->contractno = $data[1];
                     $client->is_continue = Client::IsContinueNo($data[2]);
                     $client->client = $data[3];
@@ -97,12 +100,15 @@ class AdminClientController extends Controller
                     $client->updated_at = time();
                     $client->save();
 
-                    $clientInfo = new ClientInfo();
+                    $clientInfo = ClientInfo::where('client_id', $client->id)->first();
+                    if (empty($client)) {
+                        $clientInfo = new ClientInfo();
+                    }
                     $clientInfo->fuyou_account = empty($data[18]) ? '' : $data[18];
                     $clientInfo->pay_type = ClientInfo::PayTypeNo($data[19]);
                     $clientInfo->deduct_time = date('H:i:s', $client->generateTimestamp($data[20]));
                     $clientInfo->posno = $data[21];
-                    $clientInfo->fee = sprintf("%.2f", $data[22]);
+                    $clientInfo->fee = is_numeric($data[22]) ? sprintf("%.2f", $data[22]) : 0;
                     $clientInfo->import_bank = $data[25];
                     $clientInfo->import_account = $data[26];
                     $clientInfo->import_name = $data[27];
@@ -126,8 +132,11 @@ class AdminClientController extends Controller
                     $clientInfo->save();
                 });
 
-                dd($rt);
+                dd(136);
             }
         });
+
+        return redirect()->route('clients.index')
+            ->with('success', '客户导入成功');
     }
 }
