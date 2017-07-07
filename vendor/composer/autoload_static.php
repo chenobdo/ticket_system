@@ -544,6 +544,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'AlertClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
         'AlertClientsRmClientInfoIdTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
         'AlertClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
+        'AlertClientsTableAnnualizedReturn' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_035418_alert_clients_table_annualized_return.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'ClientTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientTableSeeder.php',
         'Cloudinary' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Cloudinary.php',
