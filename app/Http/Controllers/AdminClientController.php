@@ -32,7 +32,7 @@ class AdminClientController extends Controller
         $bondType = Client::BondType();
 
         return view('admin.clients.show', compact('client', 'isContinue',
-            'gender', 'status', 'payType'));
+            'gender', 'status', 'payType', 'bondType'));
     }
 
     public function edit($id)
