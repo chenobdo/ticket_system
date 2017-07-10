@@ -38,7 +38,7 @@ class CreateClientInfosTable extends Migration
             $table->string('store_manager', 16)->default('')->comment('门店经理');
             $table->string('team_manager', 16)->default('')->comment('团队经理');
             $table->string('account_manager', 16)->default('')->comment('客户经理');
-            $table->char('account_manager_cardid', 18)->default('')->comment('客户经理身份证ID');
+            $table->string('account_manager_cardid', 18)->default('')->comment('客户经理身份证ID');
             $table->tinyInteger('status')->unsigned()->default(1)->comment('状态（1-正常）');
             $table->softDeletes();
             $table->timestamps();

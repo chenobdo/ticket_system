@@ -22,6 +22,32 @@ class Client extends Model
         }
     }
 
+    static public function IsContinueCs($ic)
+    {
+        switch ($ic) {
+            case 1 :
+                return '首次投资';
+            case 2 :
+                return '非首次';
+            case 3 :
+                return '续投';
+            case 4 :
+                return '无需填写';
+            default :
+                return '首次投资';
+        }
+    }
+
+    static public function IsContinue()
+    {
+        return [
+            1 => '首次投资',
+            2 => '非首次',
+            3 => '续投',
+            4 => '无需填写'
+        ];
+    }
+
     static public function GenderNo($g)
     {
         switch ($g) {
@@ -32,6 +58,14 @@ class Client extends Model
             default :
                 return 'M';
         }
+    }
+
+    static public function Gender()
+    {
+        return [
+            'M' => '男',
+            'F' => '女'
+        ];
     }
 
     static public function StatusNo($s)
@@ -62,6 +96,22 @@ class Client extends Model
         }
     }
 
+    static public function Status()
+    {
+        return [
+            1 => '正常',
+            2 => '划扣失败',
+            3 => '即将到期',
+            4 => '取消划扣',
+            5 => '取消续投',
+            6 => '提前赎回',
+            7 => '信达客户，不返息',
+            8 => '已赎回',
+            9 => '已退款',
+            10 => '作废'
+        ];
+    }
+
     static public function BondTypeNo($bt)
     {
         switch ($bt) {
@@ -78,6 +128,16 @@ class Client extends Model
         }
     }
 
+    static public function BondType()
+    {
+        return [
+            1 => '纸质',
+            2 => '电子邮件',
+            3 => '两者皆收',
+            4 => '无需填写'
+        ];
+    }
+
     static public function IsConfirmNo($ic)
     {
         switch ($ic) {
@@ -88,5 +148,15 @@ class Client extends Model
             default :
                 return 1;
         }
+    }
+
+    public function generateTimestamp($excelTime)
+    {
+        return (intval($excelTime) - 70 * 365 - 19) * 86400 - 8 * 3600;
+    }
+
+    public function clientInfo()
+    {
+        return $this->hasOne('App\Model\ClientInfo', 'client_id');
     }
 }

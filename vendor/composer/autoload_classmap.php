@@ -6,8 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddClientsTableEmail' => $baseDir . '/database/migrations/2017_07_10_054550_add_clients_table_email.php',
     'AlertClientInfosAddClientIdTable' => $baseDir . '/database/migrations/2017_07_06_092836_alert_client_infos_add_client_id_table.php',
     'AlertClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
+    'AlertClientInfosTableRegionId' => $baseDir . '/database/migrations/2017_07_07_065419_alert_client_infos_table_region_id.php',
+    'AlertClientInfosTableRegionName' => $baseDir . '/database/migrations/2017_07_07_070123_alert_client_infos_table_region_name.php',
+    'AlertClientInfosTableRegionStatus' => $baseDir . '/database/migrations/2017_07_07_071716_alert_client_infos_table_region_status.php',
     'AlertClientsRmClientInfoIdTable' => $baseDir . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
     'AlertClientsTable' => $baseDir . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
     'AlertClientsTableAnnualizedReturn' => $baseDir . '/database/migrations/2017_07_07_035418_alert_clients_table_annualized_return.php',
