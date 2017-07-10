@@ -104,6 +104,7 @@
                     },
                     {
                         targets: 1,
+                        searchable: false,
                         render: function(data, type, row, meta) {
                             switch (row.is_continue) {
                                 case 1 :
@@ -118,7 +119,12 @@
                         }
                     },
                     {
+                        targets: 2,
+                        searchable: false
+                    },
+                    {
                         targets: 4,
+                        searchable: false,
                         render: function(data, type, row, meta) {
                             return row.gender == 'M' ? '男' : '女';
                         }
