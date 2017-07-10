@@ -25,8 +25,9 @@ class AdminClientController extends Controller
     public function show($id)
     {
         $client = Client::findOrFail($id);
+        $Client = new Client();
 
-        return view('admin.clients.show', compact('client'));
+        return view('admin.clients.show', compact('client', 'Client'));
     }
 
     public function edit($id)

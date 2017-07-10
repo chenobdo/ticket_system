@@ -113,7 +113,6 @@
                         </div>
                         <div class="form-group">
                             <strong>状态:</strong>
-                            @if ($client->status ==
                         </div>
                     </div>
 
