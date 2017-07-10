@@ -1,7 +1,8 @@
 @extends('admin.layouts.master')
 
 @section('content')
-
+    <link rel="stylesheet" href="{{ load_asset('css/client.css') }}">
+    
     <div class="content-wrapper">
 
         <section class="content-header">
