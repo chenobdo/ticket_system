@@ -243,7 +243,7 @@
                         </div>
                         <div class="form-group">
                             <strong>债券及确认书：</strong>
-                            {{ $client->is_confirm }}
+                            {{ $isConfirm[$client->is_confirm] }}
                         </div>
                     </div>
 

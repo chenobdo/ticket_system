@@ -30,6 +30,7 @@ class AdminClientController extends Controller
         $status = Client::Status();
         $payType = ClientInfo::PayType();
         $bondType = Client::BondType();
+        $isConfirm = Client::IsConfirm();
 
         return view('admin.clients.show', compact('client', 'isContinue',
             'gender', 'status', 'payType', 'bondType'));
@@ -79,7 +80,7 @@ class AdminClientController extends Controller
         });
 
         return redirect()->route('clients.index')
-            ->with('success', "客户导入成功，共更新了{$total}条客户信息");
+            ->with('success', "客户导入成功");
     }
 
     private function storeData($data)

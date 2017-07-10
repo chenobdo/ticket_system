@@ -150,6 +150,14 @@ class Client extends Model
         }
     }
 
+    static public function IsConfirm()
+    {
+        return [
+            1 => '是',
+            2 => '否'
+        ];
+    }
+
     public function generateTimestamp($excelTime)
     {
         return (intval($excelTime) - 70 * 365 - 19) * 86400 - 8 * 3600;
