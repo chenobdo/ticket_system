@@ -174,9 +174,34 @@
                         </div>
                     </div>
 
+                    <div class="contact-info">
+                        <div class="form-group">
+                            <strong>债券接受方式：</strong>
+                            {{ $bondType[$client->bond_type] }}
+                        </div>
+                        <div class="form-group">
+                            <strong>地址：</strong>
+                            {{ $client->address }}
+                        </div>
+                        <div class="form-group">
+                            <strong>邮编：</strong>
+                            {{ $client->postcode }}
+                        </div>
+                        <div class="form-group">
+                            <strong>电子邮箱：</strong>
+                            {{ $client->email }}
+                        </div>
+                    </div>
+
+                    <div class="team-info">
+                        <div class="form-group">
+                            <strong>大区总监：</strong>
+                            {{ $client->director }}
+                        </div>
+                    </div>
+
                     <a class="btn bg-purple"
-                       href="{{ route('clients.edit',$client->id) }}"><i
-                                class="fa fa-edit"> 编辑</i></a>
+                       href="{{ route('clients.edit',$client->id) }}"><i class="fa fa-edit"> 编辑</i></a>
                     {!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'style'=>'display:inline','class'=>'delete']) !!}
                     {!! Form::button('<i class="fa fa-remove"> 删除</i>', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
                     {!! Form::close() !!}
