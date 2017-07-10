@@ -37,3 +37,7 @@
     background-color: rgba(221, 75, 57, 0.34);
     padding: 10px;
 }
+
+td.highlight {
+    background-color: whitesmoke !important;
+}
