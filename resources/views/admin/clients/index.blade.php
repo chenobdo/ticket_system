@@ -98,20 +98,23 @@
                         }
                     }
                 ],
-                formatNumber: function ( toFormat ) {
-                    return toFormat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
-                },
-                order: [[3, "desc"]],
+                order: [[4, "desc"]],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route("clients.data") !!}',
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]]
             });
-
-            function del(id, contractno) {
-                alert(id + ' ' + contractno);
-            }
+            var lastIdx = null;
+            $('#clienttable tbody').on('mouseover', 'td', function () {
+                var colIdx = ct.cell(this).index().column;
+                if (colIdx !== lastIdx) {
+                    $(ct.cells().nodes()).removeClass('highlight');
+                    $(ct.column(colIdx).nodes()).addClass('highlight');
+                }
+            }).on( 'mouseleave', function () {
+                $(ct.cells().nodes()).removeClass('highlight');
+            });
         });
     </script>
     @endpush
