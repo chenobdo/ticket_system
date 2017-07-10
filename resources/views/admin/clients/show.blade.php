@@ -116,11 +116,61 @@
                     <div class="third-info">
                         <div class="form-group">
                             <strong>富有账号:</strong>
-                            {{ $client->fuyou_account }}
+                            {{ $client->clientInfo->fuyou_account }}
                         </div>
                         <div class="form-group">
                             <strong>支付方式:</strong>
-                            {{ $client->pay_type }}
+                            {{ $payType[$client->clientInfo->pay_type] }}
+                        </div>
+                        <div class="form-group">
+                            <strong>划扣时间:</strong>
+                            {{ $client->clientInfo->deduct_time }}
+                        </div>
+                        <div class="form-group">
+                            <strong>POS机终端号:</strong>
+                            {{ $client->clientInfo->posno }}
+                        </div>
+                        <div class="form-group">
+                            <strong>手续费:</strong>
+                            {{ $client->clientInfo->fee }}元
+                        </div>
+                    </div>
+
+                    <div class="discounted-info">
+                        <div class="form-group">
+                            <strong>折标系数:</strong>
+                            {{ $client->FTC }}
+                        </div>
+                        <div class="form-group">
+                            <strong>折标金额:</strong>
+                            {{ $client->FTA }}元
+                        </div>
+                    </div>
+
+                    <div class="bank-info">
+                        <div class="form-group">
+                            <strong>汇入银行：</strong>
+                            {{ $client->clientInfo->import_bank }}
+                        </div>
+                        <div class="form-group">
+                            <strong>汇入账户：</strong>
+                            {{ $client->clientInfo->import_account }}
+                        </div>
+                        <div class="form-group">
+                            <strong>汇入名称：</strong>
+                            {{ $client->clientInfo->import_name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>回款银行：</strong>
+                            {{ $client->clientInfo->export_bank }}
+                        </div>
+                        <div class="form-group">
+                            <strong>回款账户：</strong>
+                            {{ $client->clientInfo->export_account }}
+                        </div>
+                        <div class="form-group">
+                            <strong>回款名称：</strong>
+                            {{ $client->clientInfo->export_name }}
                         </div>
                     </div>
 

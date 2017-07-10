@@ -28,9 +28,10 @@ class AdminClientController extends Controller
         $isContinue = Client::IsContinue();
         $gender = Client::Gender();
         $status = Client::Status();
+        $payType = ClientInfo::PayType();
 
         return view('admin.clients.show', compact('client', 'isContinue',
-            'gender', 'status'));
+            'gender', 'status', 'payType'));
     }
 
     public function edit($id)

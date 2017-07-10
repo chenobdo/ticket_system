@@ -30,4 +30,15 @@ class ClientInfo extends Model
                 return 1;
         }
     }
+
+    static public function PayType()
+    {
+        return [
+            1 => '银盛POS机',
+            2 => '富有金账户充值',
+            3 => '委托划扣',
+            4 => '无需划扣',
+            5 => '无需填写'
+        ];
+    }
 }
