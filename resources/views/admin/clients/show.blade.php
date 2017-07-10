@@ -56,6 +56,73 @@
                             <strong>出借人:</strong>
                             {{ $client->client }}
                         </div>
+                        <div class="form-group">
+                            <strong>身份证:</strong>
+                            {{ $client->cradid }}
+                        </div>
+                        <div class="form-group">
+                            <strong>性别:</strong>
+                            {{ $client->gender }}
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="form-group">
+                            <strong>出借金额:</strong>
+                            {{ $client->loan_amount }}
+                        </div>
+                        <div class="form-group">
+                            <strong>产品名称:</strong>
+                            {{ $client->product_name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>期数:</strong>
+                            {{ $client->nper }}
+                        </div>
+                        <div class="form-group">
+                            <strong>年化收益率:</strong>
+                            {{ $client->annualized_return }}
+                        </div>
+                        <div class="form-group">
+                            <strong>利息总额:</strong>
+                            {{ $client->gross_interest }}
+                        </div>
+                        <div class="form-group">
+                            <strong>月付利息:</strong>
+                            {{ $client->interest_monthly }}
+                        </div>
+                        <div class="form-group">
+                            <strong>月付利息:</strong>
+                            {{ $client->interest_monthly }}
+                        </div>
+                        <div class="form-group">
+                            <strong>划扣日期:</strong>
+                            {{ $client->deduct_date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>初始出借日期:</strong>
+                            {{ $client->loan_date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>初始出借日期:</strong>
+                            {{ $client->loan_date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>到期日:</strong>
+                            {{ $client->due_date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>账单日:</strong>
+                            {{ $client->billing_days }}
+                        </div>
+                        <div class="form-group">
+                            <strong>到期天数:</strong>
+                            {{ $client->expire_days }}
+                        </div>
+                        <div class="form-group">
+                            <strong>状态:</strong>
+                            {{ $client->status }}
+                        </div>
                     </div>
 
                     <a class="btn bg-purple"
