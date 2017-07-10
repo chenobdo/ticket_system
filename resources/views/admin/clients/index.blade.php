@@ -36,8 +36,10 @@
                             <thead>
                             <tr>
                                 <th>合同编号</th>
+                                <th>非续投/续投</th>
                                 <th>出借人姓名</th>
-                                <th>出借金额</th>
+                                <th>身份证</th>
+                                <th>性别</th>
                                 <th>导入时间</th>
                             </tr>
                             </thead>
@@ -84,8 +86,10 @@
             var ct = $("#clienttable").DataTable({
                 columns: [
                     { data: "contractno", name: "contractno" },
+                    { data: "is_continue", name: "is_continue" },
                     { data: "client", name: "client" },
-                    { data: "loan_amount", name: "loan_amount" },
+                    { data: "cardid", name: "cardid" },
+                    { data: "gender", name: "gender" },
                     { data: "created_at", name: "created_at" }
                 ],
                 columnDefs: [
@@ -96,9 +100,28 @@
                         render: function(data, type, row, meta) {
                             return '<a href="'+ ClientsShowUrl + '/' +row.id +'">'+row.contractno+'</a>'
                         }
+                    },
+                    {
+                        targets: 1,
+                        render: function(data, type, row, meta) {
+                            switch (row.is_continue) {
+                                case 1 :
+                                    return '首次投资';                                                                                                                      case 2 :
+                                   return '非首次';                                                                                                                        case 3 :
+                                   return '续投';
+                                case 4 :
+                                  return '无需填写';
+                            }
+                        }
+                    },
+                    {
+                        targets: 4,
+                        render: function(data, type, row, meta) {
+                           return row.gender == 'M' ? '男' : '女';
+                    }
                     }
                 ],
-                order: [[3, "desc"]],
+                order: [[5, "desc"]],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,
