@@ -98,7 +98,7 @@
                         }
                     }
                 ],
-                order: [[4, "desc"]],
+                order: [[3, "desc"]],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,
