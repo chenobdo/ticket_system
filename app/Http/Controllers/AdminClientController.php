@@ -33,7 +33,7 @@ class AdminClientController extends Controller
         $isConfirm = Client::IsConfirm();
 
         return view('admin.clients.show', compact('client', 'isContinue',
-            'gender', 'status', 'payType', 'bondType'));
+            'gender', 'status', 'payType', 'bondType', 'isConfirm'));
     }
 
     public function edit($id)
