@@ -29,6 +29,7 @@ class AdminClientController extends Controller
         $gender = Client::Gender();
         $status = Client::Status();
         $payType = ClientInfo::PayType();
+        $bondType = Client::BondType();
 
         return view('admin.clients.show', compact('client', 'isContinue',
             'gender', 'status', 'payType'));
@@ -98,6 +99,7 @@ class AdminClientController extends Controller
                     $client->postcode = $data[33];
                     $client->receipt_date = date('Y-m-d', $client->generateTimestamp($data[47]));
                     $client->is_confirm = Client::IsConfirmNo($data[48]);
+                    $client->email = empty($data[34]) ? '' : $data[34];
                     $client->created_at = time();
                     $client->updated_at = time();
                     $client->save();

@@ -128,6 +128,16 @@ class Client extends Model
         }
     }
 
+    static public function BondType()
+    {
+        return [
+            1 => '纸质',
+            2 => '电子邮件',
+            3 => '两者皆收',
+            4 => '无需填写'
+        ];
+    }
+
     static public function IsConfirmNo($ic)
     {
         switch ($ic) {
