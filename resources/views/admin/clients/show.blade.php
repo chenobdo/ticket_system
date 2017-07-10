@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <strong>非续投/续投:</strong>
-                            {{ Client::IsContinueCs($client->is_continue) }}
+                            {{ $isContinue[$client->is_continue] }}
                         </div>
                         <div class="form-group">
                             <strong>出借人:</strong>
@@ -54,11 +54,7 @@
                         </div>
                         <div class="form-group">
                             <strong>性别:</strong>
-                            @if ($client->gender == 'M')
-                                男
-                            @else
-                                女
-                            @endif
+                            {{ $gender[$client->gender] }}
                         </div>
                     </div>
 
@@ -113,6 +109,7 @@
                         </div>
                         <div class="form-group">
                             <strong>状态:</strong>
+                            {{ $status[$client->status] }}
                         </div>
                     </div>
 

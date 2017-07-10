@@ -38,6 +38,16 @@ class Client extends Model
         }
     }
 
+    static public function IsContinue()
+    {
+        return [
+            1 => '首次投资',
+            2 => '非首次',
+            3 => '续投',
+            4 => '无需填写'
+        ];
+    }
+
     static public function GenderNo($g)
     {
         switch ($g) {
@@ -48,6 +58,14 @@ class Client extends Model
             default :
                 return 'M';
         }
+    }
+
+    static public function Gender()
+    {
+        return [
+            'M' => '男',
+            'F' => '女'
+        ];
     }
 
     static public function StatusNo($s)
@@ -76,6 +94,22 @@ class Client extends Model
             default :
                 return 1;
         }
+    }
+
+    static public function Status()
+    {
+        return [
+            1 => '正常',
+            2 => '划扣失败',
+            3 => '即将到期',
+            4 => '取消划扣',
+            5 => '取消续投',
+            6 => '提前赎回',
+            7 => '信达客户，不返息',
+            8 => '已赎回',
+            9 => '已退款',
+            10 => '作废'
+        ];
     }
 
     static public function BondTypeNo($bt)
