@@ -63,7 +63,6 @@ class AdminClientController extends Controller
         $filepath = 'excel/'.date('Y_m_d').'_'.rand(100,999).'.'.$entension;
         Storage::put($filepath, file_get_contents($filename));
 
-        $total = 0;
         $realpath = storage_path('app/'.$filepath);
         Excel::load($realpath, function($reader) use ($realpath, $total)  {
             $reader = $reader->getSheet(0);
@@ -73,14 +72,9 @@ class AdminClientController extends Controller
                     continue;
                 }
 
-                DB::beginTransaction();
-                if ($this->storeData($data)) {
-                    DB::commit();
-                    $total += 1;
-                }
-
-//                DB::transaction(function () use ($data) {
-//                });
+                DB::transaction(function () use ($data) {
+                    $this->storeData($data);
+                });
             }
         });
 
@@ -119,7 +113,7 @@ class AdminClientController extends Controller
         $client->email = empty($data[34]) ? '' : $data[34];
         $client->created_at = time();
         $client->updated_at = time();
-        $rt1 = $client->save();
+        $client->save();
 
         $clientInfo = ClientInfo::where('client_id', $client->id)->first() ?: new ClientInfo();
         $clientInfo->fuyou_account = empty($data[18]) ? '' : $data[18];
@@ -147,8 +141,6 @@ class AdminClientController extends Controller
         $clientInfo->created_at = time();
         $clientInfo->updated_at = time();
         $clientInfo->client_id = $client->id;
-        $rt2 = $clientInfo->save();
-
-        return $rt1 && $rt2;
+        $clientInfo->save();
     }
 }
