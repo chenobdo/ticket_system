@@ -73,7 +73,7 @@
                         </div>
                         <div class="form-group">
                             <strong>年化收益率:</strong>
-                            {{ $client->annualized_return }}%
+                            {{ $client->annualized_return * 100 }}%
                         </div>
                         <div class="form-group">
                             <strong>利息总额:</strong>
