@@ -29,6 +29,11 @@
 }
 
 .team-info {
-    background-color: rgba(163, 166, 0, 0.3);
+    background-color: rgba(0, 192, 239, 0.22);
+    padding: 10px;
+}
+
+.bond-info {
+    background-color: rgba(221, 75, 57, 0.34);
     padding: 10px;
 }

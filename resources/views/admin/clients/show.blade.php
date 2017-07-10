@@ -195,8 +195,55 @@
 
                     <div class="team-info">
                         <div class="form-group">
+                            <strong>大区：</strong>
+                            {{ $client->clientInfo->region_name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>区域：</strong>
+                            {{ $client->clientInfo->area_name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>城市：</strong>
+                            {{ $client->clientInfo->city_name }}
+                        </div>
+                        <div class="form-group">
+                            <strong>所属部门：</strong>
+                            {{ $client->clientInfo->section }}
+                        </div>
+                        <div class="form-group">
                             <strong>大区总监：</strong>
-                            {{ $client->director }}
+                            {{ $client->clientInfo->director }}
+                        </div>
+                        <div class="form-group">
+                            <strong>区域经理：</strong>
+                            {{ $client->clientInfo->area_manager }}
+                        </div>
+                        <div class="form-group">
+                            <strong>门店经理：</strong>
+                            {{ $client->clientInfo->store_manager }}
+                        </div>
+                        <div class="form-group">
+                            <strong>团队经理：</strong>
+                            {{ $client->clientInfo->team_manager }}
+                        </div>
+                        <div class="form-group">
+                            <strong>客户经理：</strong>
+                            {{ $client->clientInfo->account_manager }}
+                        </div>
+                        <div class="form-group">
+                            <strong>客户经理身份证ID：</strong>
+                            {{ $client->clientInfo->account_manager_cardid }}
+                        </div>
+                    </div>
+
+                    <div class="bond-info">
+                        <div class="form-group">
+                            <strong>拒绝回执日期：</strong>
+                            {{ $client->receipt_date }}
+                        </div>
+                        <div class="form-group">
+                            <strong>债券及确认书：</strong>
+                            {{ $client->is_confirm }}
                         </div>
                     </div>
 
