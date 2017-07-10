@@ -9,6 +9,8 @@ return array(
     'tmhOAuth' => array($vendorDir . '/themattharris/tmhoauth'),
     'Tumblr' => array($vendorDir . '/jaapz/tumblr/src'),
     'Thujohn\\Twitter' => array($vendorDir . '/thujohn/twitter/src'),
+    'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src'),
+    'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
