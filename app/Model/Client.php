@@ -22,6 +22,22 @@ class Client extends Model
         }
     }
 
+    static public function IsContinueCs($ic)
+    {
+        switch ($ic) {
+            case 1 :
+                return '首次投资';
+            case 2 :
+                return '非首次';
+            case 3 :
+                return '续投';
+            case 4 :
+                return '无需填写';
+            default :
+                return '首次投资';
+        }
+    }
+
     static public function GenderNo($g)
     {
         switch ($g) {

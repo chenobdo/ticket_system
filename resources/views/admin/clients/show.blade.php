@@ -42,15 +42,7 @@
                         </div>
                         <div class="form-group">
                             <strong>非续投/续投:</strong>
-                            @if ($client->is_continue == 1)
-                                首次投资
-                            @elseif ($client->is_continue == 2)
-                                非首次
-                            @elseif ($client->is_continue == 3)
-                                续投
-                            @elseif ($client->is_continue == 4)
-                                无需填写
-                            @endif
+                            {{ Client::IsContinueCs($client->is_continue) }}
                         </div>
                         <div class="form-group">
                             <strong>出借人:</strong>
@@ -58,11 +50,15 @@
                         </div>
                         <div class="form-group">
                             <strong>身份证:</strong>
-                            {{ $client->cradid }}
+                            {{ $client->cardid }}
                         </div>
                         <div class="form-group">
                             <strong>性别:</strong>
-                            {{ $client->gender }}
+                            @if ($client->gender == 'M')
+                                男
+                            @else
+                                女
+                            @endif
                         </div>
                     </div>
 
@@ -76,24 +72,20 @@
                             {{ $client->product_name }}
                         </div>
                         <div class="form-group">
-                            <strong>期数:</strong>
+                            <strong>期数（单位：月）:</strong>
                             {{ $client->nper }}
                         </div>
                         <div class="form-group">
                             <strong>年化收益率:</strong>
-                            {{ $client->annualized_return }}
+                            {{ $client->annualized_return }}%
                         </div>
                         <div class="form-group">
                             <strong>利息总额:</strong>
-                            {{ $client->gross_interest }}
+                            {{ $client->gross_interest }}元
                         </div>
                         <div class="form-group">
                             <strong>月付利息:</strong>
-                            {{ $client->interest_monthly }}
-                        </div>
-                        <div class="form-group">
-                            <strong>月付利息:</strong>
-                            {{ $client->interest_monthly }}
+                            {{ $client->interest_monthly }}元
                         </div>
                         <div class="form-group">
                             <strong>划扣日期:</strong>
@@ -121,7 +113,7 @@
                         </div>
                         <div class="form-group">
                             <strong>状态:</strong>
-                            {{ $client->status }}
+                            @if ($client->status ==
                         </div>
                     </div>
 
