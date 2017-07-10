@@ -82,16 +82,6 @@
     @push('scripts')
     <script>
         $(function () {
-            jQuery.extend( jQuery.fn.dataTableExt.oSort, {
-                "chinese-string-asc" : function (s1, s2) {
-                    return s1.localeCompare(s2);
-                },
-
-                "chinese-string-desc" : function (s1, s2) {
-                    return s2.localeCompare(s1);
-                }
-            } );
-
             var ClientsShowUrl = '{{ url("admin/clients/") }}';
 
             var ct = $("#clienttable").DataTable({
@@ -128,10 +118,6 @@
                         }
                     },
                     {
-                        targets: 2,
-                        type: 'chinese-string'
-                    },
-                    {
                         targets: 4,
                         render: function(data, type, row, meta) {
                             return row.gender == 'M' ? '男' : '女';
@@ -143,7 +129,37 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route("clients.data") !!}',
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]]
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]],
+                initComplete: function() {
+                    $('#clienttable_filter > label > input').attr('placeholder', '身份证号');
+                    var api = this.api();
+                    api.columns().indexes().flatten().each(function (i) {
+                        if (i != 5) {//删除第一列与第二列的筛选框
+                            var column = api.column(i);
+                            var $span = $('<span class="addselect">▾</span>').appendTo($(column.header()))
+                            var select = $('<select><option value="">All</option></select>')
+                                    .appendTo($(column.header()))
+                                    .on('click', function (evt) {
+                                        evt.stopPropagation();
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                                $(this).val()
+                                        );
+                                        column
+                                                .search(val ? '^' + val + '$' : '', true, false)
+                                                .draw();
+                                    });
+                            column.data().unique().sort().each(function (d, j) {
+                                function delHtmlTag(str) {
+                                    return str.replace(/<[^>]+>/g, "");//去掉html标签
+                                }
+
+                                d = delHtmlTag(d)
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                                $span.append(select)
+                            });
+                        }
+                    });
+                }
             });
             var lastIdx = null;
             $('#clienttable tbody').on('mouseover', 'td', function () {
