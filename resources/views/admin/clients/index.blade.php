@@ -106,19 +106,21 @@
                         render: function(data, type, row, meta) {
                             switch (row.is_continue) {
                                 case 1 :
-                                    return '首次投资';                                                                                                                      case 2 :
-                                   return '非首次';                                                                                                                        case 3 :
-                                   return '续投';
+                                    return '首次投资';
+                                case 2 :
+                                    return '非首次';
+                                case 3 :
+                                    return '续投';
                                 case 4 :
-                                  return '无需填写';
+                                    return '无需填写';
                             }
                         }
                     },
                     {
                         targets: 4,
                         render: function(data, type, row, meta) {
-                           return row.gender == 'M' ? '男' : '女';
-                    }
+                            return row.gender == 'M' ? '男' : '女';
+                        }
                     }
                 ],
                 order: [[5, "desc"]],
