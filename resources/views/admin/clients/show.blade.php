@@ -61,7 +61,7 @@
                     <div class="product-info">
                         <div class="form-group">
                             <strong>出借金额:</strong>
-                            {{ $client->loan_amount }}
+                            {{ $client->loan_amount }}元
                         </div>
                         <div class="form-group">
                             <strong>产品名称:</strong>
@@ -110,6 +110,17 @@
                         <div class="form-group">
                             <strong>状态:</strong>
                             {{ $status[$client->status] }}
+                        </div>
+                    </div>
+
+                    <div class="third-info">
+                        <div class="form-group">
+                            <strong>富有账号:</strong>
+                            {{ $client->fuyou_account }}
+                        </div>
+                        <div class="form-group">
+                            <strong>支付方式:</strong>
+                            {{ $client->pay_type }}
                         </div>
                     </div>
 

@@ -112,6 +112,17 @@ class Client extends Model
         ];
     }
 
+    static public function PayType()
+    {
+        return [
+            1 => '银盛POS机',
+            2 => '富有金账户充值',
+            3 => '委托划扣',
+            4 => '无需划扣',
+            5 => '无需填写'
+        ];
+    }
+
     static public function BondTypeNo($bt)
     {
         switch ($bt) {
@@ -143,5 +154,10 @@ class Client extends Model
     public function generateTimestamp($excelTime)
     {
         return (intval($excelTime) - 70 * 365 - 19) * 86400 - 8 * 3600;
+    }
+
+    public function pay_type()
+    {
+        return $this->hasOne('App\Model\ClientInfo', 'client_id');
     }
 }
