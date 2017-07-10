@@ -63,8 +63,9 @@ class AdminClientController extends Controller
         $filepath = 'excel/'.date('Y_m_d').'_'.rand(100,999).'.'.$entension;
         Storage::put($filepath, file_get_contents($filename));
 
+        $total = 0;
         $realpath = storage_path('app/'.$filepath);
-        Excel::load($realpath, function($reader) use ($realpath)  {
+        Excel::load($realpath, function($reader) use ($realpath, $total)  {
             $reader = $reader->getSheet(0);
             $datas = $reader->toArray();
             foreach ($datas as $key => $data) {
@@ -132,10 +133,12 @@ class AdminClientController extends Controller
                     $clientInfo->client_id = $client->id;
                     $clientInfo->save();
                 });
+
+                $total++;
             }
         });
 
         return redirect()->route('clients.index')
-            ->with('success', '客户导入成功');
+            ->with('success', "客户导入成功，共更新了{$total}条客户信息");
     }
 }

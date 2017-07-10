@@ -131,34 +131,7 @@
                 ajax: '{!! route("clients.data") !!}',
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]],
                 initComplete: function() {
-                    $('#clienttable_filter > label > input').attr('placeholder', '身份证号');
-                    var api = this.api();
-                    api.columns().indexes().flatten().each(function (i) {
-                        if (i != 5) {//删除第一列与第二列的筛选框
-                            var column = api.column(i);
-                            var $span = $('<span class="addselect">▾</span>').appendTo($(column.header()))
-                            var select = $('<select><option value="">All</option></select>')
-                                    .appendTo($(column.header()))
-                                    .on('click', function (evt) {
-                                        evt.stopPropagation();
-                                        var val = $.fn.dataTable.util.escapeRegex(
-                                                $(this).val()
-                                        );
-                                        column
-                                                .search(val ? '^' + val + '$' : '', true, false)
-                                                .draw();
-                                    });
-                            column.data().unique().sort().each(function (d, j) {
-                                function delHtmlTag(str) {
-                                    return str.replace(/<[^>]+>/g, "");//去掉html标签
-                                }
-
-                                d = delHtmlTag(d)
-                                select.append('<option value="' + d + '">' + d + '</option>')
-                                $span.append(select)
-                            });
-                        }
-                    });
+                    $('#clienttable_filter > label > input').attr('placeholder', '搜索身份证号');
                 }
             });
             var lastIdx = null;
