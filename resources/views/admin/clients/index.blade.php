@@ -2,7 +2,7 @@
 
 @section('content')
     <link rel="stylesheet" href="{{ load_asset('css/client.css') }}">
-    
+
     <div class="content-wrapper">
 
         <section class="content-header">
@@ -82,13 +82,23 @@
     @push('scripts')
     <script>
         $(function () {
+            jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+                "chinese-string-asc" : function (s1, s2) {
+                    return s1.localeCompare(s2);
+                },
+
+                "chinese-string-desc" : function (s1, s2) {
+                    return s2.localeCompare(s1);
+                }
+            } );
+
             var ClientsShowUrl = '{{ url("admin/clients/") }}';
 
             var ct = $("#clienttable").DataTable({
                 columns: [
                     { data: "contractno", name: "contractno" },
                     { data: "is_continue", name: "is_continue" },
-                    { data: "client", name: "client" },
+                    { data: "client", name: "client"},
                     { data: "cardid", name: "cardid" },
                     { data: "gender", name: "gender" },
                     { data: "created_at", name: "created_at" }
@@ -116,6 +126,10 @@
                                     return '无需填写';
                             }
                         }
+                    },
+                    {
+                        targets: 2,
+                        type: 'chinese-string'
                     },
                     {
                         targets: 4,
