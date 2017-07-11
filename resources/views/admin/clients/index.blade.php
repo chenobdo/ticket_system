@@ -31,6 +31,11 @@
                     </div>
                 </div>
 
+                <div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#packageModal" id="packageModal">打包</button>
+                </div>
+
                 <div class="box-body table-responsive">
                     <div class="col-md-12">
                         <table class="table table-hover" id="clienttable">
@@ -50,12 +55,35 @@
                 </div>
             </div>
             {{--<a class="btn bg-purple" href="{{ route('permissions.create') }}">创建新权限</a>--}}
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
         </section>
     </div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form role="form" method="POST" action="{{ route('clients.store') }}"  enctype="multipart/form-data" class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">导入</h4>
+                    </div>
+                    <div class="modal-body" style="min-height: 60px;">
+                        <label for="gravatar" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-4">
+                            <input type="file" name="file_name" id="file_name">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-purple"><i class="fa fa-pencil"></i>上传Excel</button>
+                    </div>
+                    {!! csrf_field() !!}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form role="form" method="POST" action="{{ route('clients.store') }}"  enctype="multipart/form-data" class="form-horizontal">
@@ -150,6 +178,13 @@
             }).on( 'mouseleave', function () {
                 $(ct.cells().nodes()).removeClass('highlight');
             });
+            $('#clienttable tbody').on( 'click', 'tr', function () {
+                $(this).toggleClass('selected');
+            } );
+
+            $('#packageModal').click( function () {
+                alert( table.rows('.selected').data().length +' row(s) selected' );
+            } );
         });
     </script>
     @endpush
