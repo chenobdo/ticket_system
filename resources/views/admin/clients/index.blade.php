@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div stlye="padding-left:25px;">
+                <div style="padding: 10px 25px;">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#packageModal" id="packageModal">打包</button>
                 </div>
