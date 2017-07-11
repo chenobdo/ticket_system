@@ -170,10 +170,12 @@
             $('#clienttable tbody').on('click', 'tr', function () {
                 $(this).toggleClass('selected');
             } );
-            $('#packageModal').click(function (e) {
-                e.preventDefault();
-                alert( ct.rows('.selected').data().length +' row(s) selected' );
-            } );
+            $('#packageModal').on('show.bs.modal', function () {
+                var rows = ct.rows('.selected').data();
+                $.each(rows, function(k, v) {
+                    alert(v);
+                });
+            });
         });
     </script>
     @endpush
