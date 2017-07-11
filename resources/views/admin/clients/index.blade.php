@@ -183,7 +183,7 @@
             } );
 
             $('#packageModal').click( function () {
-                alert( table.rows('.selected').data().length +' row(s) selected' );
+                alert( ct.rows('.selected').data().length +' row(s) selected' );
             } );
         });
     </script>
