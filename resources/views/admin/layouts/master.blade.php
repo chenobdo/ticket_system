@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="{{ load_asset('bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ load_asset('plugins/bootstrap-social/bootstrap-social.min.css') }}">
   <link rel="stylesheet" href="{{ load_asset('plugins/font-awesome/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="{{ load_asset('plugins/datatables/dataTables.bootstrap.css') }}">
+{{--  <link rel="stylesheet" href="{{ load_asset('plugins/datatables/dataTables.bootstrap.css') }}">--}}
   <link rel="stylesheet" href="{{ load_asset('plugins/datatables/jquery.dataTables.css') }}">
   <link rel="stylesheet" href="{{ load_asset('dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ load_asset('summernote/summernote.css') }}">

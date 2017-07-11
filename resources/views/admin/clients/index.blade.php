@@ -168,20 +168,10 @@
                     $('#clienttable_filter > label > input').attr('placeholder', '搜索身份证号');
                 }
             });
-            var lastIdx = null;
-            $('#clienttable tbody').on('mouseover', 'td', function () {
-                var colIdx = ct.cell(this).index().column;
-                if (colIdx !== lastIdx) {
-                    $(ct.cells().nodes()).removeClass('highlight');
-                    $(ct.column(colIdx).nodes()).addClass('highlight');
-                }
-            }).on( 'mouseleave', function () {
-                $(ct.cells().nodes()).removeClass('highlight');
-            });
+
             $('#clienttable tbody').on( 'click', 'tr', function () {
                 $(this).toggleClass('selected');
             } );
-
             $('#packageModal').click( function () {
                 alert( ct.rows('.selected').data().length +' row(s) selected' );
             } );
