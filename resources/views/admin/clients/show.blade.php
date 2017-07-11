@@ -246,12 +246,11 @@
                             {{ $isConfirm[$client->is_confirm] }}
                         </div>
                     </div>
-
-                    <a class="btn bg-purple"
-                       href="{{ route('clients.edit',$client->id) }}"><i class="fa fa-edit"> 编辑</i></a>
-                    {!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'style'=>'display:inline','class'=>'delete']) !!}
-                    {!! Form::button('<i class="fa fa-remove"> 删除</i>', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
-                    {!! Form::close() !!}
+                    {{--<a class="btn bg-purple"--}}
+                       {{--href="{{ route('clients.edit',$client->id) }}"><i class="fa fa-edit"> 编辑</i></a>--}}
+                    {{--{!! Form::open(['method' => 'DELETE','route' => ['clients.destroy', $client->id],'style'=>'display:inline','class'=>'delete']) !!}--}}
+                    {{--{!! Form::button('<i class="fa fa-remove"> 删除</i>', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}--}}
+                    {{--{!! Form::close() !!}--}}
                 </div>
             </div>
         </section>

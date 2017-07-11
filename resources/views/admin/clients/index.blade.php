@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div stlye="padding-left:25px;">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#packageModal" id="packageModal">打包</button>
                 </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="packageModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form role="form" method="POST" action="{{ route('clients.store') }}"  enctype="multipart/form-data" class="form-horizontal">
@@ -169,10 +169,11 @@
                 }
             });
 
-            $('#clienttable tbody').on( 'click', 'tr', function () {
+            $('#clienttable tbody').on('click', 'tr', function () {
                 $(this).toggleClass('selected');
             } );
-            $('#packageModal').click( function () {
+            $('#packageModal').click(function (e) {
+                e.preventDefault();
                 alert( ct.rows('.selected').data().length +' row(s) selected' );
             } );
         });
