@@ -45,7 +45,7 @@ class AdminClientController extends Controller
 
     public function destroy($id)
     {
-        DB::table('clients')->where('id', $id)->delete();
+//        DB::table('clients')->where('id', $id)->delete();
 
         return redirect()->route('clients.index')
             ->with('success', '客户删除成功');

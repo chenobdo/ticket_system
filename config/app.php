@@ -169,7 +169,8 @@ return [
         Laravelista\Ekko\EkkoServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -184,7 +185,6 @@ return [
     */
 
     'aliases' => [
-
         'App'                   => Illuminate\Support\Facades\App::class,
         'Artisan'               => Illuminate\Support\Facades\Artisan::class,
         'Auth'                  => Illuminate\Support\Facades\Auth::class,
@@ -240,6 +240,7 @@ return [
         'Debugbar'              => Barryvdh\Debugbar\Facade::class,
         'Excel'                 => Maatwebsite\Excel\Facades\Excel::class,
         'Datatables'            => Yajra\Datatables\Facades\Datatables::class,
+        'PDF'                   => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
