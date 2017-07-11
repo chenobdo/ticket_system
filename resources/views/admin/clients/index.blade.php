@@ -85,21 +85,20 @@
 
     <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
+            <form role="form" method="POST" action="{{ route('check.package') }}" class="form-horizontal">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    1111111
+                    <table id="package-list">
 
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">Launch demo modal 2
-                    </button>
-
+                    </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">打包</button>
                 </div>
             </div>
         </div>
@@ -171,10 +170,13 @@
                 $(this).toggleClass('selected');
             } );
             $('#packageModal').on('show.bs.modal', function () {
+                var str = ''
                 var rows = ct.rows('.selected').data();
                 $.each(rows, function(k, v) {
-                    alert(v);
+                    str += '<tr><td>'+v.contractno+'</td><td>'+v.client+'</td></tr>';
                 });
+                $('#package-list').empty();
+                $('#package-list').html(str);
             });
         });
     </script>
