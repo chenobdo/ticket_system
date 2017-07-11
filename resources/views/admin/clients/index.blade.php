@@ -38,7 +38,7 @@
 
                 <div class="box-body table-responsive">
                     <div class="col-md-12">
-                        <table class="table table-hover" id="clienttable">
+                        <table class="table table-hover dataTable" id="clienttable">
                             <thead>
                             <tr>
                                 <th>合同编号</th>
