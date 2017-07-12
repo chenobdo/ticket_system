@@ -20,9 +20,7 @@ class AdminCheckController extends Controller
         $clients = Client::whereIn('contractno', $contractnos)->get();
 
         foreach ($clients as $client) {
-            $html = view('admin.check.template', ['client' => $client])->__toString();
-            $pdf = App::make('dompdf.wrapper');
-            $pdf->loadHTML($html);
+            $pdf = PDF::loadView('admin.check.template', ['client' => $client]);
             return $pdf->stream();
         }
     }
