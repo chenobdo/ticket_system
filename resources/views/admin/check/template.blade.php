@@ -10,7 +10,13 @@
             margin: 0;
             padding: 0;
             background-color: #FAFAFA;
-            font: 12pt "Tahoma";
+        }
+
+        @font-face {
+            font-family: 'msyh';
+            font-style: normal;
+            font-weight: normal;
+            src: url({{ load_asset('fonts/msyh.ttf') }}) format('truetype');
         }
 
         * {
@@ -58,80 +64,80 @@
     <table cellspacing=0 border=1 id="table1" style="border: hidden;border-color: #000;">
         <tbody>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr id="postcode">邮编：{{ $client->postcode }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr id="address">地址：{{ $client->address }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr id="recipient">收件人：{{ $client->client }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:bold;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:bold;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>资金出借情况报告</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:bold;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:bold;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>&nbsp;&nbsp;</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:bold;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:bold;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>&nbsp;&nbsp;</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>尊敬的{{ $client->client }}女士/先生，您好！</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>感谢您选择国商信联财富投资管理（北京）有限公司的咨询服务，参考国商惠众投资管理（北京）有限公司（以下</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>称国商惠众公司）的推荐进行资金的出借增值，您目前出借的款项所产生的收益情况如下：</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:right;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:right;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
                 <nobr>货币单位：人民币（元）</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;min-width:50px"
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:normal;min-width:50px"
                 >
                 <nobr>报告周期</nobr>
             </td>
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;min-width:50px"
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;min-width:50px"
                 colspan=4>
                 <nobr>{{ $client->loan_date }} --- {{ $client->due_date }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-top:hidden;min-width:50px">
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-top:hidden;min-width:50px">
                 <nobr>合同编号</nobr>
             </td>
-            <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
+            <td style="font-family:msyh;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>{{ $client->contractno }}</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
