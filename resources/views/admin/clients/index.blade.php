@@ -86,22 +86,24 @@
     <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form role="form" method="POST" action="{{ route('check.package') }}" class="form-horizontal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">打包列表</h4>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">打包列表</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="package-list-td">
+                            <thead><tr><td>合同编号</td><td>出借人</td></tr></thead>
+                            <tbody id="package-list"></tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">打包</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <table class="package-list-td">
-                        <thead><tr><td>合同编号</td><td>出借人</td></tr></thead>
-                        <tbody id="package-list"></tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" class="btn btn-primary">打包</button>
-                </div>
-            </div>
+                {!! csrf_field() !!}
+            </form>
         </div>
     </div>
 
