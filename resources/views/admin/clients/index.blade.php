@@ -1,6 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('content')
+    <link rel="stylesheet" href="{{ load_asset('css/client.css') }}">
 
     <div class="content-wrapper">
 
@@ -30,9 +31,14 @@
                     </div>
                 </div>
 
+                <div style="padding: 10px 25px;">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#packageModal">打包</button>
+                </div>
+
                 <div class="box-body table-responsive">
                     <div class="col-md-12">
-                        <table class="table table-hover" id="clienttable">
+                        <table class="table table-hover dataTable" id="clienttable">
                             <thead>
                             <tr>
                                 <th>合同编号</th>
@@ -49,7 +55,6 @@
                 </div>
             </div>
             {{--<a class="btn bg-purple" href="{{ route('permissions.create') }}">创建新权限</a>--}}
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
         </section>
     </div>
 
@@ -78,6 +83,30 @@
         </div>
     </div>
 
+    <div class="modal fade" id="packageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form role="form" method="POST" action="{{ route('check.package') }}" class="form-horizontal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">打包列表</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="package-list-td">
+                            <thead><tr><td>合同编号</td><td>出借人</td></tr></thead>
+                            <tbody id="package-list"></tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">打包</button>
+                    </div>
+                </div>
+                {!! csrf_field() !!}
+            </form>
+        </div>
+    </div>
+
     @push('scripts')
     <script>
         $(function () {
@@ -87,7 +116,7 @@
                 columns: [
                     { data: "contractno", name: "contractno" },
                     { data: "is_continue", name: "is_continue" },
-                    { data: "client", name: "client" },
+                    { data: "client", name: "client"},
                     { data: "cardid", name: "cardid" },
                     { data: "gender", name: "gender" },
                     { data: "created_at", name: "created_at" }
@@ -103,6 +132,7 @@
                     },
                     {
                         targets: 1,
+                        searchable: false,
                         render: function(data, type, row, meta) {
                             switch (row.is_continue) {
                                 case 1 :
@@ -117,7 +147,12 @@
                         }
                     },
                     {
+                        targets: 2,
+                        searchable: false
+                    },
+                    {
                         targets: 4,
+                        searchable: false,
                         render: function(data, type, row, meta) {
                             return row.gender == 'M' ? '男' : '女';
                         }
@@ -128,17 +163,26 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route("clients.data") !!}',
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]]
-            });
-            var lastIdx = null;
-            $('#clienttable tbody').on('mouseover', 'td', function () {
-                var colIdx = ct.cell(this).index().column;
-                if (colIdx !== lastIdx) {
-                    $(ct.cells().nodes()).removeClass('highlight');
-                    $(ct.column(colIdx).nodes()).addClass('highlight');
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "全部"]],
+                initComplete: function() {
+                    $('#clienttable_filter > label > input').attr('placeholder', '搜索身份证号');
                 }
-            }).on( 'mouseleave', function () {
-                $(ct.cells().nodes()).removeClass('highlight');
+            });
+
+            $('#clienttable tbody').on('click', 'tr', function () {
+                $(this).toggleClass('selected');
+            } );
+            $('#packageModal').on('show.bs.modal', function () {
+                var str = ''
+                var rows = ct.rows('.selected').data();
+                $.each(rows, function(k, v) {
+                    str += '<tr><td>'+v.contractno+'</td><td>'+v.client
+                            +'</td><td style="display:none;">'
+                            +'<input type="text" name="contractnos[]" value="'
+                            +v.contractno+'"></td></tr>';
+                });
+                $('#package-list').empty();
+                $('#package-list').html(str);
             });
         });
     </script>

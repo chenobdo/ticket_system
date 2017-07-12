@@ -362,11 +362,14 @@ div.DTFC_RightBodyWrapper table.dataTable thead .sorting_desc:after {
 	display: none;
 }
 
-
 /*
  * FixedHeader styles
  */
 div.FixedHeader_Cloned table {
 	margin: 0 !important
+}
+
+table.dataTable tbody tr.selected {
+	background-color: #b0bed9;
 }
 
