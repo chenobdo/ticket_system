@@ -96,7 +96,7 @@
         <tr style="height:28px;">
             <td style="font-family:宋体;text-align:left;font-size:12px;color:#000000;font-weight:normal;border:hidden;min-width:50px"
                 colspan=5>
-                <nobr>尊敬的程玉兰女士/先生，您好！</nobr>
+                <nobr>尊敬的{{ $client->client }}女士/先生，您好！</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -124,7 +124,7 @@
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;min-width:50px"
                 colspan=4>
-                <nobr>2016/4/25 --- 2017/4/25</nobr>
+                <nobr>{{ $client->loan_date }} --- {{ $client->due_date }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -132,16 +132,16 @@
                 <nobr>合同编号</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>GX1623319</nobr>
+                <nobr>{{ $client->contractno }}</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>资金出借及回收方式</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>国商金1号</nobr>
+                <nobr>{{ $client->product_name }}</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>期数：12</nobr>
+                <nobr>期数：12{{ $client->nper }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -149,14 +149,14 @@
                 <nobr>初始出借金额</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>50000.00</nobr>
+                <nobr>{{ $client->loan_amount }}</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>出借预期年化收益</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px"
                 colspan=2>
-                <nobr>12.20%</nobr>
+                <nobr>{{ $client->annualized_return }}%</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -164,14 +164,14 @@
                 <nobr>账户级别</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>尊普通客户</nobr>
+                <nobr>尊普通账户</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>报告日实际收益总额</nobr>
             </td>
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-left:hidden;border-top:hidden;min-width:50px"
                 colspan=2>
-                <nobr>4066.67</nobr>
+                <nobr>{{ $client->annualized_return }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -200,6 +200,8 @@
                 <nobr>预期报告日资产总额</nobr>
             </td>
         </tr>
+
+
         <tr style="height:28px;">
             <td style="font-family:宋体;text-align:center;font-size:12px;color:#000000;font-weight:normal;border-top:hidden;min-width:50px">
                 <nobr>2016/5/25</nobr>
