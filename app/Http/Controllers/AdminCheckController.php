@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Model\Client;
-use Barryvdh\DomPDF\PDF;
+use App;
 
 class AdminCheckController extends Controller
 {
@@ -20,7 +20,12 @@ class AdminCheckController extends Controller
         $clients = Client::whereIn('contractno', $contractnos)->get();
 
         foreach ($clients as $client) {
-            $pdf = PDF::loadView('admin.check.template', ['client' => $client]);
+            $html = view('admin.check.template', ['client' => $client])->__toString();
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->loadHTML($html);
+            $filename = $client->contractno().$client->client.'.pdf';
+            $rt = $pdf->save('/pdf/'.$filename);
+            dd($rt);
             return $pdf->stream();
         }
     }
