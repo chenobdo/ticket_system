@@ -89,16 +89,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">打包列表</h4>
                 </div>
                 <div class="modal-body">
-                    <table id="package-list">
-
+                    <table class="package-list-td">
+                        <thead><tr><td>合同编号</td><td>出借人</td></tr></thead>
+                        <tbody id="package-list"></tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">打包</button>
+                    <button type="submit" class="btn btn-primary">打包</button>
                 </div>
             </div>
         </div>
@@ -173,7 +174,10 @@
                 var str = ''
                 var rows = ct.rows('.selected').data();
                 $.each(rows, function(k, v) {
-                    str += '<tr><td>'+v.contractno+'</td><td>'+v.client+'</td></tr>';
+                    str += '<tr><td>'+v.contractno+'</td><td>'+v.client
+                            +'</td><td style="display:none;">'
+                            +'<input type="text" name="contractnos[]" value="'+
+                            +v.contractno+'"></td></tr>';
                 });
                 $('#package-list').empty();
                 $('#package-list').html(str);

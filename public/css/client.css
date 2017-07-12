@@ -41,3 +41,7 @@
 td.highlight {
     background-color: whitesmoke !important;
 }
+
+table.package-list-td > td{
+    padding:8px;
+}
