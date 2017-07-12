@@ -178,7 +178,7 @@
                 $.each(rows, function(k, v) {
                     str += '<tr><td>'+v.contractno+'</td><td>'+v.client
                             +'</td><td style="display:none;">'
-                            +'<input type="text" name="contractnos[]" value="'+
+                            +'<input type="text" name="contractnos[]" value="'
                             +v.contractno+'"></td></tr>';
                 });
                 $('#package-list').empty();
