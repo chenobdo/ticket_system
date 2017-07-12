@@ -16,7 +16,10 @@ class AdminCheckController extends Controller
     public function package(Request $request)
     {
         $contractnos = $request->input('contractnos');
-        $clients = Client::whereIn('contractnos', $contractnos)->get();
-        dd($clients);
+        $clients = Client::whereIn('contractno', $contractnos)->get();
+
+        foreach ($clients as $client) {
+            return view('admin.check.template', ['client', $client]);
+        }
     }
 }
