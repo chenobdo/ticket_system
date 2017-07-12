@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use App\Model\Client;
 
 class AdminCheckController extends Controller
 {
@@ -14,6 +15,8 @@ class AdminCheckController extends Controller
 
     public function package(Request $request)
     {
-        dd($request->all());
+        $contractnos = $request->input('contractnos');
+        $clients = Client::whereIn('contractnos', $contractnos)->get();
+        dd($clients);
     }
 }
