@@ -23,10 +23,10 @@ class AdminCheckController extends Controller
             $html = view('admin.check.template', ['client' => $client])->__toString();
             $pdf = App::make('dompdf.wrapper');
             $pdf->loadHTML($html);
-            $filepath = storage_path('app/pdf');
+            $filepath = storage_path('app/pdf/');
             $filename = $client->contractno.$client->client.'.pdf';
-            $rt = $pdf->save($filepath.$filename);
-            dd($rt);
+//            $rt = $pdf->save($filepath.$filename);
+//            dd($rt);
             return $pdf->stream();
         }
     }
