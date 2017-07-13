@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\Client;
 use App;
 use Response;
+use ZipArchive;
 
 class AdminCheckController extends Controller
 {
@@ -20,19 +21,27 @@ class AdminCheckController extends Controller
         $contractnos = $request->input('contractnos');
         $clients = Client::whereIn('contractno', $contractnos)->get();
 
-        $pdfdir = storage_path('pdf/'.date('YmdHis').'/');
+        $dir = date('YmdHis');
+        $pdfdir = storage_path("app/pdf/{$dir}/");
         foreach ($clients as $client) {
             $filename = $client->contractno.'.pdf';
 
             $html = view('admin.check.template', ['client' => $client])->__toString();
             $pdf = App::make('snappy.pdf.wrapper');
             $filepath = $pdfdir.$filename;
+            if (file_exists($filepath)) {
+                unlink($filepath);
+            }
             $pdf->loadHTML($html)->save($filepath);
         }
 
         $zip = new ZipArchive();
-        $zippath = storage_path('zip/'.date('YmdHis').'.zip');
-        if ($zip->open($zippath, ZipArchive::OVERWRITE) === TRUE) {
+        $zipdir = storage_path("app/zip");
+        if (!is_dir($zipdir)) {
+            mkdir($zipdir);
+        }
+        $zippath = $zipdir."/{$dir}.zip";
+        if ($zip->open($zippath, ZIPARCHIVE::CREATE) === TRUE) {
             $this->zip($pdfdir, $zip);
             $zip->close();
         }
