@@ -9,6 +9,7 @@ use App;
 use Response;
 use ZipArchive;
 use App\Model\Zip;
+use Auth;
 
 class AdminCheckController extends Controller
 {
