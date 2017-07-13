@@ -8,6 +8,7 @@ use App\Model\Client;
 use App;
 use Response;
 use ZipArchive;
+use App\Model\Zip;
 
 class AdminCheckController extends Controller
 {
@@ -24,11 +25,11 @@ class AdminCheckController extends Controller
         $dir = date('YmdHis');
         $pdfdir = storage_path("app/pdf/{$dir}/");
         foreach ($clients as $client) {
-            $filename = $client->contractno.'.pdf';
+            $pdfname = $client->contractno.'.pdf';
 
             $html = view('admin.check.template', ['client' => $client])->__toString();
             $pdf = App::make('snappy.pdf.wrapper');
-            $filepath = $pdfdir.$filename;
+            $filepath = $pdfdir.$pdfname;
             if (file_exists($filepath)) {
                 unlink($filepath);
             }
@@ -36,19 +37,36 @@ class AdminCheckController extends Controller
         }
 
         $zip = new ZipArchive();
-        $zipdir = storage_path("app/zip");
+        $zipdir = storage_path("app/zip/");
         if (!is_dir($zipdir)) {
             mkdir($zipdir);
         }
-        $zippath = $zipdir."/{$dir}.zip";
+        $zipname = $dir.'.zip';
+        $zippath = $zipdir."{$zipname}";
         if ($zip->open($zippath, ZIPARCHIVE::CREATE) === TRUE) {
             $this->zip($pdfdir, $zip);
             $zip->close();
         }
 
-        return response()->download($zippath);
+        if (!file_exists($zippath)) {
+            return redirect()->route('clients.index')->with('success', "客户打包失败");
+        }
 
-        return redirect()->route('clients.index')->with('success', "客户打包成功");;
+        $user = Auth::user();
+        $zip = new Zip();
+        $zip->zip_name = $zipname;
+        $zip->path = $zipdir;
+        $zip->uid = $user->id;
+        $zip->mark = json_encode($contractnos);
+        $zip->created_at = time();
+        $zip->updated_at = time();
+        $zip->save();
+
+        if (empty($zip->id)) {
+            return redirect()->route('clients.index')->with('success', "客户打包条目添加失败");
+        }
+
+        return redirect()->route('clients.index')->with('success', "客户打包成功");
     }
 
     private function zip($path, $zip)
