@@ -94,10 +94,10 @@ return array(
         ),
     'msyh' =>
         array(
-            'bold' => $distFontDir . 'DejaVuSerif-Bold',
-            'bold_italic' => $distFontDir . 'DejaVuSerif-BoldItalic',
-            'italic' => $distFontDir . 'DejaVuSerif-Italic',
-            'normal' => $distFontDir . 'msyh'
+            'bold' => DOMPDF_FONT_DIR . 'DejaVuSerif-Bold',
+            'bold_italic' => DOMPDF_FONT_DIR . 'DejaVuSerif-BoldItalic',
+            'italic' => DOMPDF_FONT_DIR . 'DejaVuSerif-Italic',
+            'normal' => DOMPDF_FONT_DIR . 'msyh'
         )
 )
 ?>
