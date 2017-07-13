@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>账单模板</title>
-    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body {
+            font-family: 'msyh';
             width: 100%;
             height: 100%;
             margin: 0;
