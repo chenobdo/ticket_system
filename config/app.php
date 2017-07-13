@@ -170,6 +170,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
     ],
 
     /*
@@ -239,6 +240,8 @@ return [
         'Debugbar'              => Barryvdh\Debugbar\Facade::class,
         'Excel'                 => Maatwebsite\Excel\Facades\Excel::class,
         'Datatables'            => Yajra\Datatables\Facades\Datatables::class,
+        'PDF'                   => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage'           => Barryvdh\Snappy\Facades\SnappyImage::class,
     ],
 
 ];

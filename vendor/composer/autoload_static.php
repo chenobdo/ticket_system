@@ -107,6 +107,10 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
             'League\\Flysystem\\' => 17,
             'Laravel\\Socialite\\' => 18,
         ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
+        ),
         'I' => 
         array (
             'Illuminate\\' => 11,
@@ -144,6 +148,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         ),
         'B' => 
         array (
+            'Barryvdh\\Snappy\\' => 16,
             'Barryvdh\\Debugbar\\' => 18,
         ),
         'A' => 
@@ -316,6 +321,10 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         array (
             0 => __DIR__ . '/..' . '/laravel/socialite/src',
         ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -395,6 +404,10 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Barryvdh\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-snappy/src',
         ),
         'Barryvdh\\Debugbar\\' => 
         array (

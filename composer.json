@@ -32,7 +32,10 @@
         "maatwebsite/excel": "~2.1.0",
         "yajra/laravel-datatables-oracle": "^6.0",
         "doctrine/dbal": "^2.5",
-        "tecnickcom/TCPDF": "^6.2"
+        "tecnickcom/TCPDF": "^6.2",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "barryvdh/laravel-snappy": "^0.3.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
