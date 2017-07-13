@@ -52,7 +52,7 @@
     @push('scripts')
     <script>
         $(function () {
-            var DownloadUrl = '{{ url("admin/check/download") }}';
+            var DownloadUrl = '{{ url("admin/check") }}';
 
             var ct = $("#ziptable").DataTable({
                 columns: [

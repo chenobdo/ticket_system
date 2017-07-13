@@ -10,7 +10,7 @@ use Response;
 use ZipArchive;
 use App\Model\Zip;
 use Auth;
-use DataTables;
+use Datatables;
 
 class AdminCheckController extends Controller
 {
@@ -28,7 +28,7 @@ class AdminCheckController extends Controller
     {
         $zip = Zip::find($id);
         $zippath = $zip->path.$zip->zip_name;
-        return response()->download($zippath);
+        return response()->download($zippath, $zip->zip_name, ['Content-Type' => 'application/zip']);
     }
 
     public function package(Request $request)
@@ -37,7 +37,7 @@ class AdminCheckController extends Controller
         $clients = Client::whereIn('contractno', $contractnos)->get();
 
         $dir = date('YmdHis');
-        $pdfdir = storage_path("app/pdf/{$dir}/");
+        $pdfdir = public_path("pdf/{$dir}/");
         foreach ($clients as $client) {
             $pdfname = $client->contractno.'.pdf';
 
@@ -51,7 +51,7 @@ class AdminCheckController extends Controller
         }
 
         $zip = new ZipArchive();
-        $zipdir = storage_path("app/zip/");
+        $zipdir = public_path("zip/");
         if (!is_dir($zipdir)) {
             mkdir($zipdir);
         }
