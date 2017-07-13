@@ -175,6 +175,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete('clients/{client_id}', ['as' => 'clients.destroy', 'uses' => 'AdminClientController@destroy', 'middleware' => ['permission:manage-clients']]);
 
             Route::get('check', ['as' => 'check.index', 'uses' => 'AdminCheckController@index', 'middleware' => ['permission:manage-clients']]);
+            Route::get('check/data', ['as' => 'check.data', 'uses' => 'AdminCheckController@data', 'middleware' => ['permission:manage-clients']]);
             Route::post('check', ['as' => 'check.package', 'uses' => 'AdminCheckController@package', 'middleware' => ['permission:manage-clients']]);
         });
     });

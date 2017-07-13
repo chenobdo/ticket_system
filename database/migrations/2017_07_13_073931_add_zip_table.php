@@ -14,10 +14,10 @@ class AddZipTable extends Migration
     {
         Schema::create('zips', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('zip_name', 64);
+                $table->string('zip_name', 64)->comment('账单包名');
                 $table->string('path', 255);
-                $table->integer('uid');
-                $table->text('mark');
+                $table->integer('uid')->comment('操作人');
+                $table->text('mark')->comment('备注');
                 $table->timestamps();
         });
     }

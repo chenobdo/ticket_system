@@ -18,6 +18,11 @@ class AdminCheckController extends Controller
         return view('admin.check.index');
     }
 
+    public function data()
+    {
+        return Datatables::of(Zip::query())->make(true);
+    }
+
     public function package(Request $request)
     {
         $contractnos = $request->input('contractnos');
