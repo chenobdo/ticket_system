@@ -38,7 +38,6 @@
                                 <th>账单包名</th>
                                 <th>操作人</th>
                                 <th>备注</th>
-                                <th>身份证</th>
                                 <th>生成时间</th>
                             </tr>
                             </thead>
@@ -53,7 +52,7 @@
     @push('scripts')
     <script>
         $(function () {
-            var DownloadUrl = '{{ url("admin/check/download/") }}';
+            var DownloadUrl = '{{ url("admin/check/download") }}';
 
             var ct = $("#ziptable").DataTable({
                 columns: [
@@ -68,7 +67,7 @@
                         searchable: false,
                         orderable: false,
                         render: function(data, type, row, meta) {
-                            return '<a href="'+ DownloadUrl +row.id +'">'+ row.zip_name +'</a>'
+                            return '<a href="'+ DownloadUrl + '/' +row.id +'/download">'+ row.zip_name +'</a>'
                         }
                     },
                     {
@@ -79,7 +78,7 @@
                         }
                     }
                 ],
-                order: [[4, "desc"]],
+                order: [[3, "desc"]],
                 language: {url: "{{ load_asset('plugins/datatables/localisation/Chinese.json') }}"},
                 processing: true,
                 serverSide: true,

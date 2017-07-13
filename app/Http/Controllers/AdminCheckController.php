@@ -23,6 +23,13 @@ class AdminCheckController extends Controller
         return Datatables::of(Zip::query())->make(true);
     }
 
+    public function download($id)
+    {
+        $zip = Zip::find($id);
+        $zippath = $zip->path.$zip->zip_name;
+        return response()->download($zippath);
+    }
+
     public function package(Request $request)
     {
         $contractnos = $request->input('contractnos');

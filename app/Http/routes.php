@@ -176,6 +176,7 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::get('check', ['as' => 'check.index', 'uses' => 'AdminCheckController@index', 'middleware' => ['permission:manage-clients']]);
             Route::get('check/data', ['as' => 'check.data', 'uses' => 'AdminCheckController@data', 'middleware' => ['permission:manage-clients']]);
+            Route::get('check/{zid}/download', ['as' => 'clients.show', 'uses' => 'AdminClientController@show', 'middleware' => ['permission:manage-clients']]);
             Route::post('check', ['as' => 'check.package', 'uses' => 'AdminCheckController@package', 'middleware' => ['permission:manage-clients']]);
         });
     });
