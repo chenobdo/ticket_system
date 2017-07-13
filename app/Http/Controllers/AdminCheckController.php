@@ -10,6 +10,7 @@ use Response;
 use ZipArchive;
 use App\Model\Zip;
 use Auth;
+use DataTables;
 
 class AdminCheckController extends Controller
 {
