@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Model\Client;
-use App;
+
+require_once base_path('vendor/tecnickcom/tcpdf/tcpdf.php');
+require_once base_path('vendor/tecnickcom/tcpdf/config/tcpdf_config.php');
 
 class AdminCheckController extends Controller
 {
