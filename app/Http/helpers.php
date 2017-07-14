@@ -52,7 +52,7 @@ function getAccountDay($t, $day)
     $lastDay = getLastDay($ymd);
     $day = min($day, $lastDay);
 
-    return date('Y-m-d', mktime(0, 0, 0, $month, $day, $year));
+    return date('Y/m/d', mktime(0, 0, 0, $month, $day, $year));
 }
 
 function getNextMonth($t)

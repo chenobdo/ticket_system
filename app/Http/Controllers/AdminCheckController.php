@@ -45,13 +45,18 @@ class AdminCheckController extends Controller
             $pdfname = $client->contractno.'.pdf';
             $accounts = $this->generateAccount($client);
             $html = view('admin.check.template', compact('client', 'month',
-                $accounts))->__toString();
+                'accounts'))->__toString();
             $pdf = App::make('snappy.pdf.wrapper');
             $filepath = $pdfdir.$pdfname;
             if (file_exists($filepath)) {
                 unlink($filepath);
             }
-            $pdf->loadHTML($html)->save($filepath);
+
+            // TODO
+            $pdf->loadHTML($html);
+            return $pdf->inline();
+
+//            $pdf->loadHTML($html)->save($filepath);
         }
 
         $zip = new ZipArchive();
@@ -100,6 +105,9 @@ class AdminCheckController extends Controller
         $currentDate = $loanDate;
         $currentNper = 0;
         while ($currentNper < $nper) {
+            if (date('Y/m', strtotime($currentDate)) == date('Y/m')) {
+                $nper = -1;
+            }
             $account['date'] = getAccountDay(strtotime($currentDate), $day);
             $account['interest_monthly'] = $client->interest_monthly;
             $account['fee'] = 0;

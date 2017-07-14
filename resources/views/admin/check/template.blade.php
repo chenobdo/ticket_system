@@ -134,7 +134,7 @@
             </td>
             <td style="text-align:center;border-left:hidden;min-width:50px"
                 colspan=4>
-                <nobr>{{ $client->loan_date->format('Y/m/d') }} --- {{ $client->due_date->format('Y/m/d') }}</nobr>
+                <nobr>{{ date('Y/m/d', strtotime($client->loan_date)) }} --- {{ date('Y/m/d', strtotime($client->due_date)) }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -151,7 +151,7 @@
                 <nobr>{{ $client->product_name }}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>期数：12{{ $client->nper }}</nobr>
+                <nobr>期数：{{ $client->nper }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -211,25 +211,25 @@
             </td>
         </tr>
 
-        @for ($i = 0; $i < $client->nper; $i++)
+        @foreach ($accounts as $account)
         <tr style="height:28px;">
             <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>{{$account[$i]['date']}}</nobr>
+                <nobr>{{$account->date}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account[$i]['interest_monthly']}}</nobr>
+                <nobr>{{$account->interest_monthly}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account[$i]['fee']}}</nobr>
+                <nobr>{{$account->fee}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account[$i]['interest_monthly']}}</nobr>
+                <nobr>{{$account->interest_monthly}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account[$i]['total_assets']}}</nobr>
+                <nobr>{{$account->total_assets}}</nobr>
             </td>
         </tr>
-        @endfor
+        @endforeach
 
         <tr style="height:28px;">
             <td style="text-align:left;border:hidden;min-width:50px"
