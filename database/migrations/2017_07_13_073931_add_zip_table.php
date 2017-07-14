@@ -16,6 +16,7 @@ class AddZipTable extends Migration
                 $table->increments('id');
                 $table->string('zip_name', 64)->comment('账单包名');
                 $table->string('path', 255);
+                $table->tinyInteger('type')->comment('1-手动；2-自动');
                 $table->integer('uid')->comment('操作人');
                 $table->text('mark')->comment('备注');
                 $table->timestamps();
