@@ -74,4 +74,29 @@ class PackageContacts extends Command
 
         $this->deldir($pdfdir);
     }
+
+    private function generateAccount($client)
+    {
+        $loanDate = $client->loan_date;
+        $day = $client->billing_days;
+        $nper = $client->nper;
+
+        $accounts = [];
+        $currentDate = $loanDate;
+        $currentNper = 0;
+        while ($currentNper < $nper) {
+            if (date('Y/m', strtotime($currentDate)) == date('Y/m')) {
+                $nper = -1;
+            }
+            $account['date'] = getAccountDay(strtotime($currentDate), $day);
+            $account['interest_monthly'] = $client->interest_monthly;
+            $account['fee'] = 0;
+            $account['total_assets'] = $client->loan_amount + $client->interest_monthly * ($currentNper + 1);
+            $accounts[] = $account;
+            $currentDate = $account['date'];
+            $currentNper += 1;
+        }
+
+        return $accounts;
+    }
 }
