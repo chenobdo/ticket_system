@@ -53,6 +53,7 @@
     <script>
         $(function () {
             var DownloadUrl = '{{ url("admin/check") }}';
+            var users = JSON.parse('{!!$users!!}');
 
             var ct = $("#ziptable").DataTable({
                 columns: [
@@ -74,7 +75,7 @@
                         targets: 1,
                         searchable: false,
                         render: function(data, type, row, meta) {
-                            return row.uid;
+                            return users[row.uid];
                         }
                     }
                 ],

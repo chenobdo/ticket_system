@@ -11,12 +11,14 @@ use ZipArchive;
 use App\Model\Zip;
 use Auth;
 use Datatables;
+use App\User;
 
 class AdminCheckController extends Controller
 {
     public function index()
     {
-        return view('admin.check.index');
+        $users = User::pluck('fullname', 'id')->toArray();
+        return view('admin.check.index', ['users' => json_encode($users)]);
     }
 
     public function data()
