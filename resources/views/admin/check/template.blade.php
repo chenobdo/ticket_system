@@ -13,7 +13,6 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #FAFAFA;
         }
 
         @font-face {
@@ -30,7 +29,6 @@
 
         .page {
             width: 210mm;
-            min-height: 297mm;
             padding: 20mm;
             margin: 10mm auto;
             border-radius: 5px;
