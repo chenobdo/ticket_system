@@ -214,19 +214,19 @@
         @foreach ($accounts as $account)
         <tr style="height:28px;">
             <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>{{$account->date}}</nobr>
+                <nobr>{{$account['date']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account->interest_monthly}}</nobr>
+                <nobr>{{$account['interest_monthly']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account->fee}}</nobr>
+                <nobr>{{$account['fee']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account->interest_monthly}}</nobr>
+                <nobr>{{$account['interest_monthly']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account->total_assets}}</nobr>
+                <nobr>{{$account['total_assets']}}</nobr>
             </td>
         </tr>
         @endforeach
