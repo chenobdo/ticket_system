@@ -40,10 +40,12 @@ class AdminCheckController extends Controller
 
         $dir = date('YmdHis');
         $pdfdir = storage_path("app/pdf/{$dir}/");
+        $month = date('m', strtotime('+1 month'));
         foreach ($clients as $client) {
             $pdfname = $client->contractno.'.pdf';
-
-            $html = view('admin.check.template', ['client' => $client])->__toString();
+            $accounts = $this->generateAccount($client);
+            $html = view('admin.check.template', compact('client', 'month',
+                $accounts))->__toString();
             $pdf = App::make('snappy.pdf.wrapper');
             $filepath = $pdfdir.$pdfname;
             if (file_exists($filepath)) {
@@ -86,6 +88,28 @@ class AdminCheckController extends Controller
         $this->deldir($pdfdir);
 
         return redirect()->route('clients.index')->with('success', "客户打包成功");
+    }
+
+    private function generateAccount($client)
+    {
+        $loanDate = $client->loan_date;
+        $day = $client->billing_days;
+        $nper = $client->nper;
+
+        $accounts = [];
+        $currentDate = $loanDate;
+        $currentNper = 0;
+        while ($currentNper < $nper) {
+            $account['date'] = getAccountDay(strtotime($currentDate), $day);
+            $account['interest_monthly'] = $client->interest_monthly;
+            $account['fee'] = 0;
+            $account['total_assets'] = $client->loan_amount + $client->interest_monthly * ($currentNper + 1);
+            $accounts[] = $account;
+            $currentDate = $account['date'];
+            $currentNper += 1;
+        }
+
+        return $accounts;
     }
 
     private function zip($path, $zip)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>账单模板</title>
+    <title>{{ $client->contractno }}_{{ $client->client }}_{{$month}}月账单</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body {
@@ -134,7 +134,7 @@
             </td>
             <td style="text-align:center;border-left:hidden;min-width:50px"
                 colspan=4>
-                <nobr>{{ $client->loan_date }} --- {{ $client->due_date }}</nobr>
+                <nobr>{{ $client->loan_date->format('Y/m/d') }} --- {{ $client->due_date->format('Y/m/d') }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -166,7 +166,7 @@
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px"
                 colspan=2>
-                <nobr>{{ $client->annualized_return }}%</nobr>
+                <nobr>{{ $client->annualized_return * 100 }}%</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -181,7 +181,7 @@
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px"
                 colspan=2>
-                <nobr>{{ $client->annualized_return }}</nobr>
+                <nobr>{{ $client->gross_interest }}</nobr>
             </td>
         </tr>
         <tr style="height:28px;">
@@ -211,211 +211,25 @@
             </td>
         </tr>
 
-
+        @for ($i = 0; $i < $client->nper; $i++)
         <tr style="height:28px;">
             <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/5/25</nobr>
+                <nobr>{{$account[$i]['date']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
+                <nobr>{{$account[$i]['interest_monthly']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
+                <nobr>{{$account[$i]['fee']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
+                <nobr>{{$account[$i]['interest_monthly']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>50508.33</nobr>
+                <nobr>{{$account[$i]['total_assets']}}</nobr>
             </td>
         </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/6/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>51016.67</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/7/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>51525.00</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/8/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>52033.33</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/9/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>52541.67</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/10/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>53050.00</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/11/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>53558.33</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr>2016/12/25</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>0.00</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>508.33</nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>54066.67</nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-        </tr>
-        <tr style="height:28px;">
-            <td style="text-align:center;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-            <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr></nobr>
-            </td>
-        </tr>
+        @endfor
 
         <tr style="height:28px;">
             <td style="text-align:left;border:hidden;min-width:50px"
