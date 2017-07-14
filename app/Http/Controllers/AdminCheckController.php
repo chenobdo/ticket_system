@@ -72,6 +72,7 @@ class AdminCheckController extends Controller
         $zip = new Zip();
         $zip->zip_name = $zipname;
         $zip->path = $zipdir;
+        $zip->type = Zip::TYPE_MANUAL;
         $zip->uid = $user->id;
         $zip->mark = json_encode($contractnos);
         $zip->created_at = time();
@@ -81,6 +82,8 @@ class AdminCheckController extends Controller
         if (empty($zip->id)) {
             return redirect()->route('clients.index')->with('success', "客户打包条目添加失败");
         }
+
+        $this->deldir($pdfdir);
 
         return redirect()->route('clients.index')->with('success', "客户打包成功");
     }
@@ -98,5 +101,23 @@ class AdminCheckController extends Controller
             }
         }
         @closedir($path);
+    }
+
+    private function deldir($dir)
+    {
+        $dh = opendir($dir);
+        while ($file = readdir($dh)) {
+            if ($file != "." && $file != "..") {
+                $fullpath = $dir . "/" . $file;
+                if (!is_dir($fullpath)) {
+                    unlink($fullpath);
+                } else {
+                    $this->deldir($fullpath);
+                }
+            }
+        }
+
+        closedir($dh);
+        return rmdir($dir) ? true : false;
     }
 }
