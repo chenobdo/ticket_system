@@ -3,7 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Inspiring;
+use App;
+use ZipArchive;
 
 class PackageContacts extends Command
 {
@@ -98,5 +99,38 @@ class PackageContacts extends Command
         }
 
         return $accounts;
+    }
+
+    private function zip($path, $zip)
+    {
+        $handler = opendir($path);
+        while (($filename = readdir($handler)) !== false) {
+            if ($filename != "." && $filename != "..") {
+                if (is_dir($path . "/" . $filename)) {
+                    $this->zip($path . "/" . $filename, $zip);
+                } else {
+                    $zip->addFile($path . "/" . $filename);
+                }
+            }
+        }
+        @closedir($path);
+    }
+
+    private function deldir($dir)
+    {
+        $dh = opendir($dir);
+        while ($file = readdir($dh)) {
+            if ($file != "." && $file != "..") {
+                $fullpath = $dir . "/" . $file;
+                if (!is_dir($fullpath)) {
+                    unlink($fullpath);
+                } else {
+                    $this->deldir($fullpath);
+                }
+            }
+        }
+
+        closedir($dh);
+        return rmdir($dir) ? true : false;
     }
 }
