@@ -36,6 +36,9 @@ class AdminCheckController extends Controller
     public function package(Request $request)
     {
         $contractnos = $request->input('contractnos');
+        if (empty($contractnos)) {
+            return redirect()->route('clients.index')->with('warning', "合同编号为空");
+        }
         $clients = Client::whereIn('contractno', $contractnos)->get();
 
         $dir = date('YmdHis');

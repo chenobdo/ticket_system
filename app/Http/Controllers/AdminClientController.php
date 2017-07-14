@@ -59,6 +59,9 @@ class AdminClientController extends Controller
     public function store(Request $request)
     {
         $file = $request->file('file_name');
+        if (empty($file)) {
+            return redirect()->route('clients.index')->with('warning', "没有选择文件");
+        }
         $filename = $file->getRealPath();
         $entension = $file->getClientOriginalExtension();
         $filepath = 'excel/'.date('Y_m_d').'_'.rand(100,999).'.'.$entension;
