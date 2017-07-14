@@ -31,6 +31,6 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        $schedule->command('package_contacts');
+        $schedule->command('package_contacts')->monthlyOn(10, '02:00');;
     }
 }
