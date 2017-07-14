@@ -39,7 +39,7 @@ class AdminCheckController extends Controller
         $clients = Client::whereIn('contractno', $contractnos)->get();
 
         $dir = date('YmdHis');
-        $pdfdir = public_path("pdf/{$dir}/");
+        $pdfdir = storage_path("app/pdf/{$dir}/");
         foreach ($clients as $client) {
             $pdfname = $client->contractno.'.pdf';
 
@@ -53,7 +53,7 @@ class AdminCheckController extends Controller
         }
 
         $zip = new ZipArchive();
-        $zipdir = public_path("zip/");
+        $zipdir = storage_path("app/zip/");
         if (!is_dir($zipdir)) {
             mkdir($zipdir);
         }
