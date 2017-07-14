@@ -51,12 +51,7 @@ class AdminCheckController extends Controller
             if (file_exists($filepath)) {
                 unlink($filepath);
             }
-
-            // TODO
-            $pdf->loadHTML($html);
-            return $pdf->inline();
-
-//            $pdf->loadHTML($html)->save($filepath);
+            $pdf->loadHTML($html)->save($filepath);
         }
 
         $zip = new ZipArchive();

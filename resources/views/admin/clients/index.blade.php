@@ -32,8 +32,9 @@
                 </div>
 
                 <div style="padding: 10px 25px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#packageModal">打包</button>
+                    <button type="button" class="btn btn-primary" id="select-all">全选/button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">导入</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#packageModal">打包</button>
                 </div>
 
                 <div class="box-body table-responsive">
@@ -183,6 +184,9 @@
                 });
                 $('#package-list').empty();
                 $('#package-list').html(str);
+            });
+            $('#select-all').on('click', function(e) {
+                $('clienttable tbody tr').click();
             });
         });
     </script>
