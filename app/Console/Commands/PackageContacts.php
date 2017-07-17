@@ -1,45 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Console\Commands;
 
-use DB;
-use Illuminate\Http\Request;
-use App\Model\Client;
+use Illuminate\Console\Command;
 use App;
-use Response;
 use ZipArchive;
-use App\Model\Zip;
-use Auth;
-use Datatables;
-use App\User;
 
-class AdminCheckController extends Controller
+class PackageContacts extends Command
 {
-    public function index()
-    {
-        $users = User::pluck('fullname', 'id')->toArray();
-        return view('admin.check.index', ['users' => json_encode($users)]);
-    }
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'package_contacts';
 
-    public function data()
-    {
-        return Datatables::of(Zip::query())->make(true);
-    }
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Display an inspiring quote';
 
-    public function download($id)
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
     {
-        $zip = Zip::find($id);
-        $zippath = $zip->path.$zip->zip_name;
-        return response()->download($zippath, $zip->zip_name, ['Content-Type' => 'application/zip']);
-    }
-
-    public function package(Request $request)
-    {
-        $contractnos = $request->input('contractnos');
-        if (empty($contractnos)) {
-            return redirect()->route('clients.index')->with('warning', "合同编号为空");
-        }
-        $clients = Client::whereIn('contractno', $contractnos)->get();
+        // TODO test
+        $clients = \App\Model\Client::limit(2)->get();
 
         $dir = date('YmdHis');
         $pdfdir = storage_path("app/pdf/{$dir}/");
@@ -73,24 +64,17 @@ class AdminCheckController extends Controller
             return redirect()->route('clients.index')->with('success', "客户打包失败");
         }
 
-        $user = Auth::user();
-        $zip = new Zip();
+        $zip = new \App\Model\Zip();
         $zip->zip_name = $zipname;
         $zip->path = $zipdir;
-        $zip->type = Zip::TYPE_MANUAL;
-        $zip->uid = $user->id;
-        $zip->mark = json_encode($contractnos);
+        $zip->type = \App\Model\Zip::TYPE_AUTO;
+        $zip->uid = 1;
+        $zip->mark = json_encode(['all']);
         $zip->created_at = time();
         $zip->updated_at = time();
         $zip->save();
 
-        if (empty($zip->id)) {
-            return redirect()->route('clients.index')->with('success', "客户打包条目添加失败");
-        }
-
         $this->deldir($pdfdir);
-
-        return redirect()->route('clients.index')->with('success', "客户打包成功");
     }
 
     private function generateAccount($client)

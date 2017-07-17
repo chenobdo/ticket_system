@@ -32,8 +32,9 @@
                 </div>
 
                 <div style="padding: 10px 25px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">导入</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#packageModal">打包</button>
+                    <button type="button" class="btn btn-primary" id="select-all">全选</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">导入</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#packageModal">生成账单</button>
                 </div>
 
                 <div class="box-body table-responsive">
@@ -89,7 +90,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">打包列表</h4>
+                        <h4 class="modal-title" id="myModalLabel">账单列表</h4>
                     </div>
                     <div class="modal-body">
                         <table class="package-list-td">
@@ -99,7 +100,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="submit" class="btn btn-primary">打包</button>
+                        <button type="submit" class="btn btn-primary" id="alert-full-screen">生成账单</button>
                     </div>
                 </div>
                 {!! csrf_field() !!}
@@ -183,6 +184,14 @@
                 });
                 $('#package-list').empty();
                 $('#package-list').html(str);
+            });
+            $('#select-all').on('click', function(e) {
+                $('#clienttable tbody tr').click();
+            });
+
+            $('#alert-full-screen').on('click', function(e) {
+                var str = '<div style="position: absolute; height: 100%;width:100%;background-color:rgba(0,0,0,0.3);top:0;left:0;z-index:9999999;"></div>';
+                $('body').append(str);
             });
         });
     </script>

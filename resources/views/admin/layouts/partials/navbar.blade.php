@@ -89,7 +89,7 @@
                     <li class="{{ Ekko::isActiveRoute('check.*') }}">
                         <a href="{{ url('admin/check') }}">
                             <i class="fa fa-check"></i>
-                            账户管理
+                            账单管理
                         </a>
                     </li>
                     @endpermission

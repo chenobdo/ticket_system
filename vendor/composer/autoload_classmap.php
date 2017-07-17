@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddClientsTableEmail' => $baseDir . '/database/migrations/2017_07_10_054550_add_clients_table_email.php',
+    'AddZipTable' => $baseDir . '/database/migrations/2017_07_13_073931_add_zip_table.php',
     'AlertClientInfosAddClientIdTable' => $baseDir . '/database/migrations/2017_07_06_092836_alert_client_infos_add_client_id_table.php',
     'AlertClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
     'AlertClientInfosTableRegionId' => $baseDir . '/database/migrations/2017_07_07_065419_alert_client_infos_table_region_id.php',
