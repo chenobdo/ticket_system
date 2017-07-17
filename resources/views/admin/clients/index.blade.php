@@ -190,7 +190,7 @@
             });
 
             $('#alert-full-screen').on('click', function(e) {
-                var str = '<div style="position: absolute; height: 100% width:100%"></div>';
+                var str = '<div style="position: absolute; height: 100%;width:100%;background-color:rgba(0,0,0,0.3);top:0;left:0;z-index:9999999;"></div>';
                 $('body').append(str);
             });
         });
