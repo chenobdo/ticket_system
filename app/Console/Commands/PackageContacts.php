@@ -29,6 +29,7 @@ class PackageContacts extends Command
      */
     public function handle()
     {
+        // TODO test
         $clients = \App\Model\Client::limit(2)->get();
 
         $dir = date('YmdHis');
