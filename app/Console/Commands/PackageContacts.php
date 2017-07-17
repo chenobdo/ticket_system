@@ -29,7 +29,7 @@ class PackageContacts extends Command
      */
     public function handle()
     {
-        $clients = \App\Model\Client::get();
+        $clients = \App\Model\Client::limit(2)->get();
 
         $dir = date('YmdHis');
         $pdfdir = storage_path("app/pdf/{$dir}/");
