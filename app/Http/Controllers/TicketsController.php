@@ -52,7 +52,7 @@ class TicketsController extends Controller
 
         $ticket->save();
 
-        return redirect()->route('tickets.index')->with('success', "A ticket with ID: #$ticket->ticket_id has been opened.");
+        return redirect()->route('tickets.index')->with('success', "工单（ID: #$ticket->ticket_id） 已经提交.");
     }
 
     public function reopen($ticket_id, AppMailer $mailer)
@@ -67,7 +67,7 @@ class TicketsController extends Controller
 
         $mailer->sendTicketStatusNotification($ticketOwner, $ticket);
 
-        return redirect()->back()->with('info', "Your ticket with ID: #$ticket->ticket_id has been reopened.");
+        return redirect()->back()->with('info', "你的工单（ID: #$ticket->ticket_id）已经重开.");
     }
 
     public function userTickets()

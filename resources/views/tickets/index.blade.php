@@ -83,8 +83,8 @@
                                         @endif
                                     @endforeach
                                     </td>                                    
-                                    <td>{{ $ticket->created_at->diffForHumans() }}</td>
-                                    <td>{{ $ticket->updated_at->diffForHumans() }}</td>
+                                    <td>{{ $ticket->created_at->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ $ticket->updated_at->format('Y-m-d H:i:s') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

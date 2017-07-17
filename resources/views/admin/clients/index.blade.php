@@ -34,7 +34,7 @@
                 <div style="padding: 10px 25px;">
                     <button type="button" class="btn btn-primary" id="select-all">全选</button>
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">导入</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#packageModal">打包</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#packageModal">生成账单</button>
                 </div>
 
                 <div class="box-body table-responsive">
