@@ -578,6 +578,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'Cloudinary\\PreloadedFile' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/PreloadedFile.php',
         'Cloudinary\\Search' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Search.php',
         'Cloudinary\\Uploader' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Uploader.php',
+        'CreateBillsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_18_071215_create_bills_table.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_194643_create_categories_table.php',
         'CreateClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_013634_create_client_infos_table.php',
         'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_024747_create_clients_table.php',

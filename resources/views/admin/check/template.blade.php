@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ $client->contractno }}_{{ $client->client }}_{{$month}}月账单</title>
+    <title>{{$client->contractno}}_{{$client->client}}_{{date('m')}}月账单</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body {
@@ -218,7 +218,7 @@
                 <nobr>{{$account['interest_monthly']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account['fee']}}</nobr>
+                <nobr>0.00</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>{{$account['interest_monthly']}}</nobr>

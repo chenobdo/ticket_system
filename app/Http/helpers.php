@@ -41,18 +41,13 @@ function email_to()
     return $email_to;
 }
 
-function getAccountDay($t, $day)
+function getNextYearMonth($t)
 {
     // 获取下个月
     $month = getNextMonth($t);
     // 获取年份
     $year = $month == '01' ? getNextYear($t) : date('Y', $t);
-    // 判断月最后一天
-    $ymd = strtotime($year.$month.'01');
-    $lastDay = getLastDay($ymd);
-    $day = min($day, $lastDay);
-
-    return date('Y/m/d', mktime(0, 0, 0, $month, $day, $year));
+    return $year.$month;
 }
 
 function getNextMonth($t)
