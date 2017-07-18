@@ -6,16 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AddClientsTableEmail' => $baseDir . '/database/migrations/2017_07_10_054550_add_clients_table_email.php',
     'AddZipTable' => $baseDir . '/database/migrations/2017_07_13_073931_add_zip_table.php',
-    'AlertClientInfosAddClientIdTable' => $baseDir . '/database/migrations/2017_07_06_092836_alert_client_infos_add_client_id_table.php',
-    'AlertClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
-    'AlertClientInfosTableRegionId' => $baseDir . '/database/migrations/2017_07_07_065419_alert_client_infos_table_region_id.php',
-    'AlertClientInfosTableRegionName' => $baseDir . '/database/migrations/2017_07_07_070123_alert_client_infos_table_region_name.php',
-    'AlertClientInfosTableRegionStatus' => $baseDir . '/database/migrations/2017_07_07_071716_alert_client_infos_table_region_status.php',
-    'AlertClientsRmClientInfoIdTable' => $baseDir . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
-    'AlertClientsTable' => $baseDir . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
-    'AlertClientsTableAnnualizedReturn' => $baseDir . '/database/migrations/2017_07_07_035418_alert_clients_table_annualized_return.php',
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
     'ClientTableSeeder' => $baseDir . '/database/seeds/ClientTableSeeder.php',
     'Cloudinary' => $vendorDir . '/cloudinary/cloudinary_php/src/Cloudinary.php',
@@ -39,6 +30,7 @@ return array(
     'CreateClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_013634_create_client_infos_table.php',
     'CreateClientsTable' => $baseDir . '/database/migrations/2017_07_06_024747_create_clients_table.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_08_25_212830_create_comments_table.php',
+    'CreateJobsTable' => $baseDir . '/database/migrations/2017_07_18_063045_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePrioritiesTable' => $baseDir . '/database/migrations/2016_08_25_194754_create_priorities_table.php',
     'CreateSettingsTable' => $baseDir . '/database/migrations/2016_08_30_173643_create_settings_table.php',
