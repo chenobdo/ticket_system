@@ -13,39 +13,51 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $createPermission = new Permission();
-        $createPermission->display_name = 'Manage Roles';
+        $createPermission->display_name = '角色管理';
         $createPermission->name = 'manage-roles';
-        $createPermission->description = 'Permission for Managing Roles';
+        $createPermission->description = '角色管理的权限';
         $createPermission->save();
 
         $createPermission = new Permission();
-        $createPermission->display_name = 'Manage Tickets';
+        $createPermission->display_name = '工单管理';
         $createPermission->name = 'manage-tickets';
-        $createPermission->description = 'Permission for Managing Tickets';
+        $createPermission->description = '工单管理的权限';
         $createPermission->save();
 
         $createPermission = new Permission();
-        $createPermission->display_name = 'Manage Users';
+        $createPermission->display_name = '用户管理';
         $createPermission->name = 'manage-users';
-        $createPermission->description = 'Permission for Managing Users';
+        $createPermission->description = '用户管理的权限';
         $createPermission->save();
 
         $createPermission = new Permission();
-        $createPermission->display_name = 'View Backend';
+        $createPermission->display_name = '后台面板';
         $createPermission->name = 'view-backend';
-        $createPermission->description = 'Permission for Viewing Backend';
+        $createPermission->description = '后台面板的权限';
         $createPermission->save();
 
         $createPermission = new Permission();
-        $createPermission->display_name = 'Manage Permissions';
+        $createPermission->display_name = '权限管理';
         $createPermission->name = 'manage-permissions';
-        $createPermission->description = 'Permission for Managing Permissions';
+        $createPermission->description = '权限管理的权限';
         $createPermission->save();
 
         $createPermission = new Permission();
-        $createPermission->display_name = 'Manage Settings';
+        $createPermission->display_name = '配置管理';
         $createPermission->name = 'manage-settings';
-        $createPermission->description = 'Permission for Managing Settings';
+        $createPermission->description = '配置管理的权限';
+        $createPermission->save();
+
+        $createPermission = new Permission();
+        $createPermission->display_name = '对账管理';
+        $createPermission->name = 'manage-check';
+        $createPermission->description = '对账管理的权限';
+        $createPermission->save();
+
+        $createPermission = new Permission();
+        $createPermission->display_name = '客户管理';
+        $createPermission->name = 'manage-clients';
+        $createPermission->description = '客户管理的权限';
         $createPermission->save();
     }
 }

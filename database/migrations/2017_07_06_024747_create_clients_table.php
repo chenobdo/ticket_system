@@ -25,22 +25,22 @@ class CreateClientsTable extends Migration
             $table->string('address', 255)->default('')->comment('地址');
             $table->string('postcode', 6)->default('')->comment('邮编');
             $table->float('FTC')->default(0)->comment('折标系数');
-            $table->decimal('FTA', 8, 4)->default(0)->comment('折标金额');
+            $table->decimal('FTA', 10, 2)->default(0)->comment('折标金额');
             $table->date('receipt_date')->comment('回执日期');
             $table->tinyInteger('is_confirm')->unsigned()->default(1)->comment('债权及确认书（1-空）');
-            $table->decimal('loan_amount', 8, 4)->default(0)->comment('出借金额');
+            $table->decimal('loan_amount', 10, 2)->default(0)->comment('出借金额');
             $table->string('product_name', 16)->default('')->comment('产品名称');
             $table->tinyInteger('nper')->unsigned()->default(1)->comment('期数');
-            $table->float('annualized_return')->default(0)->comment('年华收益率');
-            $table->decimal('gross_interest', 8, 4)->default(0)->comment('利息总额');
-            $table->decimal('interest_monthly', 8, 4)->default(0)->comment('月付利息');
+            $table->decimal('annualized_return', 8, 4)->default(0)->comment('年化收益率');
+            $table->decimal('gross_interest', 10, 2)->default(0)->comment('利息总额');
+            $table->decimal('interest_monthly', 10, 2)->default(0)->comment('月付利息');
             $table->date('deduct_date')->comment('划扣日期');
             $table->date('loan_date')->comment('初始出借日期');
             $table->date('due_date')->comment('到期日');
             $table->integer('billing_days')->unsigned()->default(0)->comment('账单日');
             $table->integer('expire_days')->unsigned()->default(0)->comment('到期天数');
+            $table->string('email', 64)->default('')->comment('电子邮箱');
             $table->tinyInteger('status')->unsigned()->default(1)->comment('状态（1-正常）');
-            $table->integer('client_info_id')->unsigned()->comment('客户信息ID');
             $table->softDeletes();
             $table->timestamps();
 
@@ -48,7 +48,7 @@ class CreateClientsTable extends Migration
 
             $table->unique('contractno');
 
-            $table->foreign('client_info_id')->references('id')->on('client_infos');
+//            $table->foreign('client_info_id')->references('id')->on('client_infos');
         });
     }
 

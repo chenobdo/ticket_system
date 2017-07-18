@@ -20,16 +20,15 @@ class CreateClientInfosTable extends Migration
             $table->tinyInteger('pay_type')->unsigned()->default(1)->comment('支付方式（1-银盛POS机；2-富友金帐户充值；3-委托划扣；4-无需划扣；5-无需填写）');
             $table->time('deduct_time')->comment('划扣时间');
             $table->char('posno', 10)->default('')->comment('POS机终端号');
-            $table->decimal('fee', 4, 4)->default(0)->comment('手续费');
+            $table->decimal('fee', 8, 2)->default(0)->comment('手续费');
             $table->string('import_bank', 64)->default('')->comment('汇入银行');
             $table->string('import_account', 32)->default('')->comment('汇入账户');
             $table->string('import_name', 16)->default('')->comment('汇入姓名');
             $table->string('export_bank', 64)->default('')->comment('回款银行');
             $table->string('export_account', 32)->default('')->comment('回款账户');
             $table->string('export_name', 16)->default('')->comment('回款姓名');
-            $table->tinyInteger('area_id')->unsigned()->comment('区域ID');
+            $table->string('region_name', 16)->default('')->comment('大区名');
             $table->string('area_name', 16)->default('')->comment('区域名');
-            $table->tinyInteger('city_id')->unsigned()->comment('城市ID');
             $table->string('city_name', 16)->default('')->comment('城市名');
             $table->string('section', 32)->default('')->comment('所属部门');
             $table->string('director', 16)->default('')->comment('大区总监');
@@ -39,11 +38,12 @@ class CreateClientInfosTable extends Migration
             $table->string('team_manager', 16)->default('')->comment('团队经理');
             $table->string('account_manager', 16)->default('')->comment('客户经理');
             $table->string('account_manager_cardid', 18)->default('')->comment('客户经理身份证ID');
-            $table->tinyInteger('status')->unsigned()->default(1)->comment('状态（1-正常）');
+            $table->integer('client_id')->unsigned()->comment('客户ID');
             $table->softDeletes();
             $table->timestamps();
 
             $table->engine = 'InnoDB';
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 
