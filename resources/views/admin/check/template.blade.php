@@ -218,7 +218,7 @@
                 <nobr>{{$account['interest_monthly']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account['fee']}}</nobr>
+                <nobr>0.00</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>{{$account['interest_monthly']}}</nobr>

@@ -100,18 +100,18 @@ class AdminCheckController extends Controller
         $nper = $client->nper;
 
         $accounts = [];
-        $currentDate = $loanDate;
+        $currentDate = getAccountDay(strtotime($loanDate), $day);
         $currentNper = 0;
         while ($currentNper < $nper) {
             if (date('Y/m', strtotime($currentDate)) == date('Y/m')) {
                 $nper = -1;
             }
-            $account['date'] = getAccountDay(strtotime($currentDate), $day);
+            $account['date'] = $currentDate;
             $account['interest_monthly'] = $client->interest_monthly;
             $account['fee'] = 0;
             $account['total_assets'] = $client->loan_amount + $client->interest_monthly * ($currentNper + 1);
             $accounts[] = $account;
-            $currentDate = $account['date'];
+            $currentDate = getAccountDay(strtotime($account['date']), $day);
             $currentNper += 1;
         }
 
