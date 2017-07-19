@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
@@ -5,11 +6,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateClientsTable extends Migration
 {
-     /**
-      * Run the migrations.
-      *
-      * @return void
-      */
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::dropIfExists('clients');
@@ -47,8 +48,6 @@ class CreateClientsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->unique('contractno');
-
-//            $table->foreign('client_info_id')->references('id')->on('client_infos');
         });
     }
 
