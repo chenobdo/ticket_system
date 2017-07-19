@@ -29,7 +29,7 @@ class UpdateBill extends Job implements ShouldQueue
      * @param int $type
      * @param null $user
      */
-    public function __construct(Client $clients, $type = Zip::TYPE_AUTO, $user = null)
+    public function __construct($clients, $type = Zip::TYPE_AUTO, $user = null)
     {
         $this->clients = $clients;
         $this->type = $type;
@@ -106,7 +106,7 @@ class UpdateBill extends Job implements ShouldQueue
 
             $bill = DB::table('bills')->where([
                 'year_month' => $yearMonth,
-                'contractno' => $client->contractno
+                'client_id' => $client->id
             ])->first();
             if (empty($bill)) {
                 $bill = [

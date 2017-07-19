@@ -40,7 +40,7 @@ class AdminCheckController extends Controller
         if (empty($contractnos)) {
             return redirect()->route('clients.index')->with('warning', "合同编号为空");
         }
-        $clients = Client::whereIn('contractno', $contractnos);
+        $clients = Client::whereIn('contractno', $contractnos)->get();
         $count = Client::whereIn('contractno', $contractnos)->count();
 
         $this->dispatch(new UpdateBill($clients, Zip::TYPE_MANUAL, Auth::user()));
