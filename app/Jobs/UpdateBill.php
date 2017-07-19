@@ -49,7 +49,7 @@ class UpdateBill extends Job implements ShouldQueue
         $pdfdir = storage_path("app/pdf/{$dir}/");
 
         foreach ($this->clients as $client) {
-            $pdfname = "{$client->contractno}_{$client->client}.pdf";
+            $pdfname = "{$client->contractno}.pdf";
             $bills = $this->generateBill($client);
 
             //生成PDF_纸质版
