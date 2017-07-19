@@ -215,13 +215,13 @@
                 <nobr>{{$account['date']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account['interest_monthly']}}</nobr>
+                <nobr>{{$account['interest']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>0.00</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
-                <nobr>{{$account['interest_monthly']}}</nobr>
+                <nobr>{{$account['net_interest']}}</nobr>
             </td>
             <td style="text-align:center;border-left:hidden;border-top:hidden;min-width:50px">
                 <nobr>{{$account['total_assets']}}</nobr>

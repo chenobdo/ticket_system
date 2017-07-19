@@ -40,57 +40,62 @@ class AdminCheckController extends Controller
             return redirect()->route('clients.index')->with('warning', "合同编号为空");
         }
         $clients = Client::whereIn('contractno', $contractnos)->get();
+        $count = Client::whereIn('contractno', $contractnos)->count();
 
-        $dir = date('YmdHis');
-        $pdfdir = storage_path("app/pdf/{$dir}/");
-        $month = date('m', strtotime('+1 month'));
-        foreach ($clients as $client) {
-            $pdfname = $client->contractno.'.pdf';
-            $accounts = $this->generateAccount($client);
-            $html = view('admin.check.template', compact('client', 'month',
-                'accounts'))->__toString();
-            $pdf = App::make('snappy.pdf.wrapper');
-            $filepath = $pdfdir.$pdfname;
-            if (file_exists($filepath)) {
-                unlink($filepath);
-            }
-            $pdf->loadHTML($html)->save($filepath);
-        }
+        $this->dispatch(new UpdateBill($clients, Zip::TYPE_MANUAL, Auth::user()));
 
-        $zip = new ZipArchive();
-        $zipdir = storage_path("app/zip/");
-        if (!is_dir($zipdir)) {
-            mkdir($zipdir);
-        }
-        $zipname = $dir.'.zip';
-        $zippath = $zipdir."{$zipname}";
-        if ($zip->open($zippath, ZIPARCHIVE::CREATE) === TRUE) {
-            $this->zip($pdfdir, $zip);
-            $zip->close();
-        }
+        return redirect()->route('clients.index')->with('success', '客户账单将于'.($count*4).'秒后生成');
 
-        if (!file_exists($zippath)) {
-            return redirect()->route('clients.index')->with('success', "客户打包失败");
-        }
-
-        $user = Auth::user();
-        $zip = new Zip();
-        $zip->zip_name = $zipname;
-        $zip->path = $zipdir;
-        $zip->type = Zip::TYPE_MANUAL;
-        $zip->uid = $user->id;
-        $zip->mark = json_encode($contractnos);
-        $zip->created_at = time();
-        $zip->updated_at = time();
-        $zip->save();
-
-        if (empty($zip->id)) {
-            return redirect()->route('clients.index')->with('success', "客户打包条目添加失败");
-        }
-
-        $this->deldir($pdfdir);
-
-        return redirect()->route('clients.index')->with('success', "客户打包成功");
+//        $dir = date('YmdHis');
+//        $pdfdir = storage_path("app/pdf/{$dir}/");
+//        $month = date('m', strtotime('+1 month'));
+//        foreach ($clients as $client) {
+//            $pdfname = $client->contractno.'.pdf';
+//            $accounts = $this->generateAccount($client);
+//            $html = view('admin.check.template', compact('client', 'month',
+//                'accounts'))->__toString();
+//            $pdf = App::make('snappy.pdf.wrapper');
+//            $filepath = $pdfdir.$pdfname;
+//            if (file_exists($filepath)) {
+//                unlink($filepath);
+//            }
+//            $pdf->loadHTML($html)->save($filepath);
+//        }
+//
+//        $zip = new ZipArchive();
+//        $zipdir = storage_path("app/zip/");
+//        if (!is_dir($zipdir)) {
+//            mkdir($zipdir);
+//        }
+//        $zipname = $dir.'.zip';
+//        $zippath = $zipdir."{$zipname}";
+//        if ($zip->open($zippath, ZIPARCHIVE::CREATE) === TRUE) {
+//            $this->zip($pdfdir, $zip);
+//            $zip->close();
+//        }
+//
+//        if (!file_exists($zippath)) {
+//            return redirect()->route('clients.index')->with('success', "客户打包失败");
+//        }
+//
+//        $user = Auth::user();
+//        $zip = new Zip();
+//        $zip->zip_name = $zipname;
+//        $zip->path = $zipdir;
+//        $zip->type = Zip::TYPE_MANUAL;
+//        $zip->uid = $user->id;
+//        $zip->mark = json_encode($contractnos);
+//        $zip->created_at = time();
+//        $zip->updated_at = time();
+//        $zip->save();
+//
+//        if (empty($zip->id)) {
+//            return redirect()->route('clients.index')->with('success', "客户打包条目添加失败");
+//        }
+//
+//        $this->deldir($pdfdir);
+//
+//        return redirect()->route('clients.index')->with('success', "客户打包成功");
     }
 
     private function generateAccount($client)
@@ -117,7 +122,7 @@ class AdminCheckController extends Controller
 
         return $accounts;
     }
-    
+
     private function zip($path, $zip)
     {
         $handler = opendir($path);
