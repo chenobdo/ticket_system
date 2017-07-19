@@ -40,7 +40,7 @@ class AdminCheckController extends Controller
         if (empty($contractnos)) {
             return redirect()->route('clients.index')->with('warning', "合同编号为空");
         }
-        $clients = Client::whereIn('contractno', $contractnos)->get();
+        $clients = Client::whereIn('contractno', $contractnos);
         $count = Client::whereIn('contractno', $contractnos)->count();
 
         $this->dispatch(new UpdateBill($clients, Zip::TYPE_MANUAL, Auth::user()));
@@ -99,61 +99,61 @@ class AdminCheckController extends Controller
 //        return redirect()->route('clients.index')->with('success', "客户打包成功");
     }
 
-    private function generateAccount($client)
-    {
-        $loanDate = $client->loan_date;
-        $day = $client->billing_days;
-        $nper = $client->nper;
-
-        $accounts = [];
-        $currentDate = getAccountDay(strtotime($loanDate), $day);
-        $currentNper = 0;
-        while ($currentNper < $nper) {
-            if (date('Y/m', strtotime($currentDate)) == date('Y/m')) {
-                $nper = -1;
-            }
-            $account['date'] = $currentDate;
-            $account['interest_monthly'] = $client->interest_monthly;
-            $account['fee'] = 0;
-            $account['total_assets'] = $client->loan_amount + $client->interest_monthly * ($currentNper + 1);
-            $accounts[] = $account;
-            $currentDate = getAccountDay(strtotime($account['date']), $day);
-            $currentNper += 1;
-        }
-
-        return $accounts;
-    }
-
-    private function zip($path, $zip)
-    {
-        $handler = opendir($path);
-        while (($filename = readdir($handler)) !== false) {
-            if ($filename != "." && $filename != "..") {
-                if (is_dir($path . "/" . $filename)) {
-                    $this->zip($path . "/" . $filename, $zip);
-                } else {
-                    $zip->addFile($path . "/" . $filename);
-                }
-            }
-        }
-        @closedir($path);
-    }
-
-    private function deldir($dir)
-    {
-        $dh = opendir($dir);
-        while ($file = readdir($dh)) {
-            if ($file != "." && $file != "..") {
-                $fullpath = $dir . "/" . $file;
-                if (!is_dir($fullpath)) {
-                    unlink($fullpath);
-                } else {
-                    $this->deldir($fullpath);
-                }
-            }
-        }
-
-        closedir($dh);
-        return rmdir($dir) ? true : false;
-    }
+//    private function generateAccount($client)
+//    {
+//        $loanDate = $client->loan_date;
+//        $day = $client->billing_days;
+//        $nper = $client->nper;
+//
+//        $accounts = [];
+//        $currentDate = getAccountDay(strtotime($loanDate), $day);
+//        $currentNper = 0;
+//        while ($currentNper < $nper) {
+//            if (date('Y/m', strtotime($currentDate)) == date('Y/m')) {
+//                $nper = -1;
+//            }
+//            $account['date'] = $currentDate;
+//            $account['interest_monthly'] = $client->interest_monthly;
+//            $account['fee'] = 0;
+//            $account['total_assets'] = $client->loan_amount + $client->interest_monthly * ($currentNper + 1);
+//            $accounts[] = $account;
+//            $currentDate = getAccountDay(strtotime($account['date']), $day);
+//            $currentNper += 1;
+//        }
+//
+//        return $accounts;
+//    }
+//
+//    private function zip($path, $zip)
+//    {
+//        $handler = opendir($path);
+//        while (($filename = readdir($handler)) !== false) {
+//            if ($filename != "." && $filename != "..") {
+//                if (is_dir($path . "/" . $filename)) {
+//                    $this->zip($path . "/" . $filename, $zip);
+//                } else {
+//                    $zip->addFile($path . "/" . $filename);
+//                }
+//            }
+//        }
+//        @closedir($path);
+//    }
+//
+//    private function deldir($dir)
+//    {
+//        $dh = opendir($dir);
+//        while ($file = readdir($dh)) {
+//            if ($file != "." && $file != "..") {
+//                $fullpath = $dir . "/" . $file;
+//                if (!is_dir($fullpath)) {
+//                    unlink($fullpath);
+//                } else {
+//                    $this->deldir($fullpath);
+//                }
+//            }
+//        }
+//
+//        closedir($dh);
+//        return rmdir($dir) ? true : false;
+//    }
 }
