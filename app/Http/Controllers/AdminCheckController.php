@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Model\Client;
-use App;
+//use App;
 use Response;
-use ZipArchive;
+//use ZipArchive;
 use App\Model\Zip;
 use Auth;
 use Datatables;
 use App\User;
+use App\Jobs\UpdateBill; 
 
 class AdminCheckController extends Controller
 {
