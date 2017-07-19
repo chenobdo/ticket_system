@@ -93,6 +93,31 @@ class AdminCheckController extends Controller
         return redirect()->route('clients.index')->with('success', "客户打包成功");
     }
 
+    private function generateAccount($client)
+    {
+        $loanDate = $client->loan_date;
+        $day = $client->billing_days;
+        $nper = $client->nper;
+
+        $accounts = [];
+        $currentDate = getAccountDay(strtotime($loanDate), $day);
+        $currentNper = 0;
+        while ($currentNper < $nper) {
+            if (date('Y/m', strtotime($currentDate)) == date('Y/m')) {
+                $nper = -1;
+            }
+            $account['date'] = $currentDate;
+            $account['interest_monthly'] = $client->interest_monthly;
+            $account['fee'] = 0;
+            $account['total_assets'] = $client->loan_amount + $client->interest_monthly * ($currentNper + 1);
+            $accounts[] = $account;
+            $currentDate = getAccountDay(strtotime($account['date']), $day);
+            $currentNper += 1;
+        }
+
+        return $accounts;
+    }
+    
     private function zip($path, $zip)
     {
         $handler = opendir($path);

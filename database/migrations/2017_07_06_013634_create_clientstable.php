@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
@@ -5,18 +6,18 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateClientsTable extends Migration
 {
-     /**
-      * Run the migrations.
-      *
-      * @return void
-      */
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::dropIfExists('clients');
 
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->varchar('contractno', 16)->default('')->comment('合同编号');
+            $table->string('contractno', 16)->default('')->comment('合同编号');
             $table->tinyInteger('is_continue')->unsigned()->default(1)->comment('1-首次投资；2-非首次；3-续投；4-无需填写');
             $table->char('client', 10)->default('')->comment('出借人姓名');
             $table->string('cardid', 18)->default('')->comment('出借人身份证ID');
@@ -47,8 +48,6 @@ class CreateClientsTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->unique('contractno');
-
-//            $table->foreign('client_info_id')->references('id')->on('client_infos');
         });
     }
 
