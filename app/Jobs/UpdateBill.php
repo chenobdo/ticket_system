@@ -11,13 +11,12 @@ use App\Model\Client;
 use App;
 use ZipArchive;
 use App\Model\Zip;
-//use App\User;
 
 class UpdateBill extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
-    protected $clients;
+    protected $contractnos;
 
     protected $user;
 
@@ -25,13 +24,13 @@ class UpdateBill extends Job implements ShouldQueue
 
     /**
      * UpdateBill constructor.
-     * @param Client $clients
+     * @param null $contractnos
      * @param int $type
      * @param null $user
      */
-    public function __construct($clients, $type = Zip::TYPE_AUTO, $user = null)
+    public function __construct($contractnos = null, $type = Zip::TYPE_AUTO, $user = null)
     {
-        $this->clients = $clients;
+        $this->contractnos = $contractnos;
         $this->type = $type;
         $this->user = $user;
     }
@@ -43,12 +42,17 @@ class UpdateBill extends Job implements ShouldQueue
      */
     public function handle()
     {
-        //生成账单条目
+        if (empty($this->contractnos)) {
+            $clients = Client::get();
+        } else {
+            $clients = Client::whereIn('contractno', $this->contractnos)->get();
+        }
 
+        //生成账单条目
         $dir = date('YmdHis');
         $pdfdir = storage_path("app/pdf/{$dir}/");
 
-        foreach ($this->clients as $client) {
+        foreach ($clients as $client) {
             $pdfname = "{$client->contractno}_{$client->client}.pdf";
             $bills = $this->generateBill($client);
 
