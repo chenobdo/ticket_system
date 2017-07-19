@@ -147,6 +147,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete('roles/{id}', ['as' => 'roles.destroy', 'uses' => 'RoleController@destroy', 'middleware' => ['permission:manage-roles']]);
 
             Route::get('permissions', ['as' => 'permissions.index', 'uses' => 'PermissionController@index', 'middleware' => ['permission:manage-permissions']]);
+            Route::get('permissions/data', ['as' => 'permissions.data', 'uses' => 'PermissionController@data', 'middleware' => ['permission:manage-permissions']]);
             Route::get('permissions/create', ['as' => 'permissions.create', 'uses' => 'PermissionController@create', 'middleware' => ['permission:manage-permissions']]);
             Route::post('permissions/create', ['as' => 'permissions.store', 'uses' => 'PermissionController@store', 'middleware' => ['permission:manage-permissions']]);
             Route::get('permissions/{id}', ['as' => 'permissions.show', 'uses' => 'PermissionController@show', 'middleware' => ['permission:manage-permissions']]);
@@ -155,7 +156,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete('permissions/{id}', ['as' => 'permissions.destroy', 'uses' => 'PermissionController@destroy', 'middleware' => ['permission:manage-permissions']]);
 
             Route::post('tickets/comment', ['as' => 'managetickets.comment', 'uses' => 'AdminCommentController@postComment', 'middleware' => ['permission:manage-tickets']]);
-            Route::get('tickets', ['as' => 'managetickets.index', 'uses' => 'AdminTicketController@index', 'middleware' => ['permission:manage-tickets']]);
+            Route::get('tickets', ['as' => 'managetickets.index', 'uses' => 'AdminTicketController@index', 'middleware' => ['permission:manage-tickets', 'permission:manage-permissions']]);
             Route::get('tickets/open', ['as' => 'managetickets.open', 'uses' => 'AdminTicketController@opentickets', 'middleware' => ['permission:manage-tickets']]);
             Route::get('tickets/closed', ['as' => 'managetickets.closed', 'uses' => 'AdminTicketController@closedtickets', 'middleware' => ['permission:manage-tickets']]);
             Route::get('tickets/inprogress', ['as' => 'managetickets.inprogress', 'uses' => 'AdminTicketController@inprogresstickets', 'middleware' => ['permission:manage-tickets']]);
@@ -164,6 +165,19 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('tickets/{ticket_id}/edit', ['as' => 'managetickets.edit', 'uses' => 'AdminTicketController@edit', 'middleware' => ['permission:manage-tickets']]);
             Route::patch('tickets/{ticket_id}', ['as' => 'managetickets.update', 'uses' => 'AdminTicketController@update', 'middleware' => ['permission:manage-tickets']]);
             Route::delete('tickets/{ticket_id}', ['as' => 'managetickets.destroy', 'uses' => 'AdminTicketController@destroy', 'middleware' => ['permission:manage-tickets']]);
+
+            Route::get('clients', ['as' => 'clients.index', 'uses' => 'AdminClientController@index', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/data', ['as' => 'clients.data', 'uses' => 'AdminClientController@data', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/{client_id}', ['as' => 'clients.show', 'uses' => 'AdminClientController@show', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/{client_id}/edit', ['as' => 'clients.edit', 'uses' => 'AdminClientController@show', 'middleware' => ['permission:manage-clients']]);
+            Route::get('clients/upload', ['as' => 'clients.upload', 'uses' => 'AdminClientController@upload', 'middleware' => ['permission:manage-clients']]);
+            Route::post('clients/store', ['as' => 'clients.store', 'uses' => 'AdminClientController@store', 'middleware' => ['permission:manage-clients']]);
+            Route::delete('clients/{client_id}', ['as' => 'clients.destroy', 'uses' => 'AdminClientController@destroy', 'middleware' => ['permission:manage-clients']]);
+
+            Route::get('check', ['as' => 'check.index', 'uses' => 'AdminCheckController@index', 'middleware' => ['permission:manage-clients']]);
+            Route::get('check/data', ['as' => 'check.data', 'uses' => 'AdminCheckController@data', 'middleware' => ['permission:manage-clients']]);
+            Route::get('check/{zid}/download', ['as' => 'check.download', 'uses' => 'AdminCheckController@download', 'middleware' => ['permission:manage-clients']]);
+            Route::post('check', ['as' => 'check.package', 'uses' => 'AdminCheckController@package', 'middleware' => ['permission:manage-clients']]);
         });
     });
 });

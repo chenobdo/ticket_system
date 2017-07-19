@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="{{ load_asset('bootstrap/css/bootstrap.min.css') }}">
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{{ load_asset('plugins/font-awesome/font-awesome.min.css') }}">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{ load_asset('plugins/ionicons/ionicons.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ load_asset('dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -37,7 +37,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Reset password</p>
+    <p class="login-box-msg">重置密码</p>
 
          <form role="form" method="POST" action="{{ url('/password/email') }}" _lpchecked="1">
             {!! csrf_field() !!}
@@ -51,11 +51,11 @@
 
                   <div class="row">
                     <div class="col-xs-8">
-                      <button type="submit" class="btn btn-primary btn-block btn-flat">Send password reset link</button>
+                      <button type="submit" class="btn btn-primary btn-block btn-flat">发送密码重置链接</button>
                     </div>
                     <!-- /.col -->
                   </div>
-                    <a href="{{ url('/') }}">Return home</a><br>
+                    <a href="{{ url('/') }}">回主页</a><br>
         </form>
                    </div>
                   <!-- /.login-box-body -->

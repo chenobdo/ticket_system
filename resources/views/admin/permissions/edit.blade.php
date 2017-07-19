@@ -6,12 +6,12 @@
 
     <section class="content-header">
       <h1>
-        Admin
-        <small>Permissions</small>
+        后台
+        <small>权限</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
-        <li class="active">Edit Permissions</li>
+        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> 后台</a></li>
+        <li class="active">编辑权限</li>
       </ol>
     </section>
 
@@ -22,7 +22,7 @@
 
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit Permissions</h3>
+              <h3 class="box-title">编辑权限</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -34,7 +34,7 @@
                 
 	@if (count($errors) > 0)
 		<div class="alert alert-danger">
-			<strong>Whoops!</strong> There were some problems with your input.<br><br>
+			<strong>注意!</strong> 你的输入有些问题.<br><br>
 			<ul>
 				@foreach ($errors->all() as $error)
 					<li>{{ $error }}</li>
@@ -45,21 +45,21 @@
 	{!! Form::model($permission, ['method' => 'PATCH','route' => ['permissions.update', $permission->id]]) !!}
 
             <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                <strong>名字:</strong>
+                {!! Form::text('name', null, array('placeholder' => '名字','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
-                <strong>Display Name:</strong>
-                {!! Form::text('display_name', null, array('placeholder' => 'Display Name','class' => 'form-control')) !!}
+                <strong>昵称:</strong>
+                {!! Form::text('display_name', null, array('placeholder' => '昵称','class' => 'form-control')) !!}
             </div>
 
             <div class="form-group">
-                <strong>Description:</strong>
-                {!! Form::textarea('description', null, array('placeholder' => 'Description','class' => 'form-control','style'=>'height:100px')) !!}
+                <strong>描述:</strong>
+                {!! Form::textarea('description', null, array('placeholder' => '描述','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
 
-				<button type="submit" class="btn bg-purple">Submit</button>
+				<button type="submit" class="btn bg-purple">提交</button>
 				        </div>
 	</div>
 	{!! Form::close() !!}

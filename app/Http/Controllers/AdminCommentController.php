@@ -27,6 +27,6 @@ class AdminCommentController extends Controller
             $mailer->sendTicketComments($comment->ticket->user, Auth::user(), $comment->ticket, $comment);
         }
 
-        return redirect()->back()->with('success', 'Your comment has be submitted.');
+        return redirect()->back()->with('success', '你的评论提交成功.');
     }
 }

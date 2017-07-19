@@ -1,7 +1,7 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> {{ config('version.version') }}
+      <b>版本</b> {{ config('version.version') }}
     </div>
-    <strong>Copyright &copy; 2016 <a href="{{ site_url() }}"><b>{{ site_name() }}</b></a>.</strong> All rights reserved.
+    <strong>版权 &copy; 2017 <a href="{{ site_url() }}"><b>{{ site_name() }}</b></a>.</strong> 保留所有权利.
   </footer>

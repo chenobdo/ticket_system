@@ -1,0 +1,47 @@
+.client-info {
+    background-color: rgba(255, 18, 18, 0.09);
+    padding: 10px
+}
+
+.product-info {
+    background-color: rgba(0, 192, 239, 0.13);
+    padding: 10px
+}
+
+.third-info {
+    background-color: rgba(68, 68, 68, 0.17);
+    padding: 10px
+}
+
+.discounted-info {
+    background-color: rgba(169, 68, 66, 0.18);
+    padding: 10px
+}
+
+.bank-info {
+    background-color: rgba(243, 156, 18, 0.28);
+    padding: 10px;
+}
+
+.contact-info {
+    background-color: rgba(163, 166, 0, 0.3);
+    padding: 10px;
+}
+
+.team-info {
+    background-color: rgba(0, 192, 239, 0.22);
+    padding: 10px;
+}
+
+.bond-info {
+    background-color: rgba(221, 75, 57, 0.34);
+    padding: 10px;
+}
+
+td.highlight {
+    background-color: whitesmoke !important;
+}
+
+table.package-list-td td{
+    padding:8px;
+}

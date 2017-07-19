@@ -43,7 +43,7 @@ class UserController extends Controller
         }
 
         return redirect()->route('users.index')
-                        ->with('success', 'User created successfully');
+                        ->with('success', '用户创建成功');
     }
 
     public function show($id)
@@ -87,7 +87,7 @@ class UserController extends Controller
         }
 
         return redirect()->route('users.index')
-                        ->with('success', 'User updated successfully');
+                        ->with('success', '用户更新成功');
     }
 
     public function destroy($id)

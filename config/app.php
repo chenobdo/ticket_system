@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'zh',
+    'locale' => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -144,7 +144,8 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+//        Illuminate\Translation\TranslationServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         //Laravel\Socialite\SocialiteServiceProvider::class,
@@ -166,6 +167,10 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Laravelista\Ekko\EkkoServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
     ],
 
     /*
@@ -180,7 +185,6 @@ return [
     */
 
     'aliases' => [
-
         'App'                   => Illuminate\Support\Facades\App::class,
         'Artisan'               => Illuminate\Support\Facades\Artisan::class,
         'Auth'                  => Illuminate\Support\Facades\Auth::class,
@@ -233,6 +237,11 @@ return [
         'Html'                  => Collective\Html\HtmlFacade::class,
         'Entrust'               => Zizaco\Entrust\EntrustFacade::class,
         'Ekko'                  => Laravelista\Ekko\Facades\Ekko::class,
+        'Debugbar'              => Barryvdh\Debugbar\Facade::class,
+        'Excel'                 => Maatwebsite\Excel\Facades\Excel::class,
+        'Datatables'            => Yajra\Datatables\Facades\Datatables::class,
+        'PDF'                   => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage'           => Barryvdh\Snappy\Facades\SnappyImage::class,
     ],
 
 ];

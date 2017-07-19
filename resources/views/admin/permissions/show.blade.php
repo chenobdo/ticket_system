@@ -6,12 +6,12 @@
 
     <section class="content-header">
       <h1>
-        Admin
-        <small>Permissions</small>
+        后台
+        <small>权限</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
-        <li class="active">Show Permissions</li>
+        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> 后台</a></li>
+        <li class="active">权限</li>
       </ol>
     </section>
 
@@ -21,7 +21,7 @@
 
           <div class="box box-default">
             <div class="box-header with-border">
-              <h3 class="box-title">Show Permissions</h3>
+              <h3 class="box-title">权限</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -32,22 +32,22 @@
             <div class="box-body">
                 
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>名字:</strong>
                 {{ $permission->name }}
             </div>
 
             <div class="form-group">
-                <strong>Display Name:</strong>
+                <strong>昵称:</strong>
                 {{ $permission->display_name }}
             </div>
 
             <div class="form-group">
-                <strong>Description:</strong>
+                <strong>描述:</strong>
                 {{ $permission->description }}
             </div>
-			<a class="btn bg-purple" href="{{ route('permissions.edit',$permission->id) }}"><i class="fa fa-edit"> Edit</i></a>
+			<a class="btn bg-purple" href="{{ route('permissions.edit',$permission->id) }}"><i class="fa fa-edit"> 编辑</i></a>
 			{!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline','class'=>'delete']) !!}
-            {{ Form::button('<i class="fa fa-remove"> Delete</i>', array('class'=>'btn btn-danger', 'type'=>'submit')) }}
+            {{ Form::button('<i class="fa fa-remove"> 删除</i>', array('class'=>'btn btn-danger', 'type'=>'submit')) }}
         	{!! Form::close() !!}
         </div>
           </div>	

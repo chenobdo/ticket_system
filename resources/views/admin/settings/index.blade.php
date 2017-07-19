@@ -5,12 +5,12 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Admin
-        <small>Settings</small>
+        后台
+        <small>配置</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> Admin</a></li>
-        <li class="active">Settings</li>
+        <li><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> 后台</a></li>
+        <li class="active">配置</li>
       </ol>
     </section>
 
@@ -21,7 +21,7 @@
 
             <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Settings</h3>
+                <h3 class="box-title">配置</h3>
             </div>
             <div class="box-body">
                               
@@ -30,7 +30,7 @@
                         {!! csrf_field() !!}
                       
                         <div class="form-group{{ $errors->has('site_name') ? ' has-error' : '' }}">
-                            <label for="site_name" class="col-md-2 control-label">Site Name</label>
+                            <label for="site_name" class="col-md-2 control-label">站点名称</label>
                             <div class="col-md-4">
                                 <input type="text" name="site_name" id="site_name" autofocus="" value="{{ $settings->site_name }}" class="form-control">
                                 @if ($errors->has('site_name'))
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('site_url') ? ' has-error' : '' }}">
-                            <label for="site_url" class="col-md-2 control-label">Site URL</label>
+                            <label for="site_url" class="col-md-2 control-label">站点地址</label>
                             <div class="col-md-4">
                                 <input type="text" name="site_url" id="site_url" autofocus="" value="{{ $settings->site_url }}" class="form-control">
                                 @if ($errors->has('site_url'))
@@ -75,7 +75,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-8">
-                                <button type="submit" class="btn bg-purple"><i class="fa fa-envelope"></i> Update</button>
+                                <button type="submit" class="btn bg-purple"><i class="fa fa-envelope"></i> 更新</button>
                             </div>
                         </div>
                         

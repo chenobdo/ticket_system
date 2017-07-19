@@ -49,6 +49,18 @@ class RolePermissionTableSeeder extends Seeder
         $createUser->save();
 
         $createUser = new PermissionRole();
+        $createUser->role_id = '1';
+        $createUser->permission_id = '7';
+        $createUser->timestamps = false;
+        $createUser->save();
+
+        $createUser = new PermissionRole();
+        $createUser->role_id = '1';
+        $createUser->permission_id = '8';
+        $createUser->timestamps = false;
+        $createUser->save();
+
+        $createUser = new PermissionRole();
         $createUser->role_id = '2';
         $createUser->permission_id = '2';
         $createUser->timestamps = false;
@@ -75,6 +87,18 @@ class RolePermissionTableSeeder extends Seeder
         $createUser = new PermissionRole();
         $createUser->role_id = '3';
         $createUser->permission_id = '4';
+        $createUser->timestamps = false;
+        $createUser->save();
+
+        $createUser = new PermissionRole();
+        $createUser->role_id = '3';
+        $createUser->permission_id = '7';
+        $createUser->timestamps = false;
+        $createUser->save();
+
+        $createUser = new PermissionRole();
+        $createUser->role_id = '3';
+        $createUser->permission_id = '8';
         $createUser->timestamps = false;
         $createUser->save();
     }

@@ -6,15 +6,19 @@ use App\Permission;
 
 use DB;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+
 
 class PermissionController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $permissions = Permission::orderBy('id', 'DESC')->paginate(5);
+        return view('admin.permissions.index');
+    }
 
-        return view('admin.permissions.index', compact('permissions'))
-            ->with('i');
+    public function data()
+    {
+        return Datatables::of(Permission::query())->make(true);
     }
 
     public function create()
@@ -37,7 +41,7 @@ class PermissionController extends Controller
         $permission->save();
 
         return redirect()->route('permissions.index')
-                        ->with('success', 'Permission created successfully');
+                        ->with('success', '权限添加成功');
     }
 
     public function show($id)
@@ -69,7 +73,7 @@ class PermissionController extends Controller
         $permission->save();
 
         return redirect()->route('permissions.index')
-                        ->with('success', 'Permission updated successfully');
+                        ->with('success', '权限更新成功');
     }
 
     public function destroy($id)
@@ -77,6 +81,6 @@ class PermissionController extends Controller
         DB::table('permissions')->where('id', $id)->delete();
 
         return redirect()->route('permissions.index')
-                        ->with('success', 'Permission deleted successfully');
+                        ->with('success', '权限删除成功');
     }
 }

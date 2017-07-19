@@ -8,6 +8,7 @@ namespace Cloudinary {
         {
             $params = array("timestamp" => time(),
                 "allowed_formats" => \Cloudinary::encode_array(\Cloudinary::option_get($options, "allowed_formats")),
+                "async" => \Cloudinary::option_get($options, "async"),
                 "auto_tagging" => \Cloudinary::option_get($options, "auto_tagging"),
                 "background_removal" => \Cloudinary::option_get($options, "background_removal"),
                 "backup" => \Cloudinary::option_get($options, "backup"),
@@ -132,7 +133,8 @@ namespace Cloudinary {
                 "from_public_id" => $from_public_id,
                 "to_public_id" => $to_public_id,
                 "invalidate" => \Cloudinary::option_get($options, "invalidate"),
-                "overwrite" => \Cloudinary::option_get($options, "overwrite")
+                "overwrite" => \Cloudinary::option_get($options, "overwrite"),
+                "to_type" => \Cloudinary::option_get($options, "to_type"),
             );
             return Uploader::call_api("rename", $params, $options);
         }
@@ -213,6 +215,26 @@ namespace Cloudinary {
             return Uploader::call_api("tags", $params, $options);
         }
 
+        public static function add_context($context, $public_ids = array(), $options = array()) {
+          return Uploader::call_context_api($context, 'add', $public_ids, $options);
+        }
+
+        public static function remove_all_context($public_ids = array(), $options = array()) {
+          return Uploader::call_context_api(null, 'remove_all', $public_ids, $options);
+        }
+
+        public static function call_context_api($context, $command, $public_ids = array(), &$options = array())
+        {
+            $params = array(
+                "timestamp" => time(),
+                "context" => $context,
+                "public_ids" => \Cloudinary::build_array($public_ids),
+                "type" => \Cloudinary::option_get($options, "type"),
+                "command" => $command
+            );
+            return Uploader::call_api("context", $params, $options);
+        }
+
         private static $TEXT_PARAMS = array("public_id", "font_family", "font_size", "font_color", "text_align", "font_weight", "font_style", "background", "opacity", "text_decoration");
 
         public static function text($text, $options = array())
@@ -279,6 +301,10 @@ namespace Cloudinary {
             curl_setopt($ch, CURLOPT_POST, true);
             $timeout = \Cloudinary::option_get($options, "timeout", \Cloudinary::config_get("timeout", 60));
             curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+            $connection_timeout = \Cloudinary::option_get($options, "connection_timeout", \Cloudinary::config_get("connection_timeout"));
+            if ($connection_timeout != NULL) {
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $connection_timeout);
+            }
             curl_setopt($ch, CURLOPT_POSTFIELDS, $post_params);
             curl_setopt($ch, CURLOPT_CAINFO,realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR."cacert.pem");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); # no effect since PHP 5.1.3

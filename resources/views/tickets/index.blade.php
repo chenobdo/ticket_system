@@ -9,7 +9,7 @@
       <section class="content-header">
         <h1>
           {{ site_name() }}
-          <small>My tickets</small>
+          <small>我的工单</small>
         </h1>
       </section>
       
@@ -19,23 +19,23 @@
 
           <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-ticket"> My tickets</i></h3>
+                <h3 class="box-title"><i class="fa fa-ticket"> 我的工单</i></h3>
             </div>
             <div class="box-body">
                     @if ($tickets->isEmpty())
-                        <p>You have not created any tickets.</p>
+                        <p>你还没有提交过工单.</p>
                     @else
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Ticket ID</th>
-                                    <th>Title</th>
-                                    <th>Comments</th>
-                                    <th>Category</th>
-                                    <th>Status</th>
-                                    <th>Priority</th>
-                                    <th>Created</th>                                
-                                    <th>Last Updated</th>
+                                    <th>工单ID</th>
+                                    <th>标题</th>
+                                    <th>评论</th>
+                                    <th>类型</th>
+                                    <th>状态</th>
+                                    <th>优先级</th>
+                                    <th>创建时间</th>
+                                    <th>最近更新</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,8 +83,8 @@
                                         @endif
                                     @endforeach
                                     </td>                                    
-                                    <td>{{ $ticket->created_at->diffForHumans() }}</td>
-                                    <td>{{ $ticket->updated_at->diffForHumans() }}</td>
+                                    <td>{{ $ticket->created_at->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ $ticket->updated_at->format('Y-m-d H:i:s') }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
