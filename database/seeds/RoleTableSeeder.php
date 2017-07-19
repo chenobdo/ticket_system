@@ -20,7 +20,7 @@ class RoleTableSeeder extends Seeder
 
         $moderatorRole = new Role();
         $moderatorRole->display_name = '管理组';
-        $moderatorRole->name = 'Moderator';
+        $moderatorRole->name = 'moderator';
         $moderatorRole->description = '管理组角色';
         $moderatorRole->save();
 
