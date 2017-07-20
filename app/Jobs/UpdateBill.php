@@ -43,9 +43,9 @@ class UpdateBill extends Job implements ShouldQueue
     public function handle()
     {
         if (empty($this->contractnos)) {
-            $clients = Client::get();
+            $this->clients = Client::get();
         } else {
-            $clients = Client::whereIn('contractno', $this->contractnos)->get();
+            $this->clients = Client::whereIn('contractno', $this->contractnos)->get();
         }
 
         //生成账单条目
