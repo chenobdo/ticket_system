@@ -577,6 +577,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'CreateClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_024747_create_client_infos_table.php',
         'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_013634_create_clientstable.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_212830_create_comments_table.php',
+        'CreateJobsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_20_024012_create_jobs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePrioritiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_194754_create_priorities_table.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_30_173643_create_settings_table.php',

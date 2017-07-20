@@ -30,6 +30,7 @@ return array(
     'CreateClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_024747_create_client_infos_table.php',
     'CreateClientsTable' => $baseDir . '/database/migrations/2017_07_06_013634_create_clientstable.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_08_25_212830_create_comments_table.php',
+    'CreateJobsTable' => $baseDir . '/database/migrations/2017_07_20_024012_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePrioritiesTable' => $baseDir . '/database/migrations/2016_08_25_194754_create_priorities_table.php',
     'CreateSettingsTable' => $baseDir . '/database/migrations/2016_08_30_173643_create_settings_table.php',
