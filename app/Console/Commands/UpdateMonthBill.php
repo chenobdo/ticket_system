@@ -15,7 +15,7 @@ class PackageContacts extends Command
      *
      * @var string
      */
-    protected $signature = 'package_contacts';
+    protected $signature = 'update_month_bill';
 
     /**
      * The console command description.
