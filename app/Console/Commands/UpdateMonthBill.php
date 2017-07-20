@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\User;
+use App\Jobs\UpdateBill;
 
 class UpdateMonthBill extends Command
 {
