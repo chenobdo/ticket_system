@@ -90,6 +90,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Predis\\' => 7,
             'PhpParser\\' => 10,
         ),
         'O' => 
@@ -292,6 +293,10 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
         'PhpParser\\' => 
         array (
@@ -553,16 +558,7 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
     );
 
     public static $classMap = array (
-        'AddClientsTableEmail' => __DIR__ . '/../..' . '/database/migrations/2017_07_10_054550_add_clients_table_email.php',
         'AddZipTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_13_073931_add_zip_table.php',
-        'AlertClientInfosAddClientIdTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_092836_alert_client_infos_add_client_id_table.php',
-        'AlertClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_065409_alert_client_infos_table.php',
-        'AlertClientInfosTableRegionId' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_065419_alert_client_infos_table_region_id.php',
-        'AlertClientInfosTableRegionName' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_070123_alert_client_infos_table_region_name.php',
-        'AlertClientInfosTableRegionStatus' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_071716_alert_client_infos_table_region_status.php',
-        'AlertClientsRmClientInfoIdTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_092551_alert_clients_rm_client_info_id_table.php',
-        'AlertClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_070150_alert_clients_table.php',
-        'AlertClientsTableAnnualizedReturn' => __DIR__ . '/../..' . '/database/migrations/2017_07_07_035418_alert_clients_table_annualized_return.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'ClientTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClientTableSeeder.php',
         'Cloudinary' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Cloudinary.php',
@@ -582,10 +578,12 @@ class ComposerStaticInit9ae837c782194ff3b87f2c59d52b78af
         'Cloudinary\\PreloadedFile' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/PreloadedFile.php',
         'Cloudinary\\Search' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Search.php',
         'Cloudinary\\Uploader' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Uploader.php',
+        'CreateBillsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_18_071215_create_bills_table.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_194643_create_categories_table.php',
-        'CreateClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_013634_create_client_infos_table.php',
-        'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_024747_create_clients_table.php',
+        'CreateClientInfosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_024747_create_client_infos_table.php',
+        'CreateClientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_06_013634_create_clientstable.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_212830_create_comments_table.php',
+        'CreateJobsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_20_024012_create_jobs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePrioritiesTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_25_194754_create_priorities_table.php',
         'CreateSettingsTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_30_173643_create_settings_table.php',
