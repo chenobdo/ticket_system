@@ -26,6 +26,7 @@ return array(
     'Cloudinary\\PreloadedFile' => $vendorDir . '/cloudinary/cloudinary_php/src/PreloadedFile.php',
     'Cloudinary\\Search' => $vendorDir . '/cloudinary/cloudinary_php/src/Search.php',
     'Cloudinary\\Uploader' => $vendorDir . '/cloudinary/cloudinary_php/src/Uploader.php',
+    'CreateBillsTable' => $baseDir . '/database/migrations/2017_07_18_071215_create_bills_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_08_25_194643_create_categories_table.php',
     'CreateClientInfosTable' => $baseDir . '/database/migrations/2017_07_06_024747_create_client_infos_table.php',
     'CreateClientsTable' => $baseDir . '/database/migrations/2017_07_06_013634_create_clientstable.php',

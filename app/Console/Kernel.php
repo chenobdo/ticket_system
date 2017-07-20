@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
-         Commands\PackageContacts::class,
+         Commands\UpdateMonthBill::class,
     ];
 
     /**
@@ -31,8 +31,6 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-//        $schedule->command('package_contacts')->monthlyOn(10, '02:00');
-        // TODO test
-        $schedule->command('package_contacts')->dailyAt('10:10');
+        $schedule->command('update_month_bill')->monthlyOn(1, '02:00');
     }
 }
