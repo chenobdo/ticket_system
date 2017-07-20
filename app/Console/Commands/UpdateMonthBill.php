@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\User;
 
-class PackageContacts extends Command
+class UpdateMonthBill extends Command
 {
     use DispatchesJobs;
 
